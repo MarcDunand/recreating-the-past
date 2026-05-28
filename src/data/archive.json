@@ -1,0 +1,212 @@
+[
+  {
+    "artist": "Vera Molnár",
+    "artistSlug": "vera-molnar",
+    "mediaFolder": "molnar",
+    "pairs": [
+      {
+        "id": "sun_microcosmos-hommage-a-bartok",
+        "originalTitle": "Microcosmos, Hommage à Bartók",
+        "originalYear": "1978",
+        "originalMediaType": "image",
+        "originalLink": "https://observer.com/2025/07/auctions-sothebys-algorithmic-art-computer-art-grace-hertlein-collection/",
+        "student": "Sun Chuanqi",
+        "recreationMediaType": "image",
+        "recreationLink": "https://code.chuanqisun.com/recreating-the-past/molnar/",
+        "notes": "PDF caption describes an artist proof signed V. Molnar / 73 and inscribed MIKΡOKOΣMOΣ / epreuve d’artiste, c-5 II; external sale records commonly list Microcosmos, Hommage à Bartók as 1978."
+      },
+      {
+        "id": "ana_hommage-a-barbaud",
+        "originalTitle": "Hommage à Barbaud",
+        "originalYear": "1974",
+        "originalMediaType": "image",
+        "originalLink": "https://www.researchgate.net/figure/era-Molnar-Hommage-a-Barbaud-Tribute-to-Barbaud-1974-Plotter-drawing-ink-on_fig1_338896073",
+        "student": "Ana Schon",
+        "recreationMediaType": "image",
+        "recreationLink": "https://github.com/anaschon/RTP-code/tree/8892406a608a5dacf6374195ee05d3ae53128abd/src/vera1"
+      },
+      {
+        "id": "bela_carres-rouges-et-bleus",
+        "originalTitle": "Carrés rouges et bleus",
+        "originalYear": "1972",
+        "originalMediaType": "image",
+        "originalLink": "https://www.oniris.art/en/artists/32-vera-molnar/works/5576-vera-molnar-carres-rouges-et-bleus-1972/",
+        "student": "Bela Sanchez Taipe",
+        "recreationMediaType": "image",
+        "recreationLink": "",
+        "notes": "No recreation image/link was visible in the PDF; a blank placeholder was created so the folder structure remains complete."
+      },
+      {
+        "id": "vivian_structure-of-squares",
+        "originalTitle": "Structure of Squares",
+        "originalYear": "1974",
+        "originalMediaType": "image",
+        "originalLink": "https://www.vam.ac.uk/blog/museum-life/vera-molnar-machine-imaginaire-the-dance-of-hands-and-machine-thinking?srsltid=AfmBOoqOY3oh2RCsgsykFEOBIeujOL_u49CTjd1nVddeYuK-9a20M5Xa",
+        "student": "Vivian Kong",
+        "recreationMediaType": "image",
+        "recreationLink": "https://github.com/vivian20206/Vera_Molnar/tree/27db1aa2bb5b1a7664e609be4e0d378338405fa6/src"
+      },
+      {
+        "id": "lia_interstices",
+        "originalTitle": "Interstices",
+        "originalYear": "1986",
+        "originalMediaType": "image",
+        "originalLink": "https://www.artsy.net/artist/vera-molnar-1",
+        "student": "Lia Chen",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/chenqianan311/sketches/JzyUPvOIx"
+      },
+      {
+        "id": "marc_interruptions",
+        "originalTitle": "Interruptions",
+        "originalYear": "1968–1969",
+        "originalMediaType": "image",
+        "originalLink": "",
+        "student": "Marc Dunand",
+        "recreationMediaType": "image",
+        "recreationLink": "https://openprocessing.org/sketch/2868406"
+      },
+      {
+        "id": "haotian_divergent-lines",
+        "originalTitle": "Divergent lines",
+        "originalYear": "1972",
+        "originalMediaType": "image",
+        "originalLink": "https://www.mayorgallery.com/artists/190-vera-molnar/",
+        "student": "Haotian Wang",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/haotian_wang/full/l8s8CIlDA"
+      },
+      {
+        "id": "aimee_life-in-m",
+        "originalTitle": "Life in M",
+        "originalYear": "2023",
+        "originalMediaType": "image",
+        "originalLink": "https://artfocusnow.com/discoveries/vera-moln%C3%A0r-from-pencil-to-nft/",
+        "student": "Aimee Ye",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/aimeeye/full/ttQ8dAzwh"
+      },
+      {
+        "id": "emily_1-carre-et-63-quadrangles",
+        "originalTitle": "1 Carré et 63 quadrangles",
+        "originalYear": "2023",
+        "originalMediaType": "image",
+        "originalLink": "https://www.oniris.art/artists/32-vera-molnar/store/artworks/7710-vera-molnar-1-carre-et-63-quadrangles-2023/",
+        "student": "Emily Guan",
+        "recreationMediaType": "image",
+        "recreationLink": "https://drive.google.com/file/d/1JobavJkKTANWTxp-ThXH6ww4dTp_KQNW/view?usp=sharing"
+      },
+      {
+        "id": "anyang_saint-victoire-en-2-bleus-a",
+        "originalTitle": "Saint Victoire en 2 Bleus A",
+        "originalYear": "2017–2019",
+        "originalMediaType": "image",
+        "originalLink": "https://clotmag.com/oped/a-la-recherche-de-vera-molnar-a-heartfelt-homage-to-the-pioneering-computer-artist",
+        "student": "Anyang Zu",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/azu100/sketches/HQ6NyNYxJ"
+      },
+      {
+        "id": "an_lent-mouvement-bleu-orange-rouge-et-noir",
+        "originalTitle": "Lent mouvement bleu, orange, rouge et noir",
+        "originalYear": "1955",
+        "originalMediaType": "image",
+        "originalLink": "",
+        "student": "An Kong",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/akong/sketches/zIPiOYjfc"
+      },
+      {
+        "id": "shiman_25-carres",
+        "originalTitle": "25 carrés",
+        "originalYear": "1993–1994",
+        "originalMediaType": "image",
+        "originalLink": "",
+        "student": "Shiman Xu",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/shimanxxx/sketches/1GiVQxuN5"
+      },
+      {
+        "id": "philipp_mouvement",
+        "originalTitle": "Mouvement",
+        "originalYear": "1959",
+        "originalMediaType": "image",
+        "originalLink": "https://ropac.net/ko/artworks/12824-vera-molnar-mouvement-1959/",
+        "student": "Philipp Hugenroth",
+        "recreationMediaType": "image",
+        "recreationLink": "https://gist.github.com/tudi2d/14d75443a29b855f28469770f63d8136"
+      },
+      {
+        "id": "jae-in_deporte-du-sillon",
+        "originalTitle": "Deporté du Sillon",
+        "originalYear": "1990",
+        "originalMediaType": "image",
+        "originalLink": "https://www.ludwigmuseum.hu/en/work/deporte-du-sillon",
+        "student": "Jae In Yoo",
+        "recreationMediaType": "image",
+        "recreationLink": ""
+      },
+      {
+        "id": "yufeng_de-la-serie-des-ordres-detail",
+        "originalTitle": "De La Serie (Des) Ordres (detail)",
+        "originalYear": "1974",
+        "originalMediaType": "image",
+        "originalLink": "https://spalterdigital.com/artworks/de-la-serie-des-ordres-2/",
+        "student": "Yufeng Zhao",
+        "recreationMediaType": "image",
+        "recreationLink": "https://github.com/yz3440/recreating-the-past/blob/main/week-1/homework/vera_molnar.toe"
+      },
+      {
+        "id": "malvika_untitled-line-grid",
+        "originalTitle": "Untitled line-grid work",
+        "originalYear": "unknown",
+        "originalMediaType": "image",
+        "originalLink": "",
+        "student": "Malvika Dwivedi",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/malvika.dwivedi.md/sketches/5sqkEC0YL",
+        "notes": "The PDF labels this only as Original/Recreated and does not provide the original title or year."
+      },
+      {
+        "id": "ash_four-randomly-distributed-elements",
+        "originalTitle": "Four Randomly Distributed Elements",
+        "originalYear": "1959",
+        "originalMediaType": "image",
+        "originalLink": "https://artfocusnow.com/discoveries/vera-moln%C3%A0r-from-pencil-to-nft/",
+        "student": "Ash He",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/kevin1753008444/full/H0-Ud5ELV"
+      },
+      {
+        "id": "fengyi_emergence-dune-croix",
+        "originalTitle": "Emergence d'une croix",
+        "originalYear": "1970",
+        "originalMediaType": "image",
+        "originalLink": "https://artfocusnow.com/discoveries/vera-moln%C3%A0r-from-pencil-to-nft/",
+        "student": "Fengyi Ye",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/kevin1753008444/full/v4zCvFG0I"
+      },
+      {
+        "id": "annie_desordres",
+        "originalTitle": "(Des)Ordres",
+        "originalYear": "1974",
+        "originalMediaType": "image",
+        "originalLink": "https://artfocusnow.com/discoveries/vera-moln%C3%A0r-from-pencil-to-nft/",
+        "student": "Annie Yining Chen",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/ychenannie8/sketches/zEsjoV4hf"
+      },
+      {
+        "id": "eitan_untitled",
+        "originalTitle": "Untitled",
+        "originalYear": "unknown",
+        "originalMediaType": "image",
+        "originalLink": "https://www.moma.org/collection/works/409639",
+        "student": "Eitan Wolf",
+        "recreationMediaType": "image",
+        "recreationLink": "https://openprocessing.org/@u587985/2939265"
+      }
+    ]
+  }
+]
