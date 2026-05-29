@@ -1,0 +1,28 @@
+# build output
+recreating-the-past/dist/
+
+# generated types
+recreating-the-past/.astro/
+
+# dependencies
+recreating-the-past/node_modules/
+
+# logs
+recreating-the-past/npm-debug.log*
+recreating-the-past/yarn-debug.log*
+recreating-the-past/yarn-error.log*
+recreating-the-past/pnpm-debug.log*
+
+# environment variables
+recreating-the-past/.env
+recreating-the-past/.env.production
+
+# macOS-specific files
+.DS_Store
+recreating-the-past/.DS_Store
+
+# jetbrains setting folder
+recreating-the-past/.idea/
+
+# big folders full of unprocessed media
+contentDump/*

@@ -83,7 +83,8 @@
         "originalLink": "https://www.oniris.art/artists/32-vera-molnar/store/artworks/7710-vera-molnar-1-carre-et-63-quadrangles-2023/",
         "student": "Emily Guan",
         "recreationMediaType": "image",
-        "recreationLink": "https://drive.google.com/file/d/1JobavJkKTANWTxp-ThXH6ww4dTp_KQNW/view?usp=sharing"
+        "recreationLink": "",
+        "notes": "Source document provides a Google Drive recreation media file, but no recreation code link."
       },
       {
         "id": "anyang_saint-victoire-en-2-bleus-a",
@@ -205,24 +206,36 @@
     "mediaFolder": "whitney",
     "pairs": [
       {
-        "id": "ash_permutations",
+        "id": "sun_permutations",
         "originalTitle": "Permutations",
-        "originalYear": "1968",
+        "originalYear": "1969",
         "originalMediaType": "video",
         "originalLink": "https://www.youtube.com/watch?v=BzB31mD4NmA",
+        "student": "Sun Chuanqi",
+        "recreationMediaType": "video",
+        "recreationLink": "https://code.chuanqisun.com/recreating-the-past/whitney/",
+        "notes": "Source document lists this section under Sun, with source text: John Whitney, Permutations (1969). Source document also lists code at https://github.com/chuanqisun/code/tree/master/recreating-the-past/whitney."
+      },
+      {
+        "id": "ash_catalog",
+        "originalTitle": "Catalog",
+        "originalYear": "1961",
+        "originalMediaType": "video",
+        "originalLink": "https://www.youtube.com/watch?v=TbV7loKp69s",
         "student": "Ash He",
         "recreationMediaType": "video",
-        "recreationLink": "https://code.chuanqisun.com/recreating-the-past/whitney/"
+        "recreationLink": "https://editor.p5js.org/kevin1753008444/full/I3Xe38FY4"
       },
       {
         "id": "fengyi_catalog",
         "originalTitle": "Catalog",
         "originalYear": "1961",
         "originalMediaType": "video",
-        "originalLink": "https://youtube.com/shorts/iMxw0RcA2ZU?feature=share",
+        "originalLink": "https://www.youtube.com/watch?v=6bydDe_WCWc",
         "student": "Fengyi Ye",
         "recreationMediaType": "video",
-        "recreationLink": "https://youtube.com/shorts/Z_Q7LqAzE4U?feature=share"
+        "recreationLink": "",
+        "notes": "Source document provides a YouTube Shorts recreation video, but no recreation code link."
       },
       {
         "id": "haotian_matrix-iii",
@@ -239,17 +252,18 @@
         "originalTitle": "Catalog",
         "originalYear": "1961",
         "originalMediaType": "video",
-        "originalLink": "https://www.dropbox.com/scl/fi/pdm3zb0y3u6is2f7d43wo/John-Whitney-Shorts.avi?rlkey=vsy5dzg81j0bxtra3jcuw20pn&e=1&st=4z98127u&dl=0",
+        "originalLink": "https://www.youtube.com/watch?v=6bydDe_WCWc",
         "student": "Ana Schon",
         "recreationMediaType": "video",
-        "recreationLink": "https://github.com/anaschonml/RTP-code/tree/main/whitney1"
+        "recreationLink": "https://github.com/anaschonml/RTP-code/tree/main/whitney1",
+        "notes": "Source document uses a Dropbox source video for the original excerpt and a Google Drive video for recreation media."
       },
       {
         "id": "malvika_permutations",
         "originalTitle": "Permutations",
         "originalYear": "1968",
         "originalMediaType": "video",
-        "originalLink": "https://editor.p5js.org/malvika.dwivedi.md/sketches/4qr7_WZXz",
+        "originalLink": "https://www.youtube.com/watch?v=BzB31mD4NmA",
         "student": "Malvika Dwivedi",
         "recreationMediaType": "video",
         "recreationLink": "https://editor.p5js.org/malvika.dwivedi.md/sketches/4qr7_WZXz"
@@ -299,7 +313,7 @@
         "originalTitle": "Permutations",
         "originalYear": "1968",
         "originalMediaType": "video",
-        "originalLink": "https://www.dropbox.com/scl/fi/pdm3zb0y3u6is2f7d43wo/John-Whitney-Shorts.avi?rlkey=vsy5dzg81j0bxtra3jcuw20pn&e=1&st=4z98127u&dl=0",
+        "originalLink": "https://www.youtube.com/watch?v=BzB31mD4NmA",
         "student": "Vivian Kong",
         "recreationMediaType": "video",
         "recreationLink": "https://github.com/vivian20206/Case-Study-John-Whitney/blob/3ed37f3983fbf151db6509a2b73525b6aabe5c38/src/ofApp.cpp"
@@ -342,17 +356,19 @@
         "originalLink": "https://www.youtube.com/watch?v=6bydDe_WCWc",
         "student": "Marc Dunand",
         "recreationMediaType": "video",
-        "recreationLink": "https://youtu.be/d1TPZc4Lmm3"
+        "recreationLink": "",
+        "notes": "Source document provides a YouTube recreation video, but no recreation code link."
       },
       {
         "id": "emily_permutations",
         "originalTitle": "Permutations",
         "originalYear": "1968",
         "originalMediaType": "video",
-        "originalLink": "https://www.dropbox.com/scl/fi/pdm3zb0y3u6is2f7d43wo/John-Whitney-Shorts.avi?rlkey=vsy5dzg81j0bxtra3jcuw20pn&e=2&st=4z98127u&dl=0",
+        "originalLink": "https://www.youtube.com/watch?v=BzB31mD4NmA",
         "student": "Emily Guan",
         "recreationMediaType": "video",
-        "recreationLink": "https://drive.google.com/drive/folders/15hf02qY6UID1WNaBJMoHrI3vDdquNJpx?usp=sharing"
+        "recreationLink": "",
+        "notes": "Source document provides a Google Drive folder for recreation media, but no recreation code link."
       },
       {
         "id": "eitan_experiments-in-motion-graphics",

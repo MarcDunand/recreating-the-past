@@ -1,0 +1,628 @@
+[
+  {
+    "artist": "Vera Molnár",
+    "artistSlug": "vera-molnar",
+    "mediaFolder": "molnar",
+    "entries": [
+      {
+        "id": "sun_microcosmos-hommage-a-bartok",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../public/media/molnar/originals/sun_microcosmos-hommage-a-bartok_o.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Already present as final local display image."
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../public/media/molnar/recreations/sun_microcosmos-hommage-a-bartok_r.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Already present as final local display image."
+        }
+      },
+      {
+        "id": "ana_hommage-a-barbaud",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../public/media/molnar/originals/ana_hommage-a-barbaud_o.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Already present as final local display image."
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../public/media/molnar/recreations/ana_hommage-a-barbaud_r.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Already present as final local display image."
+        }
+      },
+      {
+        "id": "vivian_structure-of-squares",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../public/media/molnar/originals/vivian_structure-of-squares_o.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Already present as final local display image."
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../public/media/molnar/recreations/vivian_structure-of-squares_r.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Already present as final local display image."
+        }
+      },
+      {
+        "id": "lia_interstices",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../public/media/molnar/originals/lia_interstices_o.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Already present as final local display image."
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../public/media/molnar/recreations/lia_interstices_r.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Already present as final local display image."
+        }
+      },
+      {
+        "id": "marc_interruptions",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../public/media/molnar/originals/marc_interruptions_o.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Already present as final local display image."
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../public/media/molnar/recreations/marc_interruptions_r.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Already present as final local display image."
+        }
+      },
+      {
+        "id": "haotian_divergent-lines",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../public/media/molnar/originals/haotian_divergent-lines_o.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Already present as final local display image."
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../public/media/molnar/recreations/haotian_divergent-lines_r.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Already present as final local display image."
+        }
+      },
+      {
+        "id": "aimee_life-in-m",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../public/media/molnar/originals/aimee_life-in-m_o.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Already present as final local display image."
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../public/media/molnar/recreations/aimee_life-in-m_r.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Already present as final local display image."
+        }
+      },
+      {
+        "id": "emily_1-carre-et-63-quadrangles",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../public/media/molnar/originals/emily_1-carre-et-63-quadrangles_o.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Already present as final local display image."
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../public/media/molnar/recreations/emily_1-carre-et-63-quadrangles_r.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Already present as final local display image. Source document listed Google Drive recreation media: https://drive.google.com/file/d/1JobavJkKTANWTxp-ThXH6ww4dTp_KQNW/view?usp=sharing."
+        }
+      },
+      {
+        "id": "anyang_saint-victoire-en-2-bleus-a",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../public/media/molnar/originals/anyang_saint-victoire-en-2-bleus-a_o.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Already present as final local display image."
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../public/media/molnar/recreations/anyang_saint-victoire-en-2-bleus-a_r.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Already present as final local display image."
+        }
+      },
+      {
+        "id": "an_lent-mouvement-bleu-orange-rouge-et-noir",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../public/media/molnar/originals/an_lent-mouvement-bleu-orange-rouge-et-noir_o.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Already present as final local display image."
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../public/media/molnar/recreations/an_lent-mouvement-bleu-orange-rouge-et-noir_r.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Already present as final local display image."
+        }
+      },
+      {
+        "id": "shiman_25-carres",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../public/media/molnar/originals/shiman_25-carres_o.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Already present as final local display image."
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../public/media/molnar/recreations/shiman_25-carres_r.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Already present as final local display image."
+        }
+      },
+      {
+        "id": "philipp_mouvement",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../public/media/molnar/originals/philipp_mouvement_o.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Already present as final local display image."
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../public/media/molnar/recreations/philipp_mouvement_r.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Already present as final local display image."
+        }
+      },
+      {
+        "id": "jae-in_deporte-du-sillon",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../public/media/molnar/originals/jae-in_deporte-du-sillon_o.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Already present as final local display image."
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../public/media/molnar/recreations/jae-in_deporte-du-sillon_r.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Already present as final local display image."
+        }
+      },
+      {
+        "id": "yufeng_de-la-serie-des-ordres-detail",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../public/media/molnar/originals/yufeng_de-la-serie-des-ordres-detail_o.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Already present as final local display image."
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../public/media/molnar/recreations/yufeng_de-la-serie-des-ordres-detail_r.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Already present as final local display image."
+        }
+      },
+      {
+        "id": "malvika_untitled-line-grid",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../public/media/molnar/originals/malvika_untitled-line-grid_o.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Already present as final local display image."
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../public/media/molnar/recreations/malvika_untitled-line-grid_r.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Already present as final local display image."
+        }
+      },
+      {
+        "id": "ash_four-randomly-distributed-elements",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../public/media/molnar/originals/ash_four-randomly-distributed-elements_o.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Already present as final local display image."
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../public/media/molnar/recreations/ash_four-randomly-distributed-elements_r.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Already present as final local display image."
+        }
+      },
+      {
+        "id": "fengyi_emergence-dune-croix",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../public/media/molnar/originals/fengyi_emergence-dune-croix_o.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Already present as final local display image."
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../public/media/molnar/recreations/fengyi_emergence-dune-croix_r.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Already present as final local display image."
+        }
+      },
+      {
+        "id": "annie_desordres",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../public/media/molnar/originals/annie_desordres_o.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Already present as final local display image."
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../public/media/molnar/recreations/annie_desordres_r.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Already present as final local display image."
+        }
+      },
+      {
+        "id": "eitan_untitled",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../public/media/molnar/originals/eitan_untitled_o.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Already present as final local display image."
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../public/media/molnar/recreations/eitan_untitled_r.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Already present as final local display image."
+        }
+      }
+    ]
+  },
+  {
+    "artist": "John Whitney",
+    "artistSlug": "john-whitney",
+    "mediaFolder": "whitney",
+    "entries": [
+      {
+        "id": "sun_permutations",
+        "original": {
+          "sourceType": "missing",
+          "source": "https://code.chuanqisun.com/recreating-the-past/whitney/original.mp4",
+          "start": "",
+          "duration": "",
+          "notes": "Remote MP4 URL from source document; allowed source types do not include remote_video."
+        },
+        "recreation": {
+          "sourceType": "missing",
+          "source": "https://code.chuanqisun.com/recreating-the-past/whitney/recreated.mp4",
+          "start": "",
+          "duration": "",
+          "notes": "Remote MP4 URL from source document; allowed source types do not include remote_video."
+        }
+      },
+      {
+        "id": "ash_catalog",
+        "original": {
+          "sourceType": "local_gif",
+          "source": "../../../contentDump/john-whitney/images/image21.gif",
+          "start": "",
+          "duration": "",
+          "notes": "Extracted from John Whitney source document export."
+        },
+        "recreation": {
+          "sourceType": "local_gif",
+          "source": "../../../contentDump/john-whitney/images/image27.gif",
+          "start": "",
+          "duration": "",
+          "notes": "Extracted from John Whitney source document export."
+        }
+      },
+      {
+        "id": "fengyi_catalog",
+        "original": {
+          "sourceType": "youtube",
+          "source": "https://youtube.com/shorts/iMxw0RcA2ZU?feature=share",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "youtube",
+          "source": "https://youtube.com/shorts/Z_Q7LqAzE4U?feature=share",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "haotian_matrix-iii",
+        "original": {
+          "sourceType": "youtube",
+          "source": "https://youtu.be/ZrKgyY5aDvA?list=PLA61D26B1099384D3&t=140",
+          "start": "00:02:20",
+          "duration": "",
+          "notes": "Source document says based on video time 2:20."
+        },
+        "recreation": {
+          "sourceType": "p5",
+          "source": "https://editor.p5js.org/haotian_wang/full/AKhZuGFyC",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "ana_catalog",
+        "original": {
+          "sourceType": "dropbox",
+          "source": "https://www.dropbox.com/scl/fi/pdm3zb0y3u6is2f7d43wo/John-Whitney-Shorts.avi?rlkey=vsy5dzg81j0bxtra3jcuw20pn&e=1&st=4z98127u&dl=0",
+          "start": "00:34:50",
+          "duration": "",
+          "notes": "Source document says original is from Catalog at 34:50 in the Dropbox video."
+        },
+        "recreation": {
+          "sourceType": "google_drive",
+          "source": "https://drive.google.com/file/d/1brw_K2olCx6MKK3cgmme-G5pvXrKhNVa/view?usp=sharing",
+          "start": "",
+          "duration": "",
+          "notes": "Source document also lists code at https://github.com/anaschonml/RTP-code/tree/main/whitney1."
+        }
+      },
+      {
+        "id": "malvika_permutations",
+        "original": {
+          "sourceType": "p5",
+          "source": "https://editor.p5js.org/malvika.dwivedi.md/sketches/4qr7_WZXz",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "p5",
+          "source": "https://editor.p5js.org/malvika.dwivedi.md/sketches/4qr7_WZXz",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "jae_permutations",
+        "original": {
+          "sourceType": "youtube",
+          "source": "https://www.youtube.com/watch?v=BzB31mD4NmA&list=PLA61D26B1099384D3",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "p5",
+          "source": "https://editor.p5js.org/janejanejaneyay/sketches/HLSXnH7yE",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "anyang_experiments-in-motion-graphics",
+        "original": {
+          "sourceType": "youtube",
+          "source": "https://www.youtube.com/watch?v=jIv-EcX9tUs",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "p5",
+          "source": "https://editor.p5js.org/azu100/sketches/390qwBmjG",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "shiman_matrix-iii",
+        "original": {
+          "sourceType": "youtube",
+          "source": "https://www.youtube.com/watch?v=ryKT1uIPIaI&list=RDryKT1uIPIaI&start_radio=1",
+          "start": "00:02:14",
+          "duration": "",
+          "notes": "Source document says starting from 2:14."
+        },
+        "recreation": {
+          "sourceType": "p5",
+          "source": "https://editor.p5js.org/shimanxxx/full/S_qalUd5V",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "aimee_matrix-iii",
+        "original": {
+          "sourceType": "local_gif",
+          "source": "../../../contentDump/john-whitney/images/image9.gif",
+          "start": "",
+          "duration": "",
+          "notes": "Extracted from John Whitney source document export."
+        },
+        "recreation": {
+          "sourceType": "p5",
+          "source": "https://editor.p5js.org/aimeeye/full/T76WySNDP",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "vivian_permutations",
+        "original": {
+          "sourceType": "dropbox",
+          "source": "https://www.dropbox.com/scl/fi/pdm3zb0y3u6is2f7d43wo/John-Whitney-Shorts.avi?rlkey=vsy5dzg81j0bxtra3jcuw20pn&e=1&st=4z98127u&dl=0",
+          "start": "00:24:15",
+          "duration": "00:00:07",
+          "notes": "Source document says original is 24:15-24:22."
+        },
+        "recreation": {
+          "sourceType": "local_gif",
+          "source": "../../../contentDump/john-whitney/images/image23.gif",
+          "start": "",
+          "duration": "",
+          "notes": "Extracted from John Whitney source document export."
+        }
+      },
+      {
+        "id": "lia_matrix-iii",
+        "original": {
+          "sourceType": "youtube",
+          "source": "https://www.youtube.com/watch?v=ZrKgyY5aDvA&list=RDZrKgyY5aDvA&start_radio=1",
+          "start": "00:09:12",
+          "duration": "00:00:13",
+          "notes": "Source document says Matrix III, 9:12-9:25."
+        },
+        "recreation": {
+          "sourceType": "p5",
+          "source": "https://editor.p5js.org/qc311/sketches/QBJ592JTi",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "annie_matrix-iii",
+        "original": {
+          "sourceType": "local_gif",
+          "source": "../../../contentDump/john-whitney/images/image9.gif",
+          "start": "",
+          "duration": "",
+          "notes": "Extracted from John Whitney source document export."
+        },
+        "recreation": {
+          "sourceType": "local_gif",
+          "source": "../../../contentDump/john-whitney/images/image1.gif",
+          "start": "",
+          "duration": "",
+          "notes": "Extracted from John Whitney source document export."
+        }
+      },
+      {
+        "id": "yufeng_matrix-iii",
+        "original": {
+          "sourceType": "youtube",
+          "source": "https://youtu.be/ZrKgyY5aDvA?list=PLA61D26B1099384D3&t=140",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_gif",
+          "source": "../../../contentDump/john-whitney/images/image39.gif",
+          "start": "",
+          "duration": "",
+          "notes": "Extracted from John Whitney source document export; section also includes image18.gif as a second recreation/process GIF."
+        }
+      },
+      {
+        "id": "marc_catalog",
+        "original": {
+          "sourceType": "youtube",
+          "source": "https://www.youtube.com/watch?v=6bydDe_WCWc",
+          "start": "00:00:00",
+          "duration": "00:00:12",
+          "notes": "Source document says the recreation targets the first 12 seconds."
+        },
+        "recreation": {
+          "sourceType": "youtube",
+          "source": "https://youtu.be/d1TPZc4Lmm3",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "emily_permutations",
+        "original": {
+          "sourceType": "local_gif",
+          "source": "../../../contentDump/john-whitney/images/image12.gif",
+          "start": "",
+          "duration": "",
+          "notes": "Extracted from John Whitney source document export."
+        },
+        "recreation": {
+          "sourceType": "local_gif",
+          "source": "../../../contentDump/john-whitney/images/image34.gif",
+          "start": "",
+          "duration": "",
+          "notes": "Extracted from John Whitney source document export."
+        }
+      },
+      {
+        "id": "eitan_experiments-in-motion-graphics",
+        "original": {
+          "sourceType": "local_gif",
+          "source": "../../../contentDump/john-whitney/images/image15.gif",
+          "start": "",
+          "duration": "",
+          "notes": "Extracted from John Whitney source document export; section also includes image26.gif as an alternate original GIF."
+        },
+        "recreation": {
+          "sourceType": "local_gif",
+          "source": "../../../contentDump/john-whitney/images/image19.gif",
+          "start": "",
+          "duration": "",
+          "notes": "Extracted from John Whitney source document export; section also includes image24.gif as an alternate recreation GIF."
+        }
+      }
+    ]
+  }
+]
