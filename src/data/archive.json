@@ -26,17 +26,6 @@
         "recreationLink": "https://github.com/anaschon/RTP-code/tree/8892406a608a5dacf6374195ee05d3ae53128abd/src/vera1"
       },
       {
-        "id": "bela_carres-rouges-et-bleus",
-        "originalTitle": "Carrés rouges et bleus",
-        "originalYear": "1972",
-        "originalMediaType": "image",
-        "originalLink": "https://www.oniris.art/en/artists/32-vera-molnar/works/5576-vera-molnar-carres-rouges-et-bleus-1972/",
-        "student": "Bela Sanchez Taipe",
-        "recreationMediaType": "image",
-        "recreationLink": "",
-        "notes": "No recreation image/link was visible in the PDF; a blank placeholder was created so the folder structure remains complete."
-      },
-      {
         "id": "vivian_structure-of-squares",
         "originalTitle": "Structure of Squares",
         "originalYear": "1974",
@@ -61,7 +50,7 @@
         "originalTitle": "Interruptions",
         "originalYear": "1968–1969",
         "originalMediaType": "image",
-        "originalLink": "",
+        "originalLink": "https://dam.org/museum/artists_ui/artists/molnar-vera/interruptions/",
         "student": "Marc Dunand",
         "recreationMediaType": "image",
         "recreationLink": "https://openprocessing.org/sketch/2868406"
@@ -111,7 +100,7 @@
         "originalTitle": "Lent mouvement bleu, orange, rouge et noir",
         "originalYear": "1955",
         "originalMediaType": "image",
-        "originalLink": "",
+        "originalLink": "https://www.vam.ac.uk/blog/museum-life/vera-molnar-machine-imaginaire-the-dance-of-hands-and-machine-thinking",
         "student": "An Kong",
         "recreationMediaType": "image",
         "recreationLink": "https://editor.p5js.org/akong/sketches/zIPiOYjfc"
@@ -121,7 +110,7 @@
         "originalTitle": "25 carrés",
         "originalYear": "1993–1994",
         "originalMediaType": "image",
-        "originalLink": "",
+        "originalLink": "https://www.piasa.fr/en/products/vera-molnar-nee-en-1924-25-carres-1993-1994_655dd03c6503f149172479",
         "student": "Shiman Xu",
         "recreationMediaType": "image",
         "recreationLink": "https://editor.p5js.org/shimanxxx/sketches/1GiVQxuN5"
@@ -144,7 +133,7 @@
         "originalLink": "https://www.ludwigmuseum.hu/en/work/deporte-du-sillon",
         "student": "Jae In Yoo",
         "recreationMediaType": "image",
-        "recreationLink": ""
+        "recreationLink": "https://github.com/janejanejaneyay/recreating-the-past-hw1"
       },
       {
         "id": "yufeng_de-la-serie-des-ordres-detail",
@@ -159,9 +148,9 @@
       {
         "id": "malvika_untitled-line-grid",
         "originalTitle": "Untitled line-grid work",
-        "originalYear": "unknown",
+        "originalYear": "1952",
         "originalMediaType": "image",
-        "originalLink": "",
+        "originalLink": "https://www.moma.org/collection/works/409639",
         "student": "Malvika Dwivedi",
         "recreationMediaType": "image",
         "recreationLink": "https://editor.p5js.org/malvika.dwivedi.md/sketches/5sqkEC0YL",
@@ -206,6 +195,175 @@
         "student": "Eitan Wolf",
         "recreationMediaType": "image",
         "recreationLink": "https://openprocessing.org/@u587985/2939265"
+      }
+    ]
+  },
+
+  {
+    "artist": "John Whitney",
+    "artistSlug": "john-whitney",
+    "mediaFolder": "whitney",
+    "pairs": [
+      {
+        "id": "ash_permutations",
+        "originalTitle": "Permutations",
+        "originalYear": "1968",
+        "originalMediaType": "video",
+        "originalLink": "https://www.youtube.com/watch?v=BzB31mD4NmA",
+        "student": "Ash He",
+        "recreationMediaType": "video",
+        "recreationLink": "https://code.chuanqisun.com/recreating-the-past/whitney/"
+      },
+      {
+        "id": "fengyi_catalog",
+        "originalTitle": "Catalog",
+        "originalYear": "1961",
+        "originalMediaType": "video",
+        "originalLink": "https://youtube.com/shorts/iMxw0RcA2ZU?feature=share",
+        "student": "Fengyi Ye",
+        "recreationMediaType": "video",
+        "recreationLink": "https://youtube.com/shorts/Z_Q7LqAzE4U?feature=share"
+      },
+      {
+        "id": "haotian_matrix-iii",
+        "originalTitle": "Matrix III",
+        "originalYear": "1972",
+        "originalMediaType": "video",
+        "originalLink": "https://youtu.be/ZrKgyY5aDvA?list=PLA61D26B1099384D3&t=140",
+        "student": "Haotian Wang",
+        "recreationMediaType": "video",
+        "recreationLink": "https://editor.p5js.org/haotian_wang/full/AKhZuGFyC"
+      },
+      {
+        "id": "ana_catalog",
+        "originalTitle": "Catalog",
+        "originalYear": "1961",
+        "originalMediaType": "video",
+        "originalLink": "https://www.dropbox.com/scl/fi/pdm3zb0y3u6is2f7d43wo/John-Whitney-Shorts.avi?rlkey=vsy5dzg81j0bxtra3jcuw20pn&e=1&st=4z98127u&dl=0",
+        "student": "Ana Schon",
+        "recreationMediaType": "video",
+        "recreationLink": "https://github.com/anaschonml/RTP-code/tree/main/whitney1"
+      },
+      {
+        "id": "malvika_permutations",
+        "originalTitle": "Permutations",
+        "originalYear": "1968",
+        "originalMediaType": "video",
+        "originalLink": "https://editor.p5js.org/malvika.dwivedi.md/sketches/4qr7_WZXz",
+        "student": "Malvika Dwivedi",
+        "recreationMediaType": "video",
+        "recreationLink": "https://editor.p5js.org/malvika.dwivedi.md/sketches/4qr7_WZXz"
+      },
+      {
+        "id": "jae_permutations",
+        "originalTitle": "Permutations",
+        "originalYear": "1968",
+        "originalMediaType": "video",
+        "originalLink": "https://www.youtube.com/watch?v=BzB31mD4NmA&list=PLA61D26B1099384D3",
+        "student": "Jae In Yoo",
+        "recreationMediaType": "video",
+        "recreationLink": "https://editor.p5js.org/janejanejaneyay/sketches/HLSXnH7yE"
+      },
+      {
+        "id": "anyang_experiments-in-motion-graphics",
+        "originalTitle": "Experiments in Motion Graphics",
+        "originalYear": "1968",
+        "originalMediaType": "video",
+        "originalLink": "https://www.youtube.com/watch?v=jIv-EcX9tUs",
+        "student": "Anyang Zu",
+        "recreationMediaType": "video",
+        "recreationLink": "https://editor.p5js.org/azu100/sketches/390qwBmjG"
+      },
+      {
+        "id": "shiman_matrix-iii",
+        "originalTitle": "Matrix III",
+        "originalYear": "1972",
+        "originalMediaType": "video",
+        "originalLink": "https://www.youtube.com/watch?v=ryKT1uIPIaI&list=RDryKT1uIPIaI&start_radio=1",
+        "student": "Shiman Xu",
+        "recreationMediaType": "video",
+        "recreationLink": "https://editor.p5js.org/shimanxxx/full/S_qalUd5V"
+      },
+      {
+        "id": "aimee_matrix-iii",
+        "originalTitle": "Matrix III",
+        "originalYear": "1972",
+        "originalMediaType": "video",
+        "originalLink": "https://youtu.be/ZrKgyY5aDvA?list=PLA61D26B1099384D3&t=140",
+        "student": "Aimee Ye",
+        "recreationMediaType": "video",
+        "recreationLink": "https://editor.p5js.org/aimeeye/full/T76WySNDP"
+      },
+      {
+        "id": "vivian_permutations",
+        "originalTitle": "Permutations",
+        "originalYear": "1968",
+        "originalMediaType": "video",
+        "originalLink": "https://www.dropbox.com/scl/fi/pdm3zb0y3u6is2f7d43wo/John-Whitney-Shorts.avi?rlkey=vsy5dzg81j0bxtra3jcuw20pn&e=1&st=4z98127u&dl=0",
+        "student": "Vivian Kong",
+        "recreationMediaType": "video",
+        "recreationLink": "https://github.com/vivian20206/Case-Study-John-Whitney/blob/3ed37f3983fbf151db6509a2b73525b6aabe5c38/src/ofApp.cpp"
+      },
+      {
+        "id": "lia_matrix-iii",
+        "originalTitle": "Matrix III",
+        "originalYear": "1972",
+        "originalMediaType": "video",
+        "originalLink": "https://www.youtube.com/watch?v=ZrKgyY5aDvA&list=RDZrKgyY5aDvA&start_radio=1",
+        "student": "Lia Chen",
+        "recreationMediaType": "video",
+        "recreationLink": "https://editor.p5js.org/qc311/sketches/QBJ592JTi"
+      },
+      {
+        "id": "annie_matrix-iii",
+        "originalTitle": "Matrix III",
+        "originalYear": "1972",
+        "originalMediaType": "video",
+        "originalLink": "https://youtu.be/ZrKgyY5aDvA?list=PLA61D26B1099384D3&t=140",
+        "student": "Annie Yining Chen",
+        "recreationMediaType": "video",
+        "recreationLink": "https://editor.p5js.org/ychenannie8/sketches/stiOxIPEE"
+      },
+      {
+        "id": "yufeng_matrix-iii",
+        "originalTitle": "Matrix III",
+        "originalYear": "1972",
+        "originalMediaType": "video",
+        "originalLink": "https://youtu.be/ZrKgyY5aDvA?list=PLA61D26B1099384D3&t=140",
+        "student": "Yufeng Zhao",
+        "recreationMediaType": "video",
+        "recreationLink": "https://github.com/yz3440/recreating-the-past/blob/main/week-2/homework/john_whitney.toe"
+      },
+      {
+        "id": "marc_catalog",
+        "originalTitle": "Catalog",
+        "originalYear": "1961",
+        "originalMediaType": "video",
+        "originalLink": "https://www.youtube.com/watch?v=6bydDe_WCWc",
+        "student": "Marc Dunand",
+        "recreationMediaType": "video",
+        "recreationLink": "https://youtu.be/d1TPZc4Lmm3"
+      },
+      {
+        "id": "emily_permutations",
+        "originalTitle": "Permutations",
+        "originalYear": "1968",
+        "originalMediaType": "video",
+        "originalLink": "https://www.dropbox.com/scl/fi/pdm3zb0y3u6is2f7d43wo/John-Whitney-Shorts.avi?rlkey=vsy5dzg81j0bxtra3jcuw20pn&e=2&st=4z98127u&dl=0",
+        "student": "Emily Guan",
+        "recreationMediaType": "video",
+        "recreationLink": "https://drive.google.com/drive/folders/15hf02qY6UID1WNaBJMoHrI3vDdquNJpx?usp=sharing"
+      },
+      {
+        "id": "eitan_experiments-in-motion-graphics",
+        "originalTitle": "Experiments in Motion Graphics",
+        "originalYear": "1968",
+        "originalMediaType": "video",
+        "originalLink": "https://www.youtube.com/watch?v=jIv-EcX9tUs",
+        "student": "Eitan Wolf",
+        "recreationMediaType": "video",
+        "recreationLink": "https://openprocessing.org/@u587985/2939333",
+        "alternateRecreationLink": "https://openprocessing.org/@u587985/2939328"
       }
     ]
   }
