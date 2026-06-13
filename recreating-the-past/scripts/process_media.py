@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import shutil
 import subprocess
 import sys
@@ -17,16 +18,22 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = SCRIPT_DIR.parent
 DEFAULT_MANIFEST = PROJECT_ROOT / "src" / "data" / "media_manifest.json"
 DEFAULT_MEDIA_ROOT = PROJECT_ROOT / "public" / "media"
+DEFAULT_DOWNLOAD_ROOT = PROJECT_ROOT / "public"
+POSTER_DEFAULT_SECONDS = 2.0
 
-SUPPORTED_SOURCE_TYPES = {"local_video", "local_image", "local_gif"}
-VIDEO_SOURCE_TYPES = {"local_video", "local_gif"}
+LOCAL_SOURCE_TYPES = {"local_video", "local_image", "local_gif"}
+DOWNLOAD_SOURCE_TYPES = {"youtube", "dropbox"}
+SUPPORTED_SOURCE_TYPES = LOCAL_SOURCE_TYPES | DOWNLOAD_SOURCE_TYPES
+VIDEO_SOURCE_TYPES = {"local_video", "local_gif"} | DOWNLOAD_SOURCE_TYPES
 IMAGE_SOURCE_TYPES = {"local_image"}
+TIME_RE = re.compile(r"^(\d+(?:\.\d+)?|\d{2}:\d{2}:\d{2})$")
 
 
 @dataclass
 class Report:
     processed: list[str] = field(default_factory=list)
     skipped: list[str] = field(default_factory=list)
+    needs_download: list[str] = field(default_factory=list)
     missing: list[str] = field(default_factory=list)
     failed: list[str] = field(default_factory=list)
 
@@ -47,43 +54,97 @@ class SideJob:
     duration: str
     media_output: Path
     poster_output: Path
+    download_output: Path | None
 
     @property
     def label(self) -> str:
         return f"{self.artist} / {self.entry_id} / {self.side}"
 
 
-def parse_args() -> argparse.Namespace:
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
+    if argv is None:
+        argv = sys.argv[1:]
+    if argv == ["help"]:
+        argv = ["--help"]
+
     parser = argparse.ArgumentParser(
-        description="Process local media_manifest.json sources into web-ready media."
+        description=(
+            "Create web-ready local media files for one artist from "
+            "src/data/media_manifest.json."
+        )
     )
     parser.add_argument(
         "artist_slug",
-        help="Artist slug to process, such as vera-molnar or john-whitney.",
+        help=(
+            "Which artist section to process. Use the artistSlug from "
+            "media_manifest.json, for example john-whitney or vera-molnar. "
+            "You can also run this script with the single argument 'help'."
+        ),
     )
     parser.add_argument(
         "--manifest",
         type=Path,
         default=DEFAULT_MANIFEST,
-        help=f"Path to media manifest. Default: {DEFAULT_MANIFEST}",
+        help=(
+            "Path to the media manifest JSON file. Most runs should leave this "
+            f"alone. Default: {DEFAULT_MANIFEST}"
+        ),
     )
     parser.add_argument(
         "--media-root",
         type=Path,
         default=DEFAULT_MEDIA_ROOT,
-        help=f"Output media root. Default: {DEFAULT_MEDIA_ROOT}",
+        help=(
+            "Where final website media should be written. The script creates "
+            "originals, recreations, and posters folders inside each mediaFolder. "
+            f"Default: {DEFAULT_MEDIA_ROOT}"
+        ),
+    )
+    parser.add_argument(
+        "--download-root",
+        type=Path,
+        default=DEFAULT_DOWNLOAD_ROOT,
+        help=(
+            "Where downloaded source files should be cached before conversion. "
+            "This is separate from final website media. "
+            f"Default: {DEFAULT_DOWNLOAD_ROOT}"
+        ),
+    )
+    parser.add_argument(
+        "--download",
+        action="store_true",
+        help=(
+            "Allow the script to download youtube/dropbox sources with yt-dlp. "
+            "Without this flag, those sources are only reported as needing download."
+        ),
+    )
+    parser.add_argument(
+        "--cookies-from-browser",
+        metavar="BROWSER",
+        help=(
+            "Ask yt-dlp to use cookies from a browser where you are signed into "
+            "YouTube, such as chrome, edge, or firefox. This can help with "
+            "YouTube's 'Sign in to confirm you're not a bot' message. Only used "
+            "when --download is passed."
+        ),
     )
     parser.add_argument(
         "--force",
         action="store_true",
-        help="Overwrite existing output files.",
+        help=(
+            "Overwrite existing generated outputs and cached downloaded sources. "
+            "Without this flag, existing complete outputs are skipped."
+        ),
     )
     parser.add_argument(
         "--dry-run",
         action="store_true",
-        help="Print what would happen without writing files.",
+        help=(
+            "Show what the script would do without downloading, converting, "
+            "copying, or writing files."
+        ),
     )
-    return parser.parse_args()
+    return parser.parse_args(argv)
 
 
 def load_manifest(path: Path) -> list[dict[str, Any]]:
@@ -104,6 +165,22 @@ def require_ffmpeg() -> str:
     return ffmpeg
 
 
+def find_ffprobe() -> str | None:
+    return shutil.which("ffprobe")
+
+
+def require_ytdlp() -> str:
+    ytdlp = shutil.which("yt-dlp")
+    if not ytdlp:
+        raise RuntimeError(
+            "yt-dlp is not installed or is not on PATH. Install it with one of:\n"
+            "  python -m pip install yt-dlp\n"
+            "  winget install yt-dlp.yt-dlp\n"
+            "Then rerun this script with --download."
+        )
+    return ytdlp
+
+
 def resolve_source(manifest_path: Path, source: str) -> Path:
     source_path = Path(source)
     if source_path.is_absolute():
@@ -118,6 +195,22 @@ def relative_path(path: Path) -> str:
         return str(path)
 
 
+def validate_time(value: str, field_name: str, label: str) -> str:
+    value = value.strip()
+    if not value:
+        return ""
+    if TIME_RE.fullmatch(value):
+        return value
+    raise ValueError(
+        f"{label}: invalid {field_name} value {value!r}. "
+        'Use "", seconds like "12" or "12.5", or HH:MM:SS like "00:00:12".'
+    )
+
+
+def format_seconds(seconds: float) -> str:
+    return f"{seconds:.3f}".rstrip("0").rstrip(".")
+
+
 def output_paths(media_root: Path, media_folder: str, entry_id: str, suffix: str, is_video: bool) -> tuple[Path, Path]:
     media_dir = media_root / media_folder / ("originals" if suffix == "o" else "recreations")
     media_ext = ".mp4" if is_video else ".jpg"
@@ -126,10 +219,16 @@ def output_paths(media_root: Path, media_folder: str, entry_id: str, suffix: str
     return media_output, poster_output
 
 
+def download_path(download_root: Path, media_folder: str, entry_id: str, suffix: str) -> Path:
+    source_dir = download_root / media_folder / ("originals" if suffix == "o" else "recreations")
+    return source_dir / f"{entry_id}_{suffix}_source.mp4"
+
+
 def iter_jobs(
     manifest: list[dict[str, Any]],
     artist_slug: str,
     media_root: Path,
+    download_root: Path,
 ) -> list[SideJob]:
     jobs: list[SideJob] = []
     matched_section = False
@@ -161,6 +260,9 @@ def iter_jobs(
                 media_output, poster_output = output_paths(
                     media_root, media_folder, entry_id, suffix, is_video
                 )
+                cached_download = None
+                if source_type in DOWNLOAD_SOURCE_TYPES:
+                    cached_download = download_path(download_root, media_folder, entry_id, suffix)
                 jobs.append(
                     SideJob(
                         artist=artist,
@@ -174,6 +276,7 @@ def iter_jobs(
                         duration=side_data.get("duration", ""),
                         media_output=media_output,
                         poster_output=poster_output,
+                        download_output=cached_download,
                     )
                 )
     if not matched_section:
@@ -227,10 +330,9 @@ def should_skip_existing(job: SideJob, force: bool) -> str | None:
 
 
 def ffmpeg_video_command(ffmpeg: str, source: Path, output: Path, start: str, duration: str) -> list[str]:
-    command = [ffmpeg, "-y"]
+    command = [ffmpeg, "-y", "-i", str(source)]
     if start:
         command.extend(["-ss", start])
-    command.extend(["-i", str(source)])
     if duration:
         command.extend(["-t", duration])
     command.extend(
@@ -259,7 +361,68 @@ def ffmpeg_image_command(ffmpeg: str, source: Path, output: Path) -> list[str]:
 
 
 def ffmpeg_poster_command(ffmpeg: str, source: Path, output: Path) -> list[str]:
-    return [ffmpeg, "-y", "-ss", "00:00:02", "-i", str(source), "-frames:v", "1", "-q:v", "2", str(output)]
+    return ffmpeg_poster_at_command(ffmpeg, source, output, format_seconds(POSTER_DEFAULT_SECONDS))
+
+
+def ffmpeg_poster_at_command(ffmpeg: str, source: Path, output: Path, timestamp: str) -> list[str]:
+    return [ffmpeg, "-y", "-ss", timestamp, "-i", str(source), "-frames:v", "1", "-q:v", "2", str(output)]
+
+
+def probe_duration(ffprobe: str | None, source: Path) -> float | None:
+    if not ffprobe:
+        return None
+
+    result = subprocess.run(
+        [
+            ffprobe,
+            "-v",
+            "error",
+            "-show_entries",
+            "format=duration",
+            "-of",
+            "default=noprint_wrappers=1:nokey=1",
+            str(source),
+        ],
+        capture_output=True,
+        text=True,
+    )
+    if result.returncode != 0:
+        return None
+
+    try:
+        duration = float(result.stdout.strip())
+    except ValueError:
+        return None
+    return duration if duration > 0 else None
+
+
+def poster_timestamp(ffprobe: str | None, source: Path) -> str:
+    duration = probe_duration(ffprobe, source)
+    if duration is not None and duration < POSTER_DEFAULT_SECONDS:
+        return format_seconds(duration / 2)
+    return format_seconds(POSTER_DEFAULT_SECONDS)
+
+
+def ytdlp_command(
+    ytdlp: str,
+    source_url: str,
+    output: Path,
+    cookies_from_browser: str,
+) -> list[str]:
+    command = [
+        ytdlp,
+        "--no-playlist",
+        "-f",
+        "bv*+ba/b",
+        "--merge-output-format",
+        "mp4",
+        "-o",
+        str(output),
+    ]
+    if cookies_from_browser:
+        command.extend(["--cookies-from-browser", cookies_from_browser])
+    command.append(source_url)
+    return command
 
 
 def copy_file(source: Path, output: Path, dry_run: bool) -> None:
@@ -287,14 +450,22 @@ def process_video(
     job: SideJob,
     source: Path,
     ffmpeg: str,
+    ffprobe: str | None,
     force: bool,
     dry_run: bool,
     report: Report,
 ) -> bool:
+    try:
+        start = validate_time(job.start, "start", job.label)
+        duration = validate_time(job.duration, "duration", job.label)
+    except ValueError as exc:
+        report.add("failed", str(exc))
+        return False
+
     ensure_parent_dirs([job.media_output, job.poster_output], dry_run)
     if force or not job.media_output.exists():
         result = run_command(
-            ffmpeg_video_command(ffmpeg, source, job.media_output, job.start, job.duration),
+            ffmpeg_video_command(ffmpeg, source, job.media_output, start, duration),
             dry_run,
         )
         if not handle_completed(result, report, f"{job.label}: failed to convert video/GIF"):
@@ -302,7 +473,8 @@ def process_video(
 
     if force or not job.poster_output.exists():
         poster_source = job.media_output if not dry_run and job.media_output.exists() else source
-        result = run_command(ffmpeg_poster_command(ffmpeg, poster_source, job.poster_output), dry_run)
+        timestamp = poster_timestamp(ffprobe, poster_source)
+        result = run_command(ffmpeg_poster_at_command(ffmpeg, poster_source, job.poster_output, timestamp), dry_run)
         if not handle_completed(result, report, f"{job.label}: failed to generate poster"):
             return False
     return True
@@ -336,6 +508,10 @@ def process_job(
     job: SideJob,
     manifest_path: Path,
     ffmpeg: str,
+    ffprobe: str | None,
+    ytdlp: str | None,
+    allow_download: bool,
+    cookies_from_browser: str,
     force: bool,
     dry_run: bool,
     report: Report,
@@ -348,20 +524,55 @@ def process_job(
         report.add("missing", f"{job.label}: empty local source path")
         return
 
-    source = resolve_source(manifest_path, job.source)
-    if not source.is_file():
-        report.add("missing", f"{job.label}: source not found ({relative_path(source)})")
-        return
+    if job.source_type in VIDEO_SOURCE_TYPES:
+        try:
+            validate_time(job.start, "start", job.label)
+            validate_time(job.duration, "duration", job.label)
+        except ValueError as exc:
+            report.add("failed", str(exc))
+            return
 
     skip_reason = should_skip_existing(job, force)
     if skip_reason:
         report.add("skipped", skip_reason)
         return
 
+    if job.source_type in DOWNLOAD_SOURCE_TYPES:
+        if not allow_download:
+            report.add(
+                "needs_download",
+                f"{job.label}: sourceType {job.source_type!r} requires --download ({job.source})",
+            )
+            return
+        if not ytdlp:
+            report.add("failed", f"{job.label}: yt-dlp is required for downloads")
+            return
+        if job.download_output is None:
+            report.add("failed", f"{job.label}: internal error, missing download output path")
+            return
+
+        source = job.download_output
+        if force or not source.exists():
+            ensure_parent_dirs([source], dry_run)
+            result = run_command(
+                ytdlp_command(ytdlp, job.source, source, cookies_from_browser),
+                dry_run,
+            )
+            if not handle_completed(result, report, f"{job.label}: failed to download source"):
+                return
+        elif not source.is_file():
+            report.add("failed", f"{job.label}: download output exists but is not a file ({relative_path(source)})")
+            return
+    else:
+        source = resolve_source(manifest_path, job.source)
+        if not source.is_file():
+            report.add("missing", f"{job.label}: source not found ({relative_path(source)})")
+            return
+
     planned_outputs = [path for path in expected_outputs(job) if force or not path.exists()]
 
     if job.source_type in VIDEO_SOURCE_TYPES:
-        ok = process_video(job, source, ffmpeg, force, dry_run, report)
+        ok = process_video(job, source, ffmpeg, ffprobe, force, dry_run, report)
     else:
         ok = process_image(job, source, ffmpeg, force, dry_run, report)
 
@@ -379,12 +590,14 @@ def print_report(report: Report) -> None:
     print("Media processing report")
     print(f"  processed: {len(report.processed)}")
     print(f"  skipped:   {len(report.skipped)}")
+    print(f"  download:  {len(report.needs_download)}")
     print(f"  missing:   {len(report.missing)}")
     print(f"  failed:    {len(report.failed)}")
 
     for title, items in (
         ("Processed", report.processed),
         ("Skipped", report.skipped),
+        ("Needs download", report.needs_download),
         ("Missing", report.missing),
         ("Failed", report.failed),
     ):
@@ -400,18 +613,39 @@ def main() -> int:
     args = parse_args()
     manifest_path = args.manifest.resolve()
     media_root = args.media_root.resolve()
+    download_root = args.download_root.resolve()
     report = Report()
 
     try:
         manifest = load_manifest(manifest_path)
-        jobs = iter_jobs(manifest, args.artist_slug, media_root)
+        jobs = iter_jobs(manifest, args.artist_slug, media_root, download_root)
         ffmpeg = require_ffmpeg()
+        ffprobe = find_ffprobe()
+        has_download_jobs = any(job.source_type in DOWNLOAD_SOURCE_TYPES for job in jobs)
+        if args.download and has_download_jobs:
+            if args.dry_run:
+                ytdlp = shutil.which("yt-dlp") or "yt-dlp"
+            else:
+                ytdlp = require_ytdlp()
+        else:
+            ytdlp = None
     except (OSError, ValueError, RuntimeError) as exc:
         print(f"Error: {exc}", file=sys.stderr)
         return 2
 
     for job in jobs:
-        process_job(job, manifest_path, ffmpeg, args.force, args.dry_run, report)
+        process_job(
+            job,
+            manifest_path,
+            ffmpeg,
+            ffprobe,
+            ytdlp,
+            args.download,
+            args.cookies_from_browser or "",
+            args.force,
+            args.dry_run,
+            report,
+        )
 
     print_report(report)
     return 1 if report.failed or report.missing else 0

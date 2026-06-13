@@ -1,0 +1,1578 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Media Review</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f7f4;
+      --ink: #171717;
+      --muted: #666;
+      --line: #d8d8d0;
+      --panel: #fff;
+      --missing: #b42318;
+      --ok: #22713f;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.4;
+    }
+    main {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 32px 20px 56px;
+    }
+    .page-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: end;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 20px;
+      margin-bottom: 24px;
+    }
+    h1 {
+      font-size: 32px;
+      margin: 0 0 6px;
+      letter-spacing: 0;
+    }
+    .summary {
+      margin: 0;
+      color: var(--muted);
+    }
+    .entry {
+      border-bottom: 1px solid var(--line);
+      padding: 24px 0 30px;
+    }
+    .entry-meta {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 20px;
+      align-items: start;
+      margin-bottom: 14px;
+    }
+    h2 {
+      font-size: 20px;
+      margin: 0 0 4px;
+      letter-spacing: 0;
+    }
+    .entry-meta p {
+      margin: 0;
+      color: var(--muted);
+    }
+    dl {
+      display: grid;
+      grid-template-columns: auto auto;
+      gap: 10px 18px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    dt {
+      font-weight: 700;
+      color: var(--ink);
+    }
+    dd { margin: 0; }
+    code {
+      font-family: Consolas, Monaco, monospace;
+      font-size: 12px;
+    }
+    .comparison {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+    }
+    .panel-head,
+    .panel-foot {
+      min-height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 8px 10px;
+      font-size: 13px;
+    }
+    .panel-head {
+      border-bottom: 1px solid var(--line);
+      font-weight: 700;
+    }
+    .poster-frame {
+      aspect-ratio: 16 / 9;
+      display: grid;
+      place-items: center;
+      background: #ededE8;
+      overflow: hidden;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .status {
+      font-weight: 700;
+      font-size: 12px;
+    }
+    .status.ok { color: var(--ok); }
+    .status.missing { color: var(--missing); }
+    .missing-box {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      align-content: center;
+      gap: 10px;
+      padding: 18px;
+      color: var(--missing);
+      border: 3px solid var(--missing);
+      background: #fff4f2;
+      overflow-wrap: anywhere;
+    }
+    .missing-box code {
+      color: #5f1812;
+      line-height: 1.5;
+    }
+    .video-link {
+      color: #174ea6;
+      font-weight: 700;
+    }
+    .video-missing {
+      color: var(--muted);
+    }
+    @media (max-width: 760px) {
+      .page-head,
+      .entry-meta,
+      .comparison {
+        grid-template-columns: 1fr;
+      }
+      dl {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header class="page-head">
+      <div>
+        <h1>Media Review</h1>
+        <p class="summary">36 pairs · 62 missing poster files</p>
+      </div>
+    </header>
+    
+      <article class="entry">
+        <header class="entry-meta">
+          <div>
+            <h2>Microcosmos, Hommage à Bartók</h2>
+            <p>Vera Molnár · 1978</p>
+          </div>
+          <dl>
+            <div><dt>Student</dt><dd>Sun Chuanqi</dd></div>
+            <div><dt>ID</dt><dd><code>sun_microcosmos-hommage-a-bartok</code></dd></div>
+          </dl>
+        </header>
+        <div class="comparison">
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Original</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\molnar\posters\sun_microcosmos-hommage-a-bartok_o.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Recreation</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\molnar\posters\sun_microcosmos-hommage-a-bartok_r.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+        </div>
+      </article>
+    
+      <article class="entry">
+        <header class="entry-meta">
+          <div>
+            <h2>Hommage à Barbaud</h2>
+            <p>Vera Molnár · 1974</p>
+          </div>
+          <dl>
+            <div><dt>Student</dt><dd>Ana Schon</dd></div>
+            <div><dt>ID</dt><dd><code>ana_hommage-a-barbaud</code></dd></div>
+          </dl>
+        </header>
+        <div class="comparison">
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Original</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\molnar\posters\ana_hommage-a-barbaud_o.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Recreation</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\molnar\posters\ana_hommage-a-barbaud_r.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+        </div>
+      </article>
+    
+      <article class="entry">
+        <header class="entry-meta">
+          <div>
+            <h2>Structure of Squares</h2>
+            <p>Vera Molnár · 1974</p>
+          </div>
+          <dl>
+            <div><dt>Student</dt><dd>Vivian Kong</dd></div>
+            <div><dt>ID</dt><dd><code>vivian_structure-of-squares</code></dd></div>
+          </dl>
+        </header>
+        <div class="comparison">
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Original</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\molnar\posters\vivian_structure-of-squares_o.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Recreation</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\molnar\posters\vivian_structure-of-squares_r.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+        </div>
+      </article>
+    
+      <article class="entry">
+        <header class="entry-meta">
+          <div>
+            <h2>Interstices</h2>
+            <p>Vera Molnár · 1986</p>
+          </div>
+          <dl>
+            <div><dt>Student</dt><dd>Lia Chen</dd></div>
+            <div><dt>ID</dt><dd><code>lia_interstices</code></dd></div>
+          </dl>
+        </header>
+        <div class="comparison">
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Original</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\molnar\posters\lia_interstices_o.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Recreation</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\molnar\posters\lia_interstices_r.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+        </div>
+      </article>
+    
+      <article class="entry">
+        <header class="entry-meta">
+          <div>
+            <h2>Interruptions</h2>
+            <p>Vera Molnár · 1968–1969</p>
+          </div>
+          <dl>
+            <div><dt>Student</dt><dd>Marc Dunand</dd></div>
+            <div><dt>ID</dt><dd><code>marc_interruptions</code></dd></div>
+          </dl>
+        </header>
+        <div class="comparison">
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Original</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\molnar\posters\marc_interruptions_o.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Recreation</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\molnar\posters\marc_interruptions_r.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+        </div>
+      </article>
+    
+      <article class="entry">
+        <header class="entry-meta">
+          <div>
+            <h2>Divergent lines</h2>
+            <p>Vera Molnár · 1972</p>
+          </div>
+          <dl>
+            <div><dt>Student</dt><dd>Haotian Wang</dd></div>
+            <div><dt>ID</dt><dd><code>haotian_divergent-lines</code></dd></div>
+          </dl>
+        </header>
+        <div class="comparison">
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Original</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\molnar\posters\haotian_divergent-lines_o.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Recreation</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\molnar\posters\haotian_divergent-lines_r.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+        </div>
+      </article>
+    
+      <article class="entry">
+        <header class="entry-meta">
+          <div>
+            <h2>Life in M</h2>
+            <p>Vera Molnár · 2023</p>
+          </div>
+          <dl>
+            <div><dt>Student</dt><dd>Aimee Ye</dd></div>
+            <div><dt>ID</dt><dd><code>aimee_life-in-m</code></dd></div>
+          </dl>
+        </header>
+        <div class="comparison">
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Original</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\molnar\posters\aimee_life-in-m_o.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Recreation</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\molnar\posters\aimee_life-in-m_r.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+        </div>
+      </article>
+    
+      <article class="entry">
+        <header class="entry-meta">
+          <div>
+            <h2>1 Carré et 63 quadrangles</h2>
+            <p>Vera Molnár · 2023</p>
+          </div>
+          <dl>
+            <div><dt>Student</dt><dd>Emily Guan</dd></div>
+            <div><dt>ID</dt><dd><code>emily_1-carre-et-63-quadrangles</code></dd></div>
+          </dl>
+        </header>
+        <div class="comparison">
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Original</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\molnar\posters\emily_1-carre-et-63-quadrangles_o.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Recreation</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\molnar\posters\emily_1-carre-et-63-quadrangles_r.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+        </div>
+      </article>
+    
+      <article class="entry">
+        <header class="entry-meta">
+          <div>
+            <h2>Saint Victoire en 2 Bleus A</h2>
+            <p>Vera Molnár · 2017–2019</p>
+          </div>
+          <dl>
+            <div><dt>Student</dt><dd>Anyang Zu</dd></div>
+            <div><dt>ID</dt><dd><code>anyang_saint-victoire-en-2-bleus-a</code></dd></div>
+          </dl>
+        </header>
+        <div class="comparison">
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Original</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\molnar\posters\anyang_saint-victoire-en-2-bleus-a_o.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Recreation</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\molnar\posters\anyang_saint-victoire-en-2-bleus-a_r.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+        </div>
+      </article>
+    
+      <article class="entry">
+        <header class="entry-meta">
+          <div>
+            <h2>Lent mouvement bleu, orange, rouge et noir</h2>
+            <p>Vera Molnár · 1955</p>
+          </div>
+          <dl>
+            <div><dt>Student</dt><dd>An Kong</dd></div>
+            <div><dt>ID</dt><dd><code>an_lent-mouvement-bleu-orange-rouge-et-noir</code></dd></div>
+          </dl>
+        </header>
+        <div class="comparison">
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Original</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\molnar\posters\an_lent-mouvement-bleu-orange-rouge-et-noir_o.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Recreation</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\molnar\posters\an_lent-mouvement-bleu-orange-rouge-et-noir_r.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+        </div>
+      </article>
+    
+      <article class="entry">
+        <header class="entry-meta">
+          <div>
+            <h2>25 carrés</h2>
+            <p>Vera Molnár · 1993–1994</p>
+          </div>
+          <dl>
+            <div><dt>Student</dt><dd>Shiman Xu</dd></div>
+            <div><dt>ID</dt><dd><code>shiman_25-carres</code></dd></div>
+          </dl>
+        </header>
+        <div class="comparison">
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Original</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\molnar\posters\shiman_25-carres_o.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Recreation</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\molnar\posters\shiman_25-carres_r.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+        </div>
+      </article>
+    
+      <article class="entry">
+        <header class="entry-meta">
+          <div>
+            <h2>Mouvement</h2>
+            <p>Vera Molnár · 1959</p>
+          </div>
+          <dl>
+            <div><dt>Student</dt><dd>Philipp Hugenroth</dd></div>
+            <div><dt>ID</dt><dd><code>philipp_mouvement</code></dd></div>
+          </dl>
+        </header>
+        <div class="comparison">
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Original</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\molnar\posters\philipp_mouvement_o.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Recreation</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\molnar\posters\philipp_mouvement_r.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+        </div>
+      </article>
+    
+      <article class="entry">
+        <header class="entry-meta">
+          <div>
+            <h2>Deporté du Sillon</h2>
+            <p>Vera Molnár · 1990</p>
+          </div>
+          <dl>
+            <div><dt>Student</dt><dd>Jae In Yoo</dd></div>
+            <div><dt>ID</dt><dd><code>jae-in_deporte-du-sillon</code></dd></div>
+          </dl>
+        </header>
+        <div class="comparison">
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Original</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\molnar\posters\jae-in_deporte-du-sillon_o.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Recreation</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\molnar\posters\jae-in_deporte-du-sillon_r.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+        </div>
+      </article>
+    
+      <article class="entry">
+        <header class="entry-meta">
+          <div>
+            <h2>De La Serie (Des) Ordres (detail)</h2>
+            <p>Vera Molnár · 1974</p>
+          </div>
+          <dl>
+            <div><dt>Student</dt><dd>Yufeng Zhao</dd></div>
+            <div><dt>ID</dt><dd><code>yufeng_de-la-serie-des-ordres-detail</code></dd></div>
+          </dl>
+        </header>
+        <div class="comparison">
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Original</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\molnar\posters\yufeng_de-la-serie-des-ordres-detail_o.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Recreation</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\molnar\posters\yufeng_de-la-serie-des-ordres-detail_r.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+        </div>
+      </article>
+    
+      <article class="entry">
+        <header class="entry-meta">
+          <div>
+            <h2>Untitled line-grid work</h2>
+            <p>Vera Molnár · 1952</p>
+          </div>
+          <dl>
+            <div><dt>Student</dt><dd>Malvika Dwivedi</dd></div>
+            <div><dt>ID</dt><dd><code>malvika_untitled-line-grid</code></dd></div>
+          </dl>
+        </header>
+        <div class="comparison">
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Original</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\molnar\posters\malvika_untitled-line-grid_o.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Recreation</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\molnar\posters\malvika_untitled-line-grid_r.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+        </div>
+      </article>
+    
+      <article class="entry">
+        <header class="entry-meta">
+          <div>
+            <h2>Four Randomly Distributed Elements</h2>
+            <p>Vera Molnár · 1959</p>
+          </div>
+          <dl>
+            <div><dt>Student</dt><dd>Ash He</dd></div>
+            <div><dt>ID</dt><dd><code>ash_four-randomly-distributed-elements</code></dd></div>
+          </dl>
+        </header>
+        <div class="comparison">
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Original</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\molnar\posters\ash_four-randomly-distributed-elements_o.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Recreation</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\molnar\posters\ash_four-randomly-distributed-elements_r.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+        </div>
+      </article>
+    
+      <article class="entry">
+        <header class="entry-meta">
+          <div>
+            <h2>Emergence d&#x27;une croix</h2>
+            <p>Vera Molnár · 1970</p>
+          </div>
+          <dl>
+            <div><dt>Student</dt><dd>Fengyi Ye</dd></div>
+            <div><dt>ID</dt><dd><code>fengyi_emergence-dune-croix</code></dd></div>
+          </dl>
+        </header>
+        <div class="comparison">
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Original</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\molnar\posters\fengyi_emergence-dune-croix_o.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Recreation</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\molnar\posters\fengyi_emergence-dune-croix_r.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+        </div>
+      </article>
+    
+      <article class="entry">
+        <header class="entry-meta">
+          <div>
+            <h2>(Des)Ordres</h2>
+            <p>Vera Molnár · 1974</p>
+          </div>
+          <dl>
+            <div><dt>Student</dt><dd>Annie Yining Chen</dd></div>
+            <div><dt>ID</dt><dd><code>annie_desordres</code></dd></div>
+          </dl>
+        </header>
+        <div class="comparison">
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Original</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\molnar\posters\annie_desordres_o.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Recreation</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\molnar\posters\annie_desordres_r.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+        </div>
+      </article>
+    
+      <article class="entry">
+        <header class="entry-meta">
+          <div>
+            <h2>Untitled</h2>
+            <p>Vera Molnár · unknown</p>
+          </div>
+          <dl>
+            <div><dt>Student</dt><dd>Eitan Wolf</dd></div>
+            <div><dt>ID</dt><dd><code>eitan_untitled</code></dd></div>
+          </dl>
+        </header>
+        <div class="comparison">
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Original</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\molnar\posters\eitan_untitled_o.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Recreation</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\molnar\posters\eitan_untitled_r.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+        </div>
+      </article>
+    
+      <article class="entry">
+        <header class="entry-meta">
+          <div>
+            <h2>Permutations</h2>
+            <p>John Whitney · 1969</p>
+          </div>
+          <dl>
+            <div><dt>Student</dt><dd>Sun Chuanqi</dd></div>
+            <div><dt>ID</dt><dd><code>sun_permutations</code></dd></div>
+          </dl>
+        </header>
+        <div class="comparison">
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Original</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\whitney\posters\sun_permutations_o.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Recreation</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\whitney\posters\sun_permutations_r.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+        </div>
+      </article>
+    
+      <article class="entry">
+        <header class="entry-meta">
+          <div>
+            <h2>Catalog</h2>
+            <p>John Whitney · 1961</p>
+          </div>
+          <dl>
+            <div><dt>Student</dt><dd>Ash He</dd></div>
+            <div><dt>ID</dt><dd><code>ash_catalog</code></dd></div>
+          </dl>
+        </header>
+        <div class="comparison">
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Original</span>
+              <span class="status ok">poster found</span>
+            </div>
+            <div class="poster-frame">
+              <img src="../public/media/whitney/posters/ash_catalog_o.jpg" alt="Original poster" loading="lazy">
+            </div>
+            <div class="panel-foot"><a class="video-link" href="../public/media/whitney/originals/ash_catalog_o.mp4">open mp4</a></div>
+          </div>
+    
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Recreation</span>
+              <span class="status ok">poster found</span>
+            </div>
+            <div class="poster-frame">
+              <img src="../public/media/whitney/posters/ash_catalog_r.jpg" alt="Recreation poster" loading="lazy">
+            </div>
+            <div class="panel-foot"><a class="video-link" href="../public/media/whitney/recreations/ash_catalog_r.mp4">open mp4</a></div>
+          </div>
+    
+        </div>
+      </article>
+    
+      <article class="entry">
+        <header class="entry-meta">
+          <div>
+            <h2>Catalog</h2>
+            <p>John Whitney · 1961</p>
+          </div>
+          <dl>
+            <div><dt>Student</dt><dd>Fengyi Ye</dd></div>
+            <div><dt>ID</dt><dd><code>fengyi_catalog</code></dd></div>
+          </dl>
+        </header>
+        <div class="comparison">
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Original</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\whitney\posters\fengyi_catalog_o.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Recreation</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\whitney\posters\fengyi_catalog_r.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+        </div>
+      </article>
+    
+      <article class="entry">
+        <header class="entry-meta">
+          <div>
+            <h2>Matrix III</h2>
+            <p>John Whitney · 1972</p>
+          </div>
+          <dl>
+            <div><dt>Student</dt><dd>Haotian Wang</dd></div>
+            <div><dt>ID</dt><dd><code>haotian_matrix-iii</code></dd></div>
+          </dl>
+        </header>
+        <div class="comparison">
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Original</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\whitney\posters\haotian_matrix-iii_o.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Recreation</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\whitney\posters\haotian_matrix-iii_r.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+        </div>
+      </article>
+    
+      <article class="entry">
+        <header class="entry-meta">
+          <div>
+            <h2>Catalog</h2>
+            <p>John Whitney · 1961</p>
+          </div>
+          <dl>
+            <div><dt>Student</dt><dd>Ana Schon</dd></div>
+            <div><dt>ID</dt><dd><code>ana_catalog</code></dd></div>
+          </dl>
+        </header>
+        <div class="comparison">
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Original</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\whitney\posters\ana_catalog_o.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Recreation</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\whitney\posters\ana_catalog_r.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+        </div>
+      </article>
+    
+      <article class="entry">
+        <header class="entry-meta">
+          <div>
+            <h2>Permutations</h2>
+            <p>John Whitney · 1968</p>
+          </div>
+          <dl>
+            <div><dt>Student</dt><dd>Malvika Dwivedi</dd></div>
+            <div><dt>ID</dt><dd><code>malvika_permutations</code></dd></div>
+          </dl>
+        </header>
+        <div class="comparison">
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Original</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\whitney\posters\malvika_permutations_o.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Recreation</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\whitney\posters\malvika_permutations_r.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+        </div>
+      </article>
+    
+      <article class="entry">
+        <header class="entry-meta">
+          <div>
+            <h2>Permutations</h2>
+            <p>John Whitney · 1968</p>
+          </div>
+          <dl>
+            <div><dt>Student</dt><dd>Jae In Yoo</dd></div>
+            <div><dt>ID</dt><dd><code>jae_permutations</code></dd></div>
+          </dl>
+        </header>
+        <div class="comparison">
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Original</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\whitney\posters\jae_permutations_o.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Recreation</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\whitney\posters\jae_permutations_r.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+        </div>
+      </article>
+    
+      <article class="entry">
+        <header class="entry-meta">
+          <div>
+            <h2>Experiments in Motion Graphics</h2>
+            <p>John Whitney · 1968</p>
+          </div>
+          <dl>
+            <div><dt>Student</dt><dd>Anyang Zu</dd></div>
+            <div><dt>ID</dt><dd><code>anyang_experiments-in-motion-graphics</code></dd></div>
+          </dl>
+        </header>
+        <div class="comparison">
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Original</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\whitney\posters\anyang_experiments-in-motion-graphics_o.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Recreation</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\whitney\posters\anyang_experiments-in-motion-graphics_r.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+        </div>
+      </article>
+    
+      <article class="entry">
+        <header class="entry-meta">
+          <div>
+            <h2>Matrix III</h2>
+            <p>John Whitney · 1972</p>
+          </div>
+          <dl>
+            <div><dt>Student</dt><dd>Shiman Xu</dd></div>
+            <div><dt>ID</dt><dd><code>shiman_matrix-iii</code></dd></div>
+          </dl>
+        </header>
+        <div class="comparison">
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Original</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\whitney\posters\shiman_matrix-iii_o.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Recreation</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\whitney\posters\shiman_matrix-iii_r.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+        </div>
+      </article>
+    
+      <article class="entry">
+        <header class="entry-meta">
+          <div>
+            <h2>Matrix III</h2>
+            <p>John Whitney · 1972</p>
+          </div>
+          <dl>
+            <div><dt>Student</dt><dd>Aimee Ye</dd></div>
+            <div><dt>ID</dt><dd><code>aimee_matrix-iii</code></dd></div>
+          </dl>
+        </header>
+        <div class="comparison">
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Original</span>
+              <span class="status ok">poster found</span>
+            </div>
+            <div class="poster-frame">
+              <img src="../public/media/whitney/posters/aimee_matrix-iii_o.jpg" alt="Original poster" loading="lazy">
+            </div>
+            <div class="panel-foot"><a class="video-link" href="../public/media/whitney/originals/aimee_matrix-iii_o.mp4">open mp4</a></div>
+          </div>
+    
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Recreation</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\whitney\posters\aimee_matrix-iii_r.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+        </div>
+      </article>
+    
+      <article class="entry">
+        <header class="entry-meta">
+          <div>
+            <h2>Permutations</h2>
+            <p>John Whitney · 1968</p>
+          </div>
+          <dl>
+            <div><dt>Student</dt><dd>Vivian Kong</dd></div>
+            <div><dt>ID</dt><dd><code>vivian_permutations</code></dd></div>
+          </dl>
+        </header>
+        <div class="comparison">
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Original</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\whitney\posters\vivian_permutations_o.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Recreation</span>
+              <span class="status ok">poster found</span>
+            </div>
+            <div class="poster-frame">
+              <img src="../public/media/whitney/posters/vivian_permutations_r.jpg" alt="Recreation poster" loading="lazy">
+            </div>
+            <div class="panel-foot"><a class="video-link" href="../public/media/whitney/recreations/vivian_permutations_r.mp4">open mp4</a></div>
+          </div>
+    
+        </div>
+      </article>
+    
+      <article class="entry">
+        <header class="entry-meta">
+          <div>
+            <h2>Matrix III</h2>
+            <p>John Whitney · 1972</p>
+          </div>
+          <dl>
+            <div><dt>Student</dt><dd>Lia Chen</dd></div>
+            <div><dt>ID</dt><dd><code>lia_matrix-iii</code></dd></div>
+          </dl>
+        </header>
+        <div class="comparison">
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Original</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\whitney\posters\lia_matrix-iii_o.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Recreation</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\whitney\posters\lia_matrix-iii_r.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+        </div>
+      </article>
+    
+      <article class="entry">
+        <header class="entry-meta">
+          <div>
+            <h2>Matrix III</h2>
+            <p>John Whitney · 1972</p>
+          </div>
+          <dl>
+            <div><dt>Student</dt><dd>Annie Yining Chen</dd></div>
+            <div><dt>ID</dt><dd><code>annie_matrix-iii</code></dd></div>
+          </dl>
+        </header>
+        <div class="comparison">
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Original</span>
+              <span class="status ok">poster found</span>
+            </div>
+            <div class="poster-frame">
+              <img src="../public/media/whitney/posters/annie_matrix-iii_o.jpg" alt="Original poster" loading="lazy">
+            </div>
+            <div class="panel-foot"><a class="video-link" href="../public/media/whitney/originals/annie_matrix-iii_o.mp4">open mp4</a></div>
+          </div>
+    
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Recreation</span>
+              <span class="status ok">poster found</span>
+            </div>
+            <div class="poster-frame">
+              <img src="../public/media/whitney/posters/annie_matrix-iii_r.jpg" alt="Recreation poster" loading="lazy">
+            </div>
+            <div class="panel-foot"><a class="video-link" href="../public/media/whitney/recreations/annie_matrix-iii_r.mp4">open mp4</a></div>
+          </div>
+    
+        </div>
+      </article>
+    
+      <article class="entry">
+        <header class="entry-meta">
+          <div>
+            <h2>Matrix III</h2>
+            <p>John Whitney · 1972</p>
+          </div>
+          <dl>
+            <div><dt>Student</dt><dd>Yufeng Zhao</dd></div>
+            <div><dt>ID</dt><dd><code>yufeng_matrix-iii</code></dd></div>
+          </dl>
+        </header>
+        <div class="comparison">
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Original</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\whitney\posters\yufeng_matrix-iii_o.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Recreation</span>
+              <span class="status ok">poster found</span>
+            </div>
+            <div class="poster-frame">
+              <img src="../public/media/whitney/posters/yufeng_matrix-iii_r.jpg" alt="Recreation poster" loading="lazy">
+            </div>
+            <div class="panel-foot"><a class="video-link" href="../public/media/whitney/recreations/yufeng_matrix-iii_r.mp4">open mp4</a></div>
+          </div>
+    
+        </div>
+      </article>
+    
+      <article class="entry">
+        <header class="entry-meta">
+          <div>
+            <h2>Catalog</h2>
+            <p>John Whitney · 1961</p>
+          </div>
+          <dl>
+            <div><dt>Student</dt><dd>Marc Dunand</dd></div>
+            <div><dt>ID</dt><dd><code>marc_catalog</code></dd></div>
+          </dl>
+        </header>
+        <div class="comparison">
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Original</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\whitney\posters\marc_catalog_o.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Recreation</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\whitney\posters\marc_catalog_r.jpg</code></div>
+            </div>
+            <div class="panel-foot"><span class="video-missing">no local mp4</span></div>
+          </div>
+    
+        </div>
+      </article>
+    
+      <article class="entry">
+        <header class="entry-meta">
+          <div>
+            <h2>Permutations</h2>
+            <p>John Whitney · 1968</p>
+          </div>
+          <dl>
+            <div><dt>Student</dt><dd>Emily Guan</dd></div>
+            <div><dt>ID</dt><dd><code>emily_permutations</code></dd></div>
+          </dl>
+        </header>
+        <div class="comparison">
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Original</span>
+              <span class="status missing">missing poster</span>
+            </div>
+            <div class="poster-frame">
+              <div class="missing-box"><strong>Missing poster</strong><code>C:\Users\Owner\Documents\dev\RTPwebsite\recreating-the-past\public\media\whitney\posters\emily_permutations_o.jpg</code></div>
+            </div>
+            <div class="panel-foot"><a class="video-link" href="../public/media/whitney/originals/emily_permutations_o.mp4">open mp4</a></div>
+          </div>
+    
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Recreation</span>
+              <span class="status ok">poster found</span>
+            </div>
+            <div class="poster-frame">
+              <img src="../public/media/whitney/posters/emily_permutations_r.jpg" alt="Recreation poster" loading="lazy">
+            </div>
+            <div class="panel-foot"><a class="video-link" href="../public/media/whitney/recreations/emily_permutations_r.mp4">open mp4</a></div>
+          </div>
+    
+        </div>
+      </article>
+    
+      <article class="entry">
+        <header class="entry-meta">
+          <div>
+            <h2>Experiments in Motion Graphics</h2>
+            <p>John Whitney · 1968</p>
+          </div>
+          <dl>
+            <div><dt>Student</dt><dd>Eitan Wolf</dd></div>
+            <div><dt>ID</dt><dd><code>eitan_experiments-in-motion-graphics</code></dd></div>
+          </dl>
+        </header>
+        <div class="comparison">
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Original</span>
+              <span class="status ok">poster found</span>
+            </div>
+            <div class="poster-frame">
+              <img src="../public/media/whitney/posters/eitan_experiments-in-motion-graphics_o.jpg" alt="Original poster" loading="lazy">
+            </div>
+            <div class="panel-foot"><a class="video-link" href="../public/media/whitney/originals/eitan_experiments-in-motion-graphics_o.mp4">open mp4</a></div>
+          </div>
+    
+          
+          <div class="panel">
+            <div class="panel-head">
+              <span>Recreation</span>
+              <span class="status ok">poster found</span>
+            </div>
+            <div class="poster-frame">
+              <img src="../public/media/whitney/posters/eitan_experiments-in-motion-graphics_r.jpg" alt="Recreation poster" loading="lazy">
+            </div>
+            <div class="panel-foot"><a class="video-link" href="../public/media/whitney/recreations/eitan_experiments-in-motion-graphics_r.mp4">open mp4</a></div>
+          </div>
+    
+        </div>
+      </article>
+    
+  </main>
+</body>
+</html>
