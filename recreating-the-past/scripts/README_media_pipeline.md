@@ -165,6 +165,20 @@ This tells `yt-dlp` to use your local browser session for the download request. 
 
 If you later use multiple browser profiles, `yt-dlp` also accepts values such as `chrome:Default` or `chrome:"Profile 1"`.
 
+### Cookie file (Chrome 127+ DPAPI workaround)
+
+Chrome 127+ on Windows uses App-Bound Encryption for cookies, which causes `--cookies-from-browser chrome` to fail with a DPAPI error. In that case, export cookies to a file instead:
+
+1. Install the **"Get cookies.txt LOCALLY"** extension in Chrome
+2. Visit `youtube.com` while signed in
+3. Click the extension and export cookies for the current site
+4. Save the file, for example to `C:\Users\Owner\youtube_cookies.txt`
+5. Pass the file with `--cookies`:
+
+```powershell
+python scripts/process_media.py john-whitney --download --cookies C:\Users\Owner\youtube_cookies.txt
+```
+
 Downloaded source files are cached separately from final web media:
 
 ```text

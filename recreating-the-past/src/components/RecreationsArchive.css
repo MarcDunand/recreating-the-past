@@ -159,7 +159,7 @@ main {
 
 .structure-inline-inner {
   display: grid;
-  grid-template-columns: 220px minmax(0, 1200px);
+  grid-template-columns: 220px minmax(0, 1200px) 220px;
   align-items: center;
 }
 
@@ -211,9 +211,19 @@ main {
 .artwork-row {
   width: min(100%, 1500px);
   display: grid;
-  grid-template-columns: 220px minmax(0, 1200px);
+  grid-template-columns: 220px minmax(0, 1200px) 220px;
   column-gap: 34px;
   margin: 0 auto;
+}
+
+.student-aside {
+  padding-top: 4px;
+  font-size: 13px;
+  line-height: 1.25;
+}
+
+.student-name {
+  max-width: 170px;
 }
 
 .timeline-item {
@@ -356,6 +366,8 @@ main {
   z-index: 100;
   background: white;
   padding: 72px 32px 32px;
+  display: flex;
+  flex-direction: column;
 }
 
 .fullscreen-close {
@@ -371,7 +383,8 @@ main {
 }
 
 .fullscreen-grid {
-  height: 100%;
+  flex: 1;
+  min-height: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 32px;
@@ -379,16 +392,21 @@ main {
 
 .fullscreen-side {
   min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .fullscreen-label {
-  height: 32px;
+  flex-shrink: 0;
   font-size: 18px;
+  margin-bottom: 8px;
 }
 
 .fullscreen-media {
+  flex: 1;
+  min-height: 0;
   width: 100%;
-  height: calc(100% - 64px);
   display: block;
   object-fit: contain;
   border: 1px solid black;
@@ -396,6 +414,7 @@ main {
 }
 
 .fullscreen-side a {
+  flex-shrink: 0;
   display: inline-block;
   margin-top: 10px;
   color: black;
@@ -408,11 +427,20 @@ main {
     --side-gutter: 200px;
   }
   .artwork-row {
-    grid-template-columns: 170px minmax(0, 1fr);
+    grid-template-columns: 170px minmax(0, 1fr) 170px;
     column-gap: 24px;
   }
 
+  .structure-inline-inner {
+    grid-template-columns: 170px minmax(0, 1fr) 170px;
+  }
+
   .timeline-copy {
+    max-width: 130px;
+    font-size: 12px;
+  }
+
+  .student-name {
     max-width: 130px;
     font-size: 12px;
   }
@@ -467,6 +495,10 @@ main {
     row-gap: 12px;
   }
 
+  .student-aside {
+    display: none;
+  }
+
   .timeline-item {
     grid-template-columns: 12px 1fr;
   }
@@ -490,10 +522,23 @@ main {
 
   .fullscreen-overlay {
     padding: 64px 16px 24px;
+    display: block;
+    overflow-y: auto;
   }
 
   .fullscreen-grid {
+    height: auto;
     grid-template-columns: 1fr;
     gap: 20px;
+  }
+
+  .fullscreen-side {
+    display: block;
+  }
+
+  .fullscreen-media {
+    flex: none;
+    height: auto;
+    max-height: 70vh;
   }
 }

@@ -199,7 +199,6 @@
       }
     ]
   },
-
   {
     "artist": "John Whitney",
     "artistSlug": "john-whitney",
@@ -208,7 +207,7 @@
       {
         "id": "sun_permutations",
         "originalTitle": "Permutations",
-        "originalYear": "1969",
+        "originalYear": "1968",
         "originalMediaType": "video",
         "originalLink": "https://www.youtube.com/watch?v=BzB31mD4NmA",
         "student": "Sun Chuanqi",
@@ -227,11 +226,11 @@
         "recreationLink": "https://editor.p5js.org/kevin1753008444/full/I3Xe38FY4"
       },
       {
-        "id": "fengyi_catalog",
-        "originalTitle": "Catalog",
-        "originalYear": "1961",
+        "id": "fengyi_matrix-iii",
+        "originalTitle": "Matrix III",
+        "originalYear": "1972",
         "originalMediaType": "video",
-        "originalLink": "https://www.youtube.com/watch?v=6bydDe_WCWc",
+        "originalLink": "https://youtu.be/ZrKgyY5aDvA?list=PLA61D26B1099384D3&t=140",
         "student": "Fengyi Ye",
         "recreationMediaType": "video",
         "recreationLink": "",
@@ -259,14 +258,15 @@
         "notes": "Source document uses a Dropbox source video for the original excerpt and a Google Drive video for recreation media."
       },
       {
-        "id": "malvika_permutations",
-        "originalTitle": "Permutations",
-        "originalYear": "1968",
-        "originalMediaType": "video",
-        "originalLink": "https://www.youtube.com/watch?v=BzB31mD4NmA",
+        "id": "malvika_digital-harmony",
+        "originalTitle": "Digital Harmony",
+        "originalYear": "1980",
+        "originalMediaType": "image",
+        "originalLink": "https://archive.org/details/digitalharmonyon0000whit",
         "student": "Malvika Dwivedi",
-        "recreationMediaType": "video",
-        "recreationLink": "https://editor.p5js.org/malvika.dwivedi.md/sketches/4qr7_WZXz"
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/malvika.dwivedi.md/sketches/4qr7_WZXz",
+        "notes": "Recreation link may need verification."
       },
       {
         "id": "jae_permutations",
@@ -279,19 +279,19 @@
         "recreationLink": "https://editor.p5js.org/janejanejaneyay/sketches/HLSXnH7yE"
       },
       {
-        "id": "anyang_experiments-in-motion-graphics",
-        "originalTitle": "Experiments in Motion Graphics",
+        "id": "anyang_permutations",
+        "originalTitle": "Permutations",
         "originalYear": "1968",
-        "originalMediaType": "video",
-        "originalLink": "https://www.youtube.com/watch?v=jIv-EcX9tUs",
+        "originalMediaType": "image",
+        "originalLink": "https://www.youtube.com/watch?v=BzB31mD4NmA",
         "student": "Anyang Zu",
-        "recreationMediaType": "video",
+        "recreationMediaType": "image",
         "recreationLink": "https://editor.p5js.org/azu100/sketches/390qwBmjG"
       },
       {
-        "id": "shiman_matrix-iii",
-        "originalTitle": "Matrix III",
-        "originalYear": "1972",
+        "id": "shiman_matrix",
+        "originalTitle": "Matrix",
+        "originalYear": "1971",
         "originalMediaType": "video",
         "originalLink": "https://www.youtube.com/watch?v=ryKT1uIPIaI&list=RDryKT1uIPIaI&start_radio=1",
         "student": "Shiman Xu",
@@ -349,17 +349,6 @@
         "recreationLink": "https://github.com/yz3440/recreating-the-past/blob/main/week-2/homework/john_whitney.toe"
       },
       {
-        "id": "marc_catalog",
-        "originalTitle": "Catalog",
-        "originalYear": "1961",
-        "originalMediaType": "video",
-        "originalLink": "https://www.youtube.com/watch?v=6bydDe_WCWc",
-        "student": "Marc Dunand",
-        "recreationMediaType": "video",
-        "recreationLink": "",
-        "notes": "Source document provides a YouTube recreation video, but no recreation code link."
-      },
-      {
         "id": "emily_permutations",
         "originalTitle": "Permutations",
         "originalYear": "1968",
@@ -380,6 +369,973 @@
         "recreationMediaType": "video",
         "recreationLink": "https://openprocessing.org/@u587985/2939333",
         "alternateRecreationLink": "https://openprocessing.org/@u587985/2939328"
+      }
+    ]
+  },
+  {
+    "artist": "Muriel Cooper",
+    "artistSlug": "muriel-cooper",
+    "mediaFolder": "cooper",
+    "pairs": [
+      {
+        "id": "ash_typographic-color-work",
+        "originalTitle": "MIT Media Lab, 5th Anniversary",
+        "originalYear": "1990",
+        "originalMediaType": "image",
+        "originalLink": "https://a-g-i.org/design/mit-media-lab",
+        "student": "Ash He",
+        "recreationMediaType": "video",
+        "recreationLink": "https://editor.p5js.org/kevin1753008444/full/s9m9kA0E8"
+      },
+      {
+        "id": "shiman_typographic-color-layers",
+        "originalTitle": "Bauhaus: Weimar, Dessau, Berlin, Chicago",
+        "originalYear": "1969",
+        "originalMediaType": "image",
+        "originalLink": "https://a-g-i.org/design/the-bauhaus",
+        "student": "Shiman Xu",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/shimanxxx/full/uGcY0rcDO"
+      },
+      {
+        "id": "fengyi_mit-press-colophon",
+        "originalTitle": "Bauhaus: Weimar, Dessau, Berlin, Chicago",
+        "originalYear": "1969",
+        "originalMediaType": "image",
+        "originalLink": "https://a-g-i.org/design/the-bauhaus",
+        "student": "Fengyi Ye",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/fengyiye68/full/-s2yeUsgj"
+      },
+      {
+        "id": "ana_typographic-work",
+        "originalTitle": "MIT Media Lab",
+        "originalYear": "1990",
+        "originalMediaType": "image",
+        "originalLink": "https://a-g-i.org/design/mit-media-lab",
+        "student": "Ana Schon",
+        "recreationMediaType": "image",
+        "recreationLink": "https://github.com/anaschonml/RTP-code/tree/main/cooper1"
+      },
+      {
+        "id": "an_mit-press-colophon",
+        "originalTitle": "MIT Press Colophon",
+        "originalYear": "1965",
+        "originalMediaType": "image",
+        "originalLink": "https://www.youtube.com/watch?v=Whvwl8U0fk4&list=PL8InuSWd2OA1fcPSKuy-mDgBM-60bteq6&index=6",
+        "student": "An Kong",
+        "recreationMediaType": "image",
+        "recreationLink": "https://claude.ai/public/artifacts/55e7b4fb-8af9-48e1-8655-30d99912a278"
+      },
+      {
+        "id": "ivy_mit-press-colophon",
+        "originalTitle": "MIT Press Colophon",
+        "originalYear": "1965",
+        "originalMediaType": "image",
+        "originalLink": "https://www.moma.org/collection/works/446212",
+        "student": "Ivy Zheng",
+        "recreationMediaType": "image",
+        "recreationLink": "https://github.com/ivyzhn/Muriel_Cooper/commit/928e8208f91d6b6fd18ebf3f85db246c5e6ad339"
+      },
+      {
+        "id": "haotian_mit-press-colophon",
+        "originalTitle": "MIT Press Colophon",
+        "originalYear": "1965",
+        "originalMediaType": "image",
+        "originalLink": "https://youtu.be/vvW7gfYHSc4?t=19",
+        "student": "Haotian Wang",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/haotian_wang/full/vZaUucUN0"
+      },
+      {
+        "id": "annie_information-landscapes",
+        "originalTitle": "Information Landscapes",
+        "originalYear": "1994",
+        "originalMediaType": "video",
+        "originalLink": "https://www.walkerart.org/reader/muriel-cooper-turning-time-into-space/",
+        "student": "Annie Yining Chen",
+        "recreationMediaType": "video",
+        "recreationLink": "https://www.youtube.com/watch?v=Qn9zCrIJzLs&t=57s"
+      },
+      {
+        "id": "malvika_concentric-squares",
+        "originalTitle": "Generalized Thermodynamics",
+        "originalYear": "1966",
+        "originalMediaType": "image",
+        "originalLink": "https://mitpress.mit.edu/9780262700177/generalized-thermodynamics/",
+        "student": "Malvika Dwivedi",
+        "recreationMediaType": "image",
+        "recreationLink": ""
+      },
+      {
+        "id": "ayah_communication-by-design",
+        "originalTitle": "Communication by Design",
+        "originalYear": "1964",
+        "originalMediaType": "image",
+        "originalLink": "https://www.commarts.com/project/7900/communication-by-design-poster",
+        "student": "Ayah Mahmoud",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/ayahm2021/sketches/Pbbmx0Uqw"
+      },
+      {
+        "id": "lia_bauhaus-poster",
+        "originalTitle": "Bauhaus: Weimar, Dessau, Berlin, Chicago",
+        "originalYear": "1969",
+        "originalMediaType": "image",
+        "originalLink": "https://a-g-i.org/design/the-bauhaus",
+        "student": "Lia Chen",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/qc311/sketches/_1EPEVQMq"
+      },
+      {
+        "id": "emily_mit-press-cover",
+        "originalTitle": "Generalized Thermodynamics",
+        "originalYear": "1966",
+        "originalMediaType": "image",
+        "originalLink": "https://mitpress.mit.edu/9780262700177/generalized-thermodynamics/",
+        "student": "Emily Guan",
+        "recreationMediaType": "image",
+        "recreationLink": "https://drive.google.com/drive/folders/1U37-hI2fgU5bL-Kl7qV4WK8qsAJiKU4R?usp=sharing",
+        "notes": "Recreation done in Rhino Grasshopper."
+      },
+      {
+        "id": "yufeng_bauhaus",
+        "originalTitle": "Bauhaus: Weimar, Dessau, Berlin, Chicago",
+        "originalYear": "1969",
+        "originalMediaType": "image",
+        "originalLink": "https://a-g-i.org/design/the-bauhaus",
+        "student": "Yufeng Zhao",
+        "recreationMediaType": "video",
+        "recreationLink": "https://github.com/yz3440/recreating-the-past/blob/main/week-3/homework/muriel_cooper.toe",
+        "notes": "Book cover design for Wingler's Bauhaus book published by MIT Press. Recreation done in TouchDesigner."
+      },
+      {
+        "id": "eitan_messages-and-means",
+        "originalTitle": "Messages and Means",
+        "originalYear": "1974",
+        "originalMediaType": "image",
+        "originalLink": "https://a-g-i.org/design/messages-and-means",
+        "student": "Eitan Wolf",
+        "recreationMediaType": "image",
+        "recreationLink": "https://openprocessing.org/sketch/2884952",
+        "alternateRecreationLink": "https://openprocessing.org/sketch/2884915"
+      },
+      {
+        "id": "aimee_muriel-cooper-at-mit",
+        "originalTitle": "Beyond Windows",
+        "originalYear": "unknown",
+        "originalMediaType": "image",
+        "originalLink": "https://strabic.fr/Muriel-Cooper",
+        "student": "Aimee Ye",
+        "recreationMediaType": "image",
+        "recreationLink": ""
+      },
+      {
+        "id": "anyang_typographic-shapes",
+        "originalTitle": "Typographic Shapes",
+        "originalYear": "unknown",
+        "originalMediaType": "image",
+        "originalLink": "https://www.youtube.com/watch?v=CDMqmnW0IRk",
+        "student": "Anyang Zu",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/azu100/sketches/GioJNNFfv",
+        "notes": "Original title not identified. YouTube link is the student's reference for the original work."
+      },
+      {
+        "id": "jae_mit-press-cover",
+        "originalTitle": "Generalized Thermodynamics",
+        "originalYear": "1966",
+        "originalMediaType": "image",
+        "originalLink": "https://mitpress.mit.edu/9780262700177/generalized-thermodynamics/",
+        "student": "Jae In Yoo",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/janejanejaneyay/full/9DPfIqMZ9"
+      }
+    ]
+  },
+  {
+    "artist": "John Maeda",
+    "artistSlug": "john-maeda",
+    "mediaFolder": "maeda",
+    "pairs": [
+      {
+        "id": "sun_morisawa-6",
+        "originalTitle": "Morisawa 6",
+        "originalYear": "1996",
+        "originalMediaType": "image",
+        "originalLink": "https://gazell.io/products/john-maeda-morisawa-6",
+        "student": "Sun Chuanqi",
+        "recreationMediaType": "image",
+        "recreationLink": "https://code.chuanqisun.com/recreating-the-past/maeda/index.html"
+      },
+      {
+        "id": "vivian_morisawa-9",
+        "originalTitle": "Morisawa 9",
+        "originalYear": "1996",
+        "originalMediaType": "image",
+        "originalLink": "https://gazell.io/products/john-maeda-morisawa-9",
+        "student": "Vivian Kong",
+        "recreationMediaType": "image",
+        "recreationLink": ""
+      }
+    ]
+  },
+  {
+    "artist": "Anni Albers",
+    "artistSlug": "anni-albers",
+    "mediaFolder": "albers",
+    "pairs": [
+      {
+        "id": "jae_design-for-wall-hanging",
+        "originalTitle": "Design for Wall Hanging",
+        "originalYear": "1926",
+        "originalMediaType": "image",
+        "originalLink": "https://www.moma.org/collection/works/3749",
+        "student": "Jae In Yoo",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/janejanejaneyay/full/dvklmTWVH",
+        "notes": "Student used the Christopher Farr rug reproduction as their reference image."
+      },
+      {
+        "id": "ash_gr-i",
+        "originalTitle": "GR I",
+        "originalYear": "1970",
+        "originalMediaType": "image",
+        "originalLink": "https://thejohnsoncollection.org/anni-albers-gr-i/",
+        "student": "Ash He",
+        "recreationMediaType": "image",
+        "recreationLink": "https://openprocessing.org/sketch/2891170"
+      },
+      {
+        "id": "ivy_unknown-textile-work",
+        "originalTitle": "Unknown Textile Work",
+        "originalYear": "unknown",
+        "originalMediaType": "image",
+        "originalLink": "",
+        "student": "Ivy Zheng",
+        "recreationMediaType": "image",
+        "recreationLink": "https://github.com/ivyzhn/expert-telegram/blob/main/Anni_Albers.py"
+      },
+      {
+        "id": "ana_scroll",
+        "originalTitle": "Scroll",
+        "originalYear": "1962",
+        "originalMediaType": "image",
+        "originalLink": "https://www.sfmoma.org/artwork/2021.22/",
+        "student": "Ana Schon",
+        "recreationMediaType": "image",
+        "recreationLink": "https://github.com/anaschonml/RTP-code/tree/main/albers1"
+      },
+      {
+        "id": "anyang_yellow-meander",
+        "originalTitle": "Yellow Meander",
+        "originalYear": "1970",
+        "originalMediaType": "image",
+        "originalLink": "https://www.artsy.net/artwork/anni-albers-yellow-meander-1",
+        "student": "Anyang Zu",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/azu100/sketches/bdvQi4TyE"
+      },
+      {
+        "id": "lia_movement-in-squares",
+        "originalTitle": "Movement in Squares",
+        "originalYear": "1961",
+        "originalMediaType": "image",
+        "originalLink": "https://artuk.org/discover/artworks/movement-in-squares-64038",
+        "student": "Lia Chen",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/qc311/sketches/h6rSCS_Si",
+        "notes": "This is a Bridget Riley work, not by Anni Albers."
+      },
+      {
+        "id": "shiman_red-meander",
+        "originalTitle": "Red Meander",
+        "originalYear": "1969",
+        "originalMediaType": "image",
+        "originalLink": "https://www.moma.org/collection/works/70720",
+        "student": "Shiman Xu",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/shimanxxx/full/2jWNHWr3J"
+      },
+      {
+        "id": "fengyi_untitled",
+        "originalTitle": "Untitled",
+        "originalYear": "unknown",
+        "originalMediaType": "image",
+        "originalLink": "https://nmwa.org/blog/artist-spotlight/5-fast-facts-anni-albers/",
+        "student": "Fengyi Ye",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/fengyiye68/full/Rh_9reAHv",
+        "notes": "Original title unknown. Student referenced the NMWA blog."
+      },
+      {
+        "id": "yufeng_connections",
+        "originalTitle": "Connections",
+        "originalYear": "1983",
+        "originalMediaType": "image",
+        "originalLink": "https://www.artsy.net/artwork/anni-albers-connections-1",
+        "student": "Yufeng Zhao",
+        "recreationMediaType": "video",
+        "recreationLink": "https://github.com/yz3440/recreating-the-past/blob/main/week-4/homework/anni_albers.toe",
+        "notes": "Student's note: 'Not so much of a recreation (sorry).'"
+      },
+      {
+        "id": "annie_second-movement",
+        "originalTitle": "Second Movement",
+        "originalYear": "1978",
+        "originalMediaType": "image",
+        "originalLink": "",
+        "student": "Annie Yining Chen",
+        "recreationMediaType": "video",
+        "recreationLink": "https://editor.p5js.org/ychenannie8/sketches/k0GTN0ro5"
+      },
+      {
+        "id": "alex_tr-ii",
+        "originalTitle": "Tr II",
+        "originalYear": "1969",
+        "originalMediaType": "image",
+        "originalLink": "https://www.artsy.net/artwork/anni-albers-tr-ii-3",
+        "student": "Alex Dang",
+        "recreationMediaType": "image",
+        "recreationLink": "https://github.com/tropylium/albers"
+      },
+      {
+        "id": "haotian_second-movement-i",
+        "originalTitle": "Second Movement I",
+        "originalYear": "1978",
+        "originalMediaType": "image",
+        "originalLink": "https://searchthecollection.nga.gov.au/object/65304",
+        "student": "Haotian Wang",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/haotian_wang/full/DyrQkGvg8"
+      },
+      {
+        "id": "emily_gr-i",
+        "originalTitle": "GR I",
+        "originalYear": "1970",
+        "originalMediaType": "image",
+        "originalLink": "https://thejohnsoncollection.org/anni-albers-gr-i/",
+        "student": "Emily Guan",
+        "recreationMediaType": "image",
+        "recreationLink": "https://drive.google.com/drive/u/0/folders/1gt_r-Gv_fyGWIbuUsbYzKlhk66AdUKJV",
+        "notes": "Title inferred from student's recreation style."
+      },
+      {
+        "id": "aimee_second-movement-i",
+        "originalTitle": "Second Movement I",
+        "originalYear": "1978",
+        "originalMediaType": "image",
+        "originalLink": "https://searchthecollection.nga.gov.au/object/65304",
+        "student": "Aimee Ye",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/aimeeye/full/yniYCKsBd"
+      }
+    ]
+  },
+  {
+    "artist": "Lillian Schwartz",
+    "artistSlug": "lillian-schwartz",
+    "mediaFolder": "schwartz",
+    "pairs": [
+      {
+        "id": "sun_olympiad",
+        "originalTitle": "Olympiad",
+        "originalYear": "1971",
+        "originalMediaType": "video",
+        "originalLink": "https://www.youtube.com/watch?v=faqnx54amFE",
+        "student": "Sun Chuanqi",
+        "recreationMediaType": "image",
+        "recreationLink": "https://code.chuanqisun.com/recreating-the-past/schwartz/index.html"
+      },
+      {
+        "id": "jae_untitled-37",
+        "originalTitle": "Untitled",
+        "originalYear": "c. 1970s",
+        "originalLink": "https://spalterdigital.com/artworks/untitled-37/",
+        "student": "Jae In Yoo",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/janejanejaneyay/full/gtECbTeBN",
+        "notes": "Artist uncertain — tentatively Schwartz based on visual style; verify at spalterdigital URL. Video recreation also at https://editor.p5js.org/janejanejaneyay/full/SGPp0Qliy. Student initially worked with a Barbadillo piece before correcting to this one."
+      },
+      {
+        "id": "annie_homage-to-duchamp",
+        "originalTitle": "Homage to Duchamp",
+        "originalYear": "1974",
+        "originalLink": "https://history.siggraph.org/artwork/lillian-f-schwartz-homage-to-duchamp/",
+        "student": "Annie Chen",
+        "recreationMediaType": "image",
+        "notes": "Original video not yet sourced — original display image is a proxy recreation frame. Student made static and video recreations using a parametric wireframe system."
+      },
+      {
+        "id": "malvika_enigma",
+        "originalTitle": "Enigma",
+        "originalYear": "1972",
+        "originalMediaType": "image",
+        "originalLink": "https://dam.org/museum/artists_ui/artists/schwartz-lillian/",
+        "student": "Malvika Dwivedi",
+        "recreationMediaType": "image",
+        "recreationLink": ""
+      }
+    ]
+  },
+  {
+    "artist": "Ken Knowlton",
+    "artistSlug": "ken-knowlton",
+    "mediaFolder": "knowlton",
+    "pairs": [
+      {
+        "id": "vivian_eismc2",
+        "originalTitle": "EisMC2 (Albert Einstein)",
+        "originalYear": "c. 2003",
+        "originalLink": "https://www.knowltonmosaics.com/pages/EisMC2.htm",
+        "student": "Vivian Kong",
+        "recreationMediaType": "image",
+        "recreationLink": "https://github.com/vivian20206/KenKnowlton/blob/36fbe659482894c569b02a14ac5da1bcd4ba328a/src/ofApp.cpp"
+      },
+      {
+        "id": "emily_obama",
+        "originalTitle": "Obama",
+        "originalYear": "2009",
+        "originalLink": "https://www.knowltonmosaics.com/pages/Obama.htm",
+        "student": "Emily Guan",
+        "recreationMediaType": "image",
+        "recreationLink": "https://colab.research.google.com/drive/1u_-BNUgQ-xqMz7gaRf69JLIe4rrs_4yo?usp=sharing"
+      },
+      {
+        "id": "lia_dominoportrait-of-charlie-chaplin",
+        "originalTitle": "Dominoportrait of Charlie Chaplin",
+        "originalYear": "unknown",
+        "originalMediaType": "image",
+        "originalLink": "",
+        "student": "Lia Chen",
+        "recreationMediaType": "image",
+        "recreationLink": "",
+        "notes": "Student could not find the exact Knowlton original; used a substitute Chaplin portrait as the reference image."
+      },
+      {
+        "id": "anyang_martin-gardner",
+        "originalTitle": "Martin Gardner (Domino Portrait)",
+        "originalYear": "1993",
+        "originalLink": "https://www.gathering4gardner.org/com-2020-11-21/",
+        "student": "Anyang Zu",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/azu100/sketches/4lp5WXJZK",
+        "notes": "Original is Knowlton's 1993 domino portrait of Martin Gardner."
+      },
+      {
+        "id": "ana_studies-in-perception-i",
+        "originalTitle": "Studies in Perception I",
+        "originalYear": "1966",
+        "originalLink": "https://buffaloakg.org/artworks/p20142-computer-nude-studies-perception-i",
+        "student": "Ana Schon",
+        "recreationMediaType": "video",
+        "recreationLink": "https://github.com/anaschonml/RTP-code/tree/main/knowlton",
+        "notes": "Original is a collaboration with Leon Harmon. Student used 12 mathematical/electronic symbol tiles with webcam input."
+      },
+      {
+        "id": "haotian_eismc2",
+        "originalTitle": "EisMC2 (Albert Einstein)",
+        "originalYear": "c. 2003",
+        "originalLink": "https://www.knowltonmosaics.com/pages/EisMC2.htm",
+        "student": "Haotian Wang",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/haotian_wang/full/EtkDi7Vtv"
+      },
+      {
+        "id": "eitan_studies-in-perception-i",
+        "originalTitle": "Studies in Perception I",
+        "originalYear": "1966",
+        "originalLink": "https://buffaloakg.org/artworks/p20142-computer-nude-studies-perception-i",
+        "student": "Eitan Wolf",
+        "recreationMediaType": "video",
+        "recreationLink": "https://openprocessing.org/sketch/2896168",
+        "notes": "Original is a collaboration with Leon Harmon. Student used mathematical/electronic symbol tiles with webcam input."
+      },
+      {
+        "id": "fengyi_variable-weight-alphabet",
+        "originalTitle": "Variable Weight Alphabet",
+        "originalYear": "2024",
+        "originalLink": "",
+        "student": "Fengyi Ye",
+        "recreationMediaType": "image",
+        "notes": "Original is a 2024 Instagram post by 'brionfusion' — NOT a Knowlton/Schwartz work. Student may have misidentified the original."
+      }
+    ]
+  },
+  {
+    "artist": "Nancy Burson",
+    "artistSlug": "nancy-burson",
+    "mediaFolder": "burson",
+    "pairs": [
+      {
+        "id": "anyang_composites",
+        "originalTitle": "Composites",
+        "originalYear": "1982",
+        "originalMediaType": "image",
+        "originalLink": "https://www.katevassgalerie.com/print/p/nancy-burson-polaroids-4",
+        "student": "Anyang Zu",
+        "recreationMediaType": "gif",
+        "recreationLink": ""
+      },
+      {
+        "id": "aimee_androgyny",
+        "originalTitle": "Androgyny (6 Men + 6 Women)",
+        "originalYear": "1982",
+        "originalMediaType": "image",
+        "originalLink": "https://www.moma.org/collection/works/183529",
+        "student": "Aimee Ye",
+        "recreationMediaType": "video",
+        "recreationLink": "https://editor.p5js.org/aimeeye/full/s-BxjRMnK"
+      },
+      {
+        "id": "shiman_morphing-grid",
+        "originalTitle": "Morphing Grid",
+        "originalYear": "1979",
+        "originalMediaType": "image",
+        "originalLink": "https://www.katevassgalerie.com/blog/nancy-burson",
+        "student": "Shiman Xu",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/shimanxxx/full/3fJYjjezE"
+      },
+      {
+        "id": "jae_composites",
+        "originalTitle": "Composites",
+        "originalYear": "1982",
+        "originalMediaType": "image",
+        "originalLink": "https://www.moma.org/collection/artists/46261",
+        "student": "Jae In Yoo",
+        "recreationMediaType": "image",
+        "recreationLink": ""
+      },
+      {
+        "id": "alex_morphing-grid",
+        "originalTitle": "Morphing Grid",
+        "originalYear": "1979",
+        "originalMediaType": "image",
+        "originalLink": "https://www.katevassgalerie.com/blog/nancy-burson",
+        "student": "Alex Dang",
+        "recreationMediaType": "image",
+        "recreationLink": ""
+      },
+      {
+        "id": "ivy_primate-composite",
+        "originalTitle": "Untitled (Human-Primate Composite)",
+        "originalYear": "unknown",
+        "originalMediaType": "image",
+        "originalLink": "https://www.moma.org/collection/artists/46261",
+        "student": "Ivy Zheng",
+        "recreationMediaType": "image",
+        "recreationLink": "https://github.com/ivyzhn/Nancy-Burson-Jason-Salavon.git",
+        "notes": "Specific Burson work not identified; original image shows a human-primate composite characteristic of Burson's morphing work."
+      },
+      {
+        "id": "haotian_animal-composite",
+        "originalTitle": "Untitled (Animal Composite)",
+        "originalYear": "unknown",
+        "originalMediaType": "image",
+        "originalLink": "https://www.moma.org/collection/artists/46261",
+        "student": "Haotian Wang",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/wht1278349100/full/vJ5ahqpjA",
+        "notes": "Specific Burson work not identified; original image shows a large cat composite characteristic of Burson's morphing work."
+      }
+    ]
+  },
+  {
+    "artist": "Jason Salavon",
+    "artistSlug": "jason-salavon",
+    "mediaFolder": "salavon",
+    "pairs": [
+      {
+        "id": "sun_class-of-1988",
+        "originalTitle": "The Class of 1988",
+        "originalYear": "1998",
+        "originalMediaType": "image",
+        "originalLink": "http://playtime.pem.org/art-for-the-ages-an-image-gallery/",
+        "student": "Sun Chuanqi",
+        "recreationMediaType": "image",
+        "recreationLink": "https://code.chuanqisun.com/recreating-the-past/salavon/demo.html",
+        "notes": "Student linked to PEM 'Art for the Ages' page; original image is consistent with Salavon's 'The Class of 1988 and 1967' yearbook averaging."
+      },
+      {
+        "id": "lia_portrait-hals",
+        "originalTitle": "Portrait (Hals)",
+        "originalYear": "unknown",
+        "originalMediaType": "image",
+        "originalLink": "https://www.metmuseum.org/art/collection/search/291953",
+        "student": "Lia Chen",
+        "recreationMediaType": "image",
+        "recreationLink": "",
+        "notes": "Recreation is a composite of Caravaggio portraits made in p5.js."
+      },
+      {
+        "id": "annie_class-of-1988",
+        "originalTitle": "The Class of 1988",
+        "originalYear": "1998",
+        "originalMediaType": "image",
+        "originalLink": "https://www.cartermuseum.org/collection/class-1988-p20172",
+        "student": "Annie Yining Chen",
+        "recreationMediaType": "image",
+        "recreationLink": ""
+      },
+      {
+        "id": "ana_class-of-1988",
+        "originalTitle": "The Class of 1988",
+        "originalYear": "1998",
+        "originalMediaType": "image",
+        "originalLink": "https://www.artsy.net/artwork/jason-salavon-the-class-of-1988",
+        "student": "Ana Schon",
+        "recreationMediaType": "image",
+        "recreationLink": "https://github.com/anaschonml/RTP-code/tree/main/faces",
+        "notes": "Student averaged official headshots of Argentine senators; referenced both Class of 1988 and Class of 1967."
+      },
+      {
+        "id": "eitan_late-night-triad",
+        "originalTitle": "The Late Night Triad",
+        "originalYear": "2003",
+        "originalMediaType": "image",
+        "originalLink": "http://salavon.com/work/LateNightTriad/",
+        "student": "Eitan Wolf",
+        "recreationMediaType": "image",
+        "recreationLink": "",
+        "notes": "Student described original as 'slices of the average color from all the frames', consistent with Salavon's frame-averaging technique. Reference also cited at happycoding.io/gallery/movie-colors/index."
+      },
+      {
+        "id": "ash_newlyweds",
+        "originalTitle": "100 Special Moments (Newlyweds)",
+        "originalYear": "2004",
+        "originalMediaType": "image",
+        "originalLink": "https://www.hallmarkartcollection.com/artwork/100-special-moments-newlyweds/",
+        "student": "Ash He",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/kevin1753008444/full/wFDyxX-Df"
+      },
+      {
+        "id": "fengyi_all-the-ways",
+        "originalTitle": "All the Ways (The Simpsons)",
+        "originalYear": "2016",
+        "originalMediaType": "image",
+        "originalLink": "https://www.artsy.net/article/artsy-jason-salavon-taps-into-the-simpsons-and-wikipedia-to-explore-our-changing-digital-landscape",
+        "student": "Fengyi Ye",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/fengyiye68/full/yUyuTKTkv"
+      },
+      {
+        "id": "vivian_all-the-ways",
+        "originalTitle": "All the Ways (The Simpsons)",
+        "originalYear": "2016",
+        "originalMediaType": "image",
+        "originalLink": "https://www.artsy.net/article/artsy-jason-salavon-taps-into-the-simpsons-and-wikipedia-to-explore-our-changing-digital-landscape",
+        "student": "Vivian Kong",
+        "recreationMediaType": "image",
+        "recreationLink": "https://github.com/vivian20206/JasonSalavon/blob/e2992f454bce9761af99fd02faddc8933174961b/src/ofApp.cpp"
+      }
+    ]
+  },
+  {
+    "artist": "Claire Hentschker",
+    "artistSlug": "claire-hentschker",
+    "mediaFolder": "hentschker",
+    "pairs": [
+      {
+        "id": "yufeng_biker-on-the-road",
+        "originalTitle": "Biker on the Road",
+        "originalYear": "2017",
+        "originalMediaType": "image",
+        "originalLink": "",
+        "student": "Yufeng Zhao",
+        "recreationMediaType": "image",
+        "recreationLink": "",
+        "notes": "Student chose this work outside the HW6 assignment's intended artists (Nancy Burson / Jason Salavon)."
+      }
+    ]
+  },
+  {
+    "artist": "Myron Krueger",
+    "artistSlug": "myron-krueger",
+    "mediaFolder": "krueger",
+    "pairs": [
+      {
+        "id": "sun_videoplace",
+        "originalTitle": "Videoplace",
+        "originalYear": "1970",
+        "originalMediaType": "video",
+        "originalLink": "https://en.wikipedia.org/wiki/Videoplace",
+        "student": "Sun Chuanqi",
+        "recreationMediaType": "video",
+        "recreationLink": "https://youtu.be/TOqAjIYPzc4"
+      },
+      {
+        "id": "anyang_videoplace",
+        "originalTitle": "Videoplace",
+        "originalYear": "1970",
+        "originalMediaType": "video",
+        "originalLink": "https://www.youtube.com/watch?v=dmmxVA5xhuo",
+        "student": "Anyang Zu",
+        "recreationMediaType": "gif",
+        "recreationLink": ""
+      },
+      {
+        "id": "ana_videoplace",
+        "originalTitle": "Videoplace",
+        "originalYear": "1970",
+        "originalMediaType": "image",
+        "originalLink": "",
+        "student": "Ana Schon",
+        "recreationMediaType": "gif",
+        "recreationLink": "https://github.com/anaschonml/RTP-code/tree/main/objects"
+      },
+      {
+        "id": "lia_videoplace",
+        "originalTitle": "Videoplace",
+        "originalYear": "1970",
+        "originalMediaType": "gif",
+        "originalLink": "",
+        "student": "Lia Chen",
+        "recreationMediaType": "gif",
+        "recreationLink": ""
+      },
+      {
+        "id": "annie_videoplace",
+        "originalTitle": "Videoplace",
+        "originalYear": "1970",
+        "originalMediaType": "image",
+        "originalLink": "",
+        "student": "Annie Yining Chen",
+        "recreationMediaType": "gif",
+        "recreationLink": ""
+      },
+      {
+        "id": "vivian_videoplace",
+        "originalTitle": "Videoplace",
+        "originalYear": "1970",
+        "originalMediaType": "image",
+        "originalLink": "https://dam.org/museum/artists_ui/artists/krueger-myron/",
+        "student": "Vivian Kong",
+        "recreationMediaType": "gif",
+        "recreationLink": "https://editor.p5js.org/vivian20206/full/44-_9ysKV"
+      },
+      {
+        "id": "haotian_videoplace",
+        "originalTitle": "Videoplace",
+        "originalYear": "1970",
+        "originalMediaType": "video",
+        "originalLink": "https://www.awexr.com/hall-of-fame/22-myron-w-krueger",
+        "student": "Haotian Wang",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/haotian_wang/sketches/nYlrN2f-4"
+      },
+      {
+        "id": "shiman_videoplace",
+        "originalTitle": "Videoplace",
+        "originalYear": "1970",
+        "originalMediaType": "video",
+        "originalLink": "https://www.youtube.com/watch?v=dqZyZrN3Pl0",
+        "student": "Shiman Xu",
+        "recreationMediaType": "image",
+        "recreationLink": "",
+        "notes": "Recreation link in source document points to Haotian Wang's p5js sketch — likely a copy-paste error; left blank."
+      },
+      {
+        "id": "eitan_small-planet",
+        "originalTitle": "Small Planet",
+        "originalYear": "1977",
+        "originalMediaType": "image",
+        "originalLink": "https://history.siggraph.org/artwork/myron-w-krueger-small-planet/",
+        "student": "Eitan Wolf",
+        "recreationMediaType": "gif",
+        "recreationLink": ""
+      },
+      {
+        "id": "fengyi_videoplace",
+        "originalTitle": "Videoplace",
+        "originalYear": "1970",
+        "originalMediaType": "image",
+        "originalLink": "https://photos1.blogger.com/blogger/7672/3756/1600/videoplace2.jpg",
+        "student": "Fengyi Ye",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/fengyiye68/full/gkgnEh9oa"
+      }
+    ]
+  },
+  {
+    "artist": "Camille Utterback",
+    "artistSlug": "camille-utterback",
+    "mediaFolder": "utterback",
+    "pairs": [
+      {
+        "id": "aimee_text-rain",
+        "originalTitle": "Text Rain",
+        "originalYear": "1999",
+        "originalMediaType": "image",
+        "originalLink": "https://camilleutterback.com/projects/text-rain/",
+        "student": "Aimee Ye",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/aimeeye/full/j6AHcCUuu"
+      },
+      {
+        "id": "jae_text-rain",
+        "originalTitle": "Text Rain",
+        "originalYear": "1999",
+        "originalMediaType": "image",
+        "originalLink": "",
+        "student": "Jae In Yoo",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/janejanejaneyay/full/tCtSK4iRc"
+      },
+      {
+        "id": "alex_text-rain",
+        "originalTitle": "Text Rain",
+        "originalYear": "1999",
+        "originalMediaType": "image",
+        "originalLink": "",
+        "student": "Alex Dang",
+        "recreationMediaType": "image",
+        "recreationLink": "https://superelectrophile.github.io/text-rain/"
+      }
+    ]
+  },
+  {
+    "artist": "Woody and Steina Vasulka",
+    "artistSlug": "woody-vasulka",
+    "mediaFolder": "vasulka",
+    "pairs": [
+      {
+        "id": "haotian_noisefields",
+        "originalTitle": "Noisefields",
+        "originalYear": "1974",
+        "originalMediaType": "image",
+        "originalLink": "https://www.moma.org/collection/works/118532",
+        "student": "Haotian Wang",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/haotian_wang/full/6-pmVWd_y"
+      },
+      {
+        "id": "shiman_noisefields",
+        "originalTitle": "Noisefields",
+        "originalYear": "1974",
+        "originalMediaType": "image",
+        "originalLink": "",
+        "student": "Shiman Xu",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/shimanxxx/full/kPj9EcmOK"
+      },
+      {
+        "id": "ash_noisefields",
+        "originalTitle": "Noisefields",
+        "originalYear": "1974",
+        "originalMediaType": "image",
+        "originalLink": "",
+        "student": "Ash He",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/kevin1753008444/full/qdAra_cZY"
+      },
+      {
+        "id": "yufeng_c-trend",
+        "originalTitle": "C-Trend",
+        "originalYear": "1974",
+        "originalMediaType": "image",
+        "originalLink": "https://lux.org.uk/work/c-trend/",
+        "student": "Yufeng Zhao",
+        "recreationMediaType": "gif",
+        "recreationLink": "https://earth-cam.yufeng.place/"
+      },
+      {
+        "id": "aimee_c-trend",
+        "originalTitle": "C-Trend",
+        "originalYear": "1974",
+        "originalMediaType": "image",
+        "originalLink": "http://www.papaygyronights.papawestray.org/html/gyro2013/artists/vasulka.html",
+        "student": "Aimee Ye",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/aimeeye/full/QV7oq_St_"
+      },
+      {
+        "id": "anyang_transformations",
+        "originalTitle": "Transformations",
+        "originalYear": "1975",
+        "originalMediaType": "video",
+        "originalLink": "",
+        "student": "Anyang Zu",
+        "recreationMediaType": "gif",
+        "recreationLink": ""
+      },
+      {
+        "id": "vivian_transformations",
+        "originalTitle": "Transformations",
+        "originalYear": "1975",
+        "originalMediaType": "video",
+        "originalLink": "https://www.eai.org/titles/transformations",
+        "student": "Vivian Kong",
+        "recreationMediaType": "image",
+        "recreationLink": "https://github.com/vivian20206/Woody/blob/1b299168d10918b0cbf8e609361dd43540976bc5/src/ofApp.cpp"
+      },
+      {
+        "id": "emily_transformations",
+        "originalTitle": "Transformations",
+        "originalYear": "1975",
+        "originalMediaType": "image",
+        "originalLink": "",
+        "student": "Emily Guan",
+        "recreationMediaType": "video",
+        "recreationLink": ""
+      },
+      {
+        "id": "eitan_untitled-1978",
+        "originalTitle": "Untitled",
+        "originalYear": "1978",
+        "originalMediaType": "video",
+        "originalLink": "",
+        "student": "Eitan Wolf",
+        "recreationMediaType": "image",
+        "recreationLink": "https://openprocessing.org/@u587985/2939367"
+      },
+      {
+        "id": "annie_vasulka-effect",
+        "originalTitle": "Vasulka Effect",
+        "originalYear": "",
+        "originalMediaType": "image",
+        "originalLink": "https://cinema.cornell.edu/vasulka-effect",
+        "student": "Annie Yining Chen",
+        "recreationMediaType": "gif",
+        "recreationLink": "https://editor.p5js.org/ychenannie8/full/8kUwaETsk"
+      },
+      {
+        "id": "jae_vasulka-effect",
+        "originalTitle": "Vasulka Effect",
+        "originalYear": "",
+        "originalMediaType": "image",
+        "originalLink": "",
+        "student": "Jae In Yoo",
+        "recreationMediaType": "gif",
+        "recreationLink": ""
+      },
+      {
+        "id": "alex_vasulka-effect",
+        "originalTitle": "Vasulka Effect",
+        "originalYear": "",
+        "originalMediaType": "image",
+        "originalLink": "",
+        "student": "Alex Dang",
+        "recreationMediaType": "image",
+        "recreationLink": ""
+      }
+    ]
+  },
+  {
+    "artist": "Rosa Menkman",
+    "artistSlug": "rosa-menkman",
+    "mediaFolder": "menkman",
+    "pairs": [
+      {
+        "id": "fengyi_ghost-for-de-calibration",
+        "originalTitle": "Ghost for De-Calibration",
+        "originalYear": "",
+        "originalMediaType": "image",
+        "originalLink": "https://practice2145.wordpress.com/2017/10/09/rosa-menkman/",
+        "student": "Fengyi Ye",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/fengyiye68/full/g4dYNIFiC"
       }
     ]
   }

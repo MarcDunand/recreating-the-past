@@ -125,7 +125,19 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
             "Ask yt-dlp to use cookies from a browser where you are signed into "
             "YouTube, such as chrome, edge, or firefox. This can help with "
             "YouTube's 'Sign in to confirm you're not a bot' message. Only used "
-            "when --download is passed."
+            "when --download is passed. Note: Chrome 127+ on Windows may fail with "
+            "a DPAPI decryption error; use --cookies instead."
+        ),
+    )
+    parser.add_argument(
+        "--cookies",
+        metavar="FILE",
+        help=(
+            "Path to a Netscape-format cookie file to pass to yt-dlp. Use this "
+            "instead of --cookies-from-browser if browser cookie extraction fails "
+            "(e.g. Chrome's DPAPI error on Windows). Export from Chrome/Firefox "
+            "using the 'Get cookies.txt LOCALLY' browser extension, then pass the "
+            "saved file here. Only used when --download is passed."
         ),
     )
     parser.add_argument(
@@ -171,14 +183,21 @@ def find_ffprobe() -> str | None:
 
 def require_ytdlp() -> str:
     ytdlp = shutil.which("yt-dlp")
-    if not ytdlp:
-        raise RuntimeError(
-            "yt-dlp is not installed or is not on PATH. Install it with one of:\n"
-            "  python -m pip install yt-dlp\n"
-            "  winget install yt-dlp.yt-dlp\n"
-            "Then rerun this script with --download."
-        )
-    return ytdlp
+    if ytdlp:
+        return ytdlp
+    # Fallback: check if yt-dlp is available as a Python module
+    import sys
+    try:
+        import yt_dlp  # noqa: F401
+        return f"{sys.executable} -m yt_dlp"
+    except ImportError:
+        pass
+    raise RuntimeError(
+        "yt-dlp is not installed or is not on PATH. Install it with one of:\n"
+        "  python -m pip install yt-dlp\n"
+        "  winget install yt-dlp.yt-dlp\n"
+        "Then rerun this script with --download."
+    )
 
 
 def resolve_source(manifest_path: Path, source: str) -> Path:
@@ -408,9 +427,10 @@ def ytdlp_command(
     source_url: str,
     output: Path,
     cookies_from_browser: str,
+    cookies_file: str,
 ) -> list[str]:
     command = [
-        ytdlp,
+        *ytdlp.split(),
         "--no-playlist",
         "-f",
         "bv*+ba/b",
@@ -421,6 +441,8 @@ def ytdlp_command(
     ]
     if cookies_from_browser:
         command.extend(["--cookies-from-browser", cookies_from_browser])
+    if cookies_file:
+        command.extend(["--cookies", cookies_file])
     command.append(source_url)
     return command
 
@@ -512,6 +534,7 @@ def process_job(
     ytdlp: str | None,
     allow_download: bool,
     cookies_from_browser: str,
+    cookies_file: str,
     force: bool,
     dry_run: bool,
     report: Report,
@@ -555,7 +578,7 @@ def process_job(
         if force or not source.exists():
             ensure_parent_dirs([source], dry_run)
             result = run_command(
-                ytdlp_command(ytdlp, job.source, source, cookies_from_browser),
+                ytdlp_command(ytdlp, job.source, source, cookies_from_browser, cookies_file),
                 dry_run,
             )
             if not handle_completed(result, report, f"{job.label}: failed to download source"):
@@ -642,6 +665,7 @@ def main() -> int:
             ytdlp,
             args.download,
             args.cookies_from_browser or "",
+            args.cookies or "",
             args.force,
             args.dry_run,
             report,

@@ -28,6 +28,11 @@ The final deployed site should be static and portable: HTML, CSS, JS, JSON, imag
 - `src/components/RecreationsArchive.jsx`
 - `src/components/RecreationsArchive.css`
 - `src/data/archive.json`
+- `src/data/media_manifest.json`
+- `scripts/check_expected_media.py`
+- `scripts/process_media.py`
+- `scripts/make_media_review.py`
+- `scripts/README_media_pipeline.md`
 - `public/media/`
 
 ## Data structure
@@ -61,6 +66,68 @@ Each pair has:
 ```
 
 The `id` is used to derive local media filenames.
+
+### Media vs. links
+
+Keep these concepts separate:
+
+- `originalMediaType` and `recreationMediaType` describe the local media shown on the comparison page.
+- `originalLink` is the public citation/official page for the original artwork, shown below the original media.
+- `recreationLink` is the public link to the student's code, sketch, or project page, shown below the recreation media.
+- `recreationLink` may be empty when no public code/sketch link is available.
+
+Do not treat `originalLink` or `recreationLink` as media-processing sources unless the user explicitly asks for that. Media-processing source URLs and local source paths belong in `src/data/media_manifest.json`.
+
+## Media manifest
+
+`src/data/media_manifest.json` describes how to produce the local media files that the site expects. It should not duplicate all archive metadata.
+
+The manifest is organized as a list of artist sections:
+
+```json
+{
+  "artist": "John Whitney",
+  "artistSlug": "john-whitney",
+  "mediaFolder": "whitney",
+  "entries": []
+}
+```
+
+Each entry corresponds to one archive pair and has `original` and `recreation` source instructions:
+
+```json
+{
+  "id": "marc_catalog",
+  "original": {
+    "sourceType": "youtube",
+    "source": "https://...",
+    "start": "00:00:00",
+    "duration": "00:00:12",
+    "notes": ""
+  },
+  "recreation": {
+    "sourceType": "p5",
+    "source": "https://...",
+    "start": "",
+    "duration": "",
+    "notes": ""
+  }
+}
+```
+
+Allowed `sourceType` values:
+
+- `local_video`
+- `local_image`
+- `local_gif`
+- `youtube`
+- `google_drive`
+- `dropbox`
+- `p5`
+- `openprocessing`
+- `missing`
+
+For local source types, `source` paths should be relative to `src/data/media_manifest.json`, not absolute.
 
 ## Media naming convention
 
@@ -116,7 +183,7 @@ The current chosen layout is:
 
 ## Media pipeline goal
 
-We need scripts to build local media folders for each week/artist.
+Scripts in `scripts/` build and review local media folders for each week/artist.
 
 For each item in `archive.json`, the pipeline should produce:
 
@@ -136,6 +203,26 @@ The source media may come from:
 - YouTube links
 - p5.js/OpenProcessing sketches that may need screen recording
 - timestamped excerpts from longer videos
+
+Current scripts:
+
+- `scripts/check_expected_media.py` reports missing expected local media/poster files from `archive.json`.
+- `scripts/process_media.py` reads `media_manifest.json` and generates web-ready local media for one artist.
+- `scripts/make_media_review.py` generates `review/media_review.html`, a local contact sheet for checking poster pairs.
+- `scripts/README_media_pipeline.md` documents media-pipeline commands.
+
+`process_media.py` requires an artist slug:
+
+```powershell
+python scripts/process_media.py john-whitney --dry-run
+python scripts/process_media.py vera-molnar --dry-run
+```
+
+It also accepts `help` as a friendly alias for `--help`:
+
+```powershell
+python scripts/process_media.py help
+```
 
 ## Preferred media processing behavior
 
@@ -168,6 +255,43 @@ Poster frame:
 ffmpeg -ss 00:00:02 -i input.mp4 -frames:v 1 poster.jpg
 ```
 
+Poster frames should default to 2 seconds into the processed clip. If the clip is shorter than 2 seconds, use the clip midpoint instead.
+
+Accepted `start` and `duration` formats in the media manifest:
+
+- `""`
+- `"12"`
+- `"12.5"`
+- `"00:00:12"`
+- `"00:34:50"`
+
+`process_media.py` currently supports processing:
+
+- `local_video`
+- `local_image`
+- `local_gif`
+- `youtube`
+- `dropbox`
+
+Do not download remote sources unless the user passes `--download`. Without `--download`, downloadable sources should be reported as needing download.
+
+YouTube and Dropbox downloads use `yt-dlp` when available. YouTube may require browser cookies if it reports `Sign in to confirm you're not a bot`. Keep browser-cookie access explicit:
+
+```powershell
+python scripts/process_media.py john-whitney --download --cookies-from-browser chrome
+python scripts/process_media.py john-whitney --download --cookies-from-browser edge
+python scripts/process_media.py john-whitney --download --cookies-from-browser firefox
+```
+
+Downloaded source files are cached separately from final media:
+
+```txt
+public/<mediaFolder>/originals/<id>_o_source.mp4
+public/<mediaFolder>/recreations/<id>_r_source.mp4
+```
+
+Final generated media still belongs under `public/media/<mediaFolder>/...`.
+
 ## Robustness goals
 
 The final site should not rely on:
@@ -194,8 +318,8 @@ External source links should remain in JSON as citations/credits, but the site s
 
 ## Good next tasks
 
-- Create a media manifest format.
-- Write a script that reads `archive.json` and checks which expected local media/poster files are missing.
-- Write a script that uses ffmpeg to convert source videos/GIFs into local web MP4s and posters.
-- Build a review contact sheet of all original/recreation pairs.
-- Add optional support for source clips with start time and duration.
+- Continue filling `media_manifest.json` for artists beyond Vera Molnár and John Whitney.
+- Add support for `google_drive` downloads or manual source capture.
+- Add support for p5.js/OpenProcessing screen-recording workflows.
+- Use `scripts/make_media_review.py` after processing media to inspect poster pairs.
+- Keep improving source notes in `media_manifest.json` without duplicating archive metadata.

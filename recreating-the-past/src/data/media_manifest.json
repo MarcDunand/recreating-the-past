@@ -337,18 +337,18 @@
       {
         "id": "sun_permutations",
         "original": {
-          "sourceType": "missing",
-          "source": "https://code.chuanqisun.com/recreating-the-past/whitney/original.mp4",
+          "sourceType": "local_video",
+          "source": "../../../contentDump/john-whitney/sun_permutations_original.mp4",
           "start": "",
           "duration": "",
-          "notes": "Remote MP4 URL from source document; allowed source types do not include remote_video."
+          "notes": "Downloaded from https://code.chuanqisun.com/recreating-the-past/whitney/original.mp4"
         },
         "recreation": {
-          "sourceType": "missing",
-          "source": "https://code.chuanqisun.com/recreating-the-past/whitney/recreated.mp4",
+          "sourceType": "local_video",
+          "source": "../../../contentDump/john-whitney/sun_permutations_recreated.mp4",
           "start": "",
           "duration": "",
-          "notes": "Remote MP4 URL from source document; allowed source types do not include remote_video."
+          "notes": "Downloaded from https://code.chuanqisun.com/recreating-the-past/whitney/recreated.mp4"
         }
       },
       {
@@ -369,13 +369,13 @@
         }
       },
       {
-        "id": "fengyi_catalog",
+        "id": "fengyi_matrix-iii",
         "original": {
           "sourceType": "youtube",
-          "source": "https://youtube.com/shorts/iMxw0RcA2ZU?feature=share",
+          "source": "https://youtu.be/ZrKgyY5aDvA?list=PLA61D26B1099384D3&t=140",
           "start": "",
           "duration": "",
-          "notes": ""
+          "notes": "iMxw0RcA2ZU (original YouTube Short) removed — unclear whether it was a Whitney clip or student work. Using the Matrix III source shared by other entries."
         },
         "recreation": {
           "sourceType": "youtube",
@@ -388,15 +388,15 @@
       {
         "id": "haotian_matrix-iii",
         "original": {
-          "sourceType": "youtube",
-          "source": "https://youtu.be/ZrKgyY5aDvA?list=PLA61D26B1099384D3&t=140",
-          "start": "00:02:20",
+          "sourceType": "local_video",
+          "source": "../../../contentDump/john-whitney/haotian_matrix-III_o.mp4",
+          "start": "",
           "duration": "",
-          "notes": "Source document says based on video time 2:20."
+          "notes": ""
         },
         "recreation": {
-          "sourceType": "p5",
-          "source": "https://editor.p5js.org/haotian_wang/full/AKhZuGFyC",
+          "sourceType": "local_video",
+          "source": "../../../contentDump/john-whitney/haotian_matrix-III_r.mp4",
           "start": "",
           "duration": "",
           "notes": ""
@@ -412,25 +412,25 @@
           "notes": "Source document says original is from Catalog at 34:50 in the Dropbox video."
         },
         "recreation": {
-          "sourceType": "google_drive",
-          "source": "https://drive.google.com/file/d/1brw_K2olCx6MKK3cgmme-G5pvXrKhNVa/view?usp=sharing",
+          "sourceType": "local_video",
+          "source": "../../public/whitney/recreations/ana_catalog_r_source.mp4",
           "start": "",
           "duration": "",
-          "notes": "Source document also lists code at https://github.com/anaschonml/RTP-code/tree/main/whitney1."
+          "notes": "Downloaded from https://drive.google.com/file/d/1brw_K2olCx6MKK3cgmme-G5pvXrKhNVa/view?usp=sharing; source document also lists code at https://github.com/anaschonml/RTP-code/tree/main/whitney1."
         }
       },
       {
-        "id": "malvika_permutations",
+        "id": "malvika_digital-harmony",
         "original": {
-          "sourceType": "p5",
-          "source": "https://editor.p5js.org/malvika.dwivedi.md/sketches/4qr7_WZXz",
+          "sourceType": "local_image",
+          "source": "../../../contentDump/john-whitney/malvika_digital-harmony_o.jpg",
           "start": "",
           "duration": "",
           "notes": ""
         },
         "recreation": {
-          "sourceType": "p5",
-          "source": "https://editor.p5js.org/malvika.dwivedi.md/sketches/4qr7_WZXz",
+          "sourceType": "local_image",
+          "source": "../../../contentDump/john-whitney/malvika_digital-harmony_r.png",
           "start": "",
           "duration": "",
           "notes": ""
@@ -439,49 +439,49 @@
       {
         "id": "jae_permutations",
         "original": {
-          "sourceType": "youtube",
-          "source": "https://www.youtube.com/watch?v=BzB31mD4NmA&list=PLA61D26B1099384D3",
+          "sourceType": "local_video",
+          "source": "../../../contentDump/john-whitney/jae_permutations_o.mp4",
           "start": "",
           "duration": "",
           "notes": ""
         },
         "recreation": {
-          "sourceType": "p5",
-          "source": "https://editor.p5js.org/janejanejaneyay/sketches/HLSXnH7yE",
+          "sourceType": "local_video",
+          "source": "../../../contentDump/john-whitney/jae_permutations_r.mp4",
           "start": "",
           "duration": "",
           "notes": ""
         }
       },
       {
-        "id": "anyang_experiments-in-motion-graphics",
+        "id": "anyang_permutations",
         "original": {
-          "sourceType": "youtube",
-          "source": "https://www.youtube.com/watch?v=jIv-EcX9tUs",
+          "sourceType": "local_image",
+          "source": "../../../contentDump/john-whitney/anyang_permutations_o.png",
           "start": "",
           "duration": "",
           "notes": ""
         },
         "recreation": {
-          "sourceType": "p5",
-          "source": "https://editor.p5js.org/azu100/sketches/390qwBmjG",
+          "sourceType": "local_image",
+          "source": "../../../contentDump/john-whitney/anyang_permutations_r.png",
           "start": "",
           "duration": "",
           "notes": ""
         }
       },
       {
-        "id": "shiman_matrix-iii",
+        "id": "shiman_matrix",
         "original": {
-          "sourceType": "youtube",
-          "source": "https://www.youtube.com/watch?v=ryKT1uIPIaI&list=RDryKT1uIPIaI&start_radio=1",
-          "start": "00:02:14",
+          "sourceType": "local_video",
+          "source": "../../../contentDump/john-whitney/shiman_matrix_o.mp4",
+          "start": "",
           "duration": "",
-          "notes": "Source document says starting from 2:14."
+          "notes": ""
         },
         "recreation": {
-          "sourceType": "p5",
-          "source": "https://editor.p5js.org/shimanxxx/full/S_qalUd5V",
+          "sourceType": "local_video",
+          "source": "../../../contentDump/john-whitney/shiman_matrix_r.mp4",
           "start": "",
           "duration": "",
           "notes": ""
@@ -524,15 +524,15 @@
       {
         "id": "lia_matrix-iii",
         "original": {
-          "sourceType": "youtube",
-          "source": "https://www.youtube.com/watch?v=ZrKgyY5aDvA&list=RDZrKgyY5aDvA&start_radio=1",
-          "start": "00:09:12",
-          "duration": "00:00:13",
-          "notes": "Source document says Matrix III, 9:12-9:25."
+          "sourceType": "local_video",
+          "source": "../../../contentDump/john-whitney/lia_matrix-III_o.mp4",
+          "start": "",
+          "duration": "",
+          "notes": ""
         },
         "recreation": {
-          "sourceType": "p5",
-          "source": "https://editor.p5js.org/qc311/sketches/QBJ592JTi",
+          "sourceType": "local_video",
+          "source": "../../../contentDump/john-whitney/lia_matrix-III_r.mp4",
           "start": "",
           "duration": "",
           "notes": ""
@@ -573,23 +573,6 @@
         }
       },
       {
-        "id": "marc_catalog",
-        "original": {
-          "sourceType": "youtube",
-          "source": "https://www.youtube.com/watch?v=6bydDe_WCWc",
-          "start": "00:00:00",
-          "duration": "00:00:12",
-          "notes": "Source document says the recreation targets the first 12 seconds."
-        },
-        "recreation": {
-          "sourceType": "youtube",
-          "source": "https://youtu.be/d1TPZc4Lmm3",
-          "start": "",
-          "duration": "",
-          "notes": ""
-        }
-      },
-      {
         "id": "emily_permutations",
         "original": {
           "sourceType": "local_gif",
@@ -621,6 +604,1569 @@
           "start": "",
           "duration": "",
           "notes": "Extracted from John Whitney source document export; section also includes image24.gif as an alternate recreation GIF."
+        }
+      }
+    ]
+  },
+  {
+    "artist": "Muriel Cooper",
+    "artistSlug": "muriel-cooper",
+    "mediaFolder": "cooper",
+    "entries": [
+      {
+        "id": "ash_typographic-color-work",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/muriel-cooper/raw/Homework 3 (Muriel Cooper)/images/image42.jpg",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_gif",
+          "source": "../../../contentDump/muriel-cooper/raw/Homework 3 (Muriel Cooper)/images/image19.gif",
+          "start": "",
+          "duration": "",
+          "notes": "Static screenshot also available as image44.png."
+        }
+      },
+      {
+        "id": "shiman_typographic-color-layers",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/muriel-cooper/raw/Homework 3 (Muriel Cooper)/images/image8.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/muriel-cooper/raw/Homework 3 (Muriel Cooper)/images/image39.png",
+          "start": "",
+          "duration": "",
+          "notes": "Alternate recreation screenshots also in image24.png and image3.png."
+        }
+      },
+      {
+        "id": "fengyi_mit-press-colophon",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/muriel-cooper/raw/Homework 3 (Muriel Cooper)/images/image10.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/muriel-cooper/raw/Homework 3 (Muriel Cooper)/images/image14.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "ana_typographic-work",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/muriel-cooper/raw/Homework 3 (Muriel Cooper)/images/image12.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/muriel-cooper/raw/Homework 3 (Muriel Cooper)/images/image31.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "an_mit-press-colophon",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/muriel-cooper/raw/Homework 3 (Muriel Cooper)/images/image35.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/muriel-cooper/raw/Homework 3 (Muriel Cooper)/images/image5.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "ivy_mit-press-colophon",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/muriel-cooper/raw/Homework 3 (Muriel Cooper)/images/image47.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/muriel-cooper/raw/Homework 3 (Muriel Cooper)/images/image26.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "haotian_mit-press-colophon",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/muriel-cooper/raw/Homework 3 (Muriel Cooper)/images/image22.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/muriel-cooper/raw/Homework 3 (Muriel Cooper)/images/image37.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "annie_information-landscapes",
+        "original": {
+          "sourceType": "local_video",
+          "source": "../../../contentDump/muriel-cooper/raw/Homework 3 (Muriel Cooper)/images/image51.jpg",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_gif",
+          "source": "../../../contentDump/muriel-cooper/raw/Homework 3 (Muriel Cooper)/images/image1.gif",
+          "start": "",
+          "duration": "",
+          "notes": "3D environment screenshot also available as image43.png."
+        }
+      },
+      {
+        "id": "malvika_concentric-squares",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/muriel-cooper/raw/Homework 3 (Muriel Cooper)/images/image7.jpg",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/muriel-cooper/raw/Homework 3 (Muriel Cooper)/images/image32.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "ayah_communication-by-design",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/muriel-cooper/raw/Homework 3 (Muriel Cooper)/images/image48.jpg",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/muriel-cooper/raw/Homework 3 (Muriel Cooper)/images/image23.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "lia_bauhaus-poster",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/muriel-cooper/raw/Homework 3 (Muriel Cooper)/images/image27.jpg",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/muriel-cooper/raw/Homework 3 (Muriel Cooper)/images/image29.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "emily_mit-press-cover",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/muriel-cooper/raw/Homework 3 (Muriel Cooper)/images/image30.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/muriel-cooper/raw/Homework 3 (Muriel Cooper)/images/image15.png",
+          "start": "",
+          "duration": "",
+          "notes": "Detail view also in image40.png. Recreation produced in Rhino Grasshopper."
+        }
+      },
+      {
+        "id": "yufeng_bauhaus",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/muriel-cooper/raw/Homework 3 (Muriel Cooper)/images/image50.png",
+          "start": "",
+          "duration": "",
+          "notes": "Alternate original view also in image45.png."
+        },
+        "recreation": {
+          "sourceType": "local_gif",
+          "source": "../../../contentDump/muriel-cooper/raw/Homework 3 (Muriel Cooper)/images/image41.gif",
+          "start": "",
+          "duration": "",
+          "notes": "TouchDesigner static screenshot also in image9.png."
+        }
+      },
+      {
+        "id": "eitan_messages-and-means",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/muriel-cooper/raw/Homework 3 (Muriel Cooper)/images/image6.jpg",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/muriel-cooper/raw/Homework 3 (Muriel Cooper)/images/image17.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "v1 also in image11.jpg. v2 (image17.jpg) is closer to original faded colors."
+        }
+      },
+      {
+        "id": "aimee_muriel-cooper-at-mit",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/muriel-cooper/raw/Homework 3 (Muriel Cooper)/images/image49.jpg",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/muriel-cooper/raw/Homework 3 (Muriel Cooper)/images/image2.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "anyang_typographic-shapes",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/muriel-cooper/raw/Homework 3 (Muriel Cooper)/images/image20.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/muriel-cooper/raw/Homework 3 (Muriel Cooper)/images/image25.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "jae_mit-press-cover",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/muriel-cooper/raw/Homework 3 (Muriel Cooper)/images/image30.png",
+          "start": "",
+          "duration": "",
+          "notes": "Same original image as emily_mit-press-cover."
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/muriel-cooper/raw/Homework 3 (Muriel Cooper)/images/image18.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      }
+    ]
+  },
+  {
+    "artist": "John Maeda",
+    "artistSlug": "john-maeda",
+    "mediaFolder": "maeda",
+    "entries": [
+      {
+        "id": "sun_morisawa-6",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/muriel-cooper/raw/Homework 3 (Muriel Cooper)/images/image38.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/muriel-cooper/raw/Homework 3 (Muriel Cooper)/images/image13.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "vivian_morisawa-9",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/muriel-cooper/raw/Homework 3 (Muriel Cooper)/images/image16.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/muriel-cooper/raw/Homework 3 (Muriel Cooper)/images/image46.jpg",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      }
+    ]
+  },
+  {
+    "artist": "Anni Albers",
+    "artistSlug": "anni-albers",
+    "mediaFolder": "albers",
+    "entries": [
+      {
+        "id": "jae_design-for-wall-hanging",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/anni-albers/raw/Homework 4 (Anni Albers)/images/image4.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/anni-albers/raw/Homework 4 (Anni Albers)/images/image34.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "ash_gr-i",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/anni-albers/raw/Homework 4 (Anni Albers)/images/image37.jpg",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/anni-albers/raw/Homework 4 (Anni Albers)/images/image59.jpg",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "ivy_unknown-textile-work",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/anni-albers/raw/Homework 4 (Anni Albers)/images/image36.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/anni-albers/raw/Homework 4 (Anni Albers)/images/image62.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "ana_scroll",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/anni-albers/raw/Homework 4 (Anni Albers)/images/image30.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/anni-albers/raw/Homework 4 (Anni Albers)/images/image29.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "anyang_yellow-meander",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/anni-albers/raw/Homework 4 (Anni Albers)/images/image60.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/anni-albers/raw/Homework 4 (Anni Albers)/images/image27.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "lia_movement-in-squares",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/anni-albers/raw/Homework 4 (Anni Albers)/images/image41.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/anni-albers/raw/Homework 4 (Anni Albers)/images/image52.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "shiman_red-meander",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/anni-albers/raw/Homework 4 (Anni Albers)/images/image12.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/anni-albers/raw/Homework 4 (Anni Albers)/images/image61.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "fengyi_untitled",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/anni-albers/raw/Homework 4 (Anni Albers)/images/image25.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/anni-albers/raw/Homework 4 (Anni Albers)/images/image28.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "yufeng_connections",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/anni-albers/raw/Homework 4 (Anni Albers)/images/image26.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_gif",
+          "source": "../../../contentDump/anni-albers/raw/Homework 4 (Anni Albers)/images/image43.gif",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "annie_second-movement",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/anni-albers/raw/Homework 4 (Anni Albers)/images/image6.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_gif",
+          "source": "../../../contentDump/anni-albers/raw/Homework 4 (Anni Albers)/images/image48.gif",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "alex_tr-ii",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/anni-albers/raw/Homework 4 (Anni Albers)/images/image32.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/anni-albers/raw/Homework 4 (Anni Albers)/images/image23.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "haotian_second-movement-i",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/anni-albers/raw/Homework 4 (Anni Albers)/images/image56.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/anni-albers/raw/Homework 4 (Anni Albers)/images/image10.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "emily_gr-i",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/anni-albers/raw/Homework 4 (Anni Albers)/images/image40.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/anni-albers/raw/Homework 4 (Anni Albers)/images/image33.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "aimee_second-movement-i",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/anni-albers/raw/Homework 4 (Anni Albers)/images/image56.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/anni-albers/raw/Homework 4 (Anni Albers)/images/image9.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      }
+    ]
+  },
+  {
+    "artist": "Lillian Schwartz",
+    "artistSlug": "lillian-schwartz",
+    "mediaFolder": "schwartz",
+    "entries": [
+      {
+        "id": "sun_olympiad",
+        "original": {
+          "sourceType": "youtube",
+          "source": "https://www.youtube.com/watch?v=faqnx54amFE",
+          "start": "",
+          "duration": "",
+          "notes": "Full Olympiad animation. Poster image: image29.png in HW5 images folder."
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/ken-knowlton-and-lillian-schwartz/raw/Homework 5 (Ken Knowlton _ Lillian Schwartz)/images/image22.png",
+          "start": "",
+          "duration": "",
+          "notes": "4x4 grid of colorful circuit-runner figures — Sun's final static recreation."
+        }
+      },
+      {
+        "id": "jae_untitled-37",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/ken-knowlton-and-lillian-schwartz/raw/Homework 5 (Ken Knowlton _ Lillian Schwartz)/images/image4.png",
+          "start": "",
+          "duration": "",
+          "notes": "Framed artwork with terracotta dotted interlocking shapes from spalterdigital.com/artworks/untitled-37/."
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/ken-knowlton-and-lillian-schwartz/raw/Homework 5 (Ken Knowlton _ Lillian Schwartz)/images/image20.png",
+          "start": "",
+          "duration": "",
+          "notes": "Same interlocking pattern in orange — Jae's static recreation (gtECbTeBN)."
+        }
+      },
+      {
+        "id": "annie_homage-to-duchamp",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/ken-knowlton-and-lillian-schwartz/raw/Homework 5 (Ken Knowlton _ Lillian Schwartz)/images/image14.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "PROXY: actual original video not yet sourced. This is Annie's sparse wireframe recreation used as a stand-in."
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/ken-knowlton-and-lillian-schwartz/raw/Homework 5 (Ken Knowlton _ Lillian Schwartz)/images/image18.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Dense overlapping wireframe triangles — Annie's final static recreation. Video version (image34.gif, 28MB) also available."
+        }
+      },
+      {
+        "id": "malvika_enigma",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/ken-knowlton-and-lillian-schwartz/raw/Homework 5 (Ken Knowlton _ Lillian Schwartz)/images/image46.png",
+          "start": "",
+          "duration": "",
+          "notes": "Enigma still — Lillian Schwartz 1972."
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/ken-knowlton-and-lillian-schwartz/raw/Homework 5 (Ken Knowlton _ Lillian Schwartz)/images/image16.png",
+          "start": "",
+          "duration": "",
+          "notes": "Malvika's recreation of Enigma."
+        }
+      }
+    ]
+  },
+  {
+    "artist": "Ken Knowlton",
+    "artistSlug": "ken-knowlton",
+    "mediaFolder": "knowlton",
+    "entries": [
+      {
+        "id": "vivian_eismc2",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/ken-knowlton-and-lillian-schwartz/raw/Homework 5 (Ken Knowlton _ Lillian Schwartz)/images/image6.png",
+          "start": "",
+          "duration": "",
+          "notes": "EisMC2 — Knowlton E=mc2 symbol portrait of Einstein."
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/ken-knowlton-and-lillian-schwartz/raw/Homework 5 (Ken Knowlton _ Lillian Schwartz)/images/image32.png",
+          "start": "",
+          "duration": "",
+          "notes": "Vivian's OpenFrameworks recreation mapping brightness to E=mc2 characters."
+        }
+      },
+      {
+        "id": "emily_obama",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/ken-knowlton-and-lillian-schwartz/raw/Homework 5 (Ken Knowlton _ Lillian Schwartz)/images/image26.png",
+          "start": "",
+          "duration": "",
+          "notes": "Knowlton Obama text mosaic — screenshot from knowltonmosaics.com."
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/ken-knowlton-and-lillian-schwartz/raw/Homework 5 (Ken Knowlton _ Lillian Schwartz)/images/image23.png",
+          "start": "",
+          "duration": "",
+          "notes": "Emily's Python recreation: Obama portrait using text from his 2008 speech."
+        }
+      },
+      {
+        "id": "lia_dominoportrait-of-charlie-chaplin",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/ken-knowlton-and-lillian-schwartz/raw/Homework 5 (Ken Knowlton _ Lillian Schwartz)/images/image44.png",
+          "start": "",
+          "duration": "",
+          "notes": "Chaplin reference portrait used by Lia as original."
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/ken-knowlton-and-lillian-schwartz/raw/Homework 5 (Ken Knowlton _ Lillian Schwartz)/images/image2.png",
+          "start": "",
+          "duration": "",
+          "notes": "Lia's p5.js domino-style recreation."
+        }
+      },
+      {
+        "id": "anyang_martin-gardner",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/ken-knowlton-and-lillian-schwartz/raw/Homework 5 (Ken Knowlton _ Lillian Schwartz)/images/image13.png",
+          "start": "",
+          "duration": "",
+          "notes": "Screenshot from gathering4gardner.org showing Martin Gardner domino portrait."
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/ken-knowlton-and-lillian-schwartz/raw/Homework 5 (Ken Knowlton _ Lillian Schwartz)/images/image8.png",
+          "start": "",
+          "duration": "",
+          "notes": "Anyang's p5.js domino recreation using Markov Chain brightness mapping."
+        }
+      },
+      {
+        "id": "ana_studies-in-perception-i",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/ken-knowlton-and-lillian-schwartz/raw/Homework 5 (Ken Knowlton _ Lillian Schwartz)/images/image39.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Framed print of Studies in Perception I (Computer Nude)."
+        },
+        "recreation": {
+          "sourceType": "local_gif",
+          "source": "../../../contentDump/ken-knowlton-and-lillian-schwartz/raw/Homework 5 (Ken Knowlton _ Lillian Schwartz)/images/image36.gif",
+          "start": "",
+          "duration": "",
+          "notes": "Ana's webcam-driven symbol tile recreation."
+        }
+      },
+      {
+        "id": "haotian_eismc2",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/ken-knowlton-and-lillian-schwartz/raw/Homework 5 (Ken Knowlton _ Lillian Schwartz)/images/image42.png",
+          "start": "",
+          "duration": "",
+          "notes": "Screenshot of knowltonmosaics.com EisMC2 page."
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/ken-knowlton-and-lillian-schwartz/raw/Homework 5 (Ken Knowlton _ Lillian Schwartz)/images/image12.png",
+          "start": "",
+          "duration": "",
+          "notes": "Haotian's p5js Einstein portrait using E=mc² symbols with Fisher-Yates shuffle."
+        }
+      },
+      {
+        "id": "eitan_studies-in-perception-i",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/ken-knowlton-and-lillian-schwartz/raw/Homework 5 (Ken Knowlton _ Lillian Schwartz)/images/image35.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Computer Nude (Studies in Perception I) — Harmon and Knowlton 1966."
+        },
+        "recreation": {
+          "sourceType": "local_gif",
+          "source": "../../../contentDump/ken-knowlton-and-lillian-schwartz/raw/Homework 5 (Ken Knowlton _ Lillian Schwartz)/images/image11.gif",
+          "start": "",
+          "duration": "",
+          "notes": "Eitan's ASCII/symbol webcam recreation."
+        }
+      },
+      {
+        "id": "fengyi_variable-weight-alphabet",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/ken-knowlton-and-lillian-schwartz/raw/Homework 5 (Ken Knowlton _ Lillian Schwartz)/images/image31.png",
+          "start": "",
+          "duration": "",
+          "notes": "Original Instagram post by 'brionfusion' (2024) showing variable-weight alphabet. NOT a Knowlton/Schwartz work."
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/ken-knowlton-and-lillian-schwartz/raw/Homework 5 (Ken Knowlton _ Lillian Schwartz)/images/image45.png",
+          "start": "",
+          "duration": "",
+          "notes": "Fengyi's p5.js custom alphabet with letter weight gradient."
+        }
+      }
+    ]
+  },
+  {
+    "artist": "Nancy Burson",
+    "artistSlug": "nancy-burson",
+    "mediaFolder": "burson",
+    "entries": [
+      {
+        "id": "anyang_composites",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/nancy-burson-and-jason-salavon/raw/Homework 6 (Nancy Burson _ Jason Salavon)/images/image7.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_video",
+          "source": "../../../contentDump/nancy-burson-and-jason-salavon/raw/Homework 6 (Nancy Burson _ Jason Salavon)/images/image21.gif",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "aimee_androgyny",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/nancy-burson-and-jason-salavon/raw/Homework 6 (Nancy Burson _ Jason Salavon)/images/image8.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_video",
+          "source": "../../../contentDump/nancy-burson-and-jason-salavon/raw/Homework 6 (Nancy Burson _ Jason Salavon)/images/image26.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "shiman_morphing-grid",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/nancy-burson-and-jason-salavon/raw/Homework 6 (Nancy Burson _ Jason Salavon)/images/image43.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/nancy-burson-and-jason-salavon/raw/Homework 6 (Nancy Burson _ Jason Salavon)/images/image1.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "jae_composites",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/nancy-burson-and-jason-salavon/raw/Homework 6 (Nancy Burson _ Jason Salavon)/images/image70.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/nancy-burson-and-jason-salavon/raw/Homework 6 (Nancy Burson _ Jason Salavon)/images/image13.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Student averaged family photos; image13.jpg is the primary from 4 photos in the recreation column."
+        }
+      },
+      {
+        "id": "alex_morphing-grid",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/nancy-burson-and-jason-salavon/raw/Homework 6 (Nancy Burson _ Jason Salavon)/images/image39.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/nancy-burson-and-jason-salavon/raw/Homework 6 (Nancy Burson _ Jason Salavon)/images/image38.png",
+          "start": "",
+          "duration": "",
+          "notes": "Recreation also includes image17.png (wireframe triangulation mesh of a face)."
+        }
+      },
+      {
+        "id": "ivy_primate-composite",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/nancy-burson-and-jason-salavon/raw/Homework 6 (Nancy Burson _ Jason Salavon)/images/image11.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/nancy-burson-and-jason-salavon/raw/Homework 6 (Nancy Burson _ Jason Salavon)/images/image50.jpg",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "haotian_animal-composite",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/nancy-burson-and-jason-salavon/raw/Homework 6 (Nancy Burson _ Jason Salavon)/images/image4.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/nancy-burson-and-jason-salavon/raw/Homework 6 (Nancy Burson _ Jason Salavon)/images/image12.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      }
+    ]
+  },
+  {
+    "artist": "Jason Salavon",
+    "artistSlug": "jason-salavon",
+    "mediaFolder": "salavon",
+    "entries": [
+      {
+        "id": "sun_class-of-1988",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/nancy-burson-and-jason-salavon/raw/Homework 6 (Nancy Burson _ Jason Salavon)/images/image64.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/nancy-burson-and-jason-salavon/raw/Homework 6 (Nancy Burson _ Jason Salavon)/images/image45.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "lia_portrait-hals",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/nancy-burson-and-jason-salavon/raw/Homework 6 (Nancy Burson _ Jason Salavon)/images/image46.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/nancy-burson-and-jason-salavon/raw/Homework 6 (Nancy Burson _ Jason Salavon)/images/image14.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "annie_class-of-1988",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/nancy-burson-and-jason-salavon/raw/Homework 6 (Nancy Burson _ Jason Salavon)/images/image60.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/nancy-burson-and-jason-salavon/raw/Homework 6 (Nancy Burson _ Jason Salavon)/images/image28.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Animated GIF also available as image62.gif in the same images folder."
+        }
+      },
+      {
+        "id": "ana_class-of-1988",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/nancy-burson-and-jason-salavon/raw/Homework 6 (Nancy Burson _ Jason Salavon)/images/image63.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/nancy-burson-and-jason-salavon/raw/Homework 6 (Nancy Burson _ Jason Salavon)/images/image37.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "eitan_late-night-triad",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/nancy-burson-and-jason-salavon/raw/Homework 6 (Nancy Burson _ Jason Salavon)/images/image25.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/nancy-burson-and-jason-salavon/raw/Homework 6 (Nancy Burson _ Jason Salavon)/images/image67.png",
+          "start": "",
+          "duration": "",
+          "notes": "Process screenshots also in image52.png and image33.png."
+        }
+      },
+      {
+        "id": "ash_newlyweds",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/nancy-burson-and-jason-salavon/raw/Homework 6 (Nancy Burson _ Jason Salavon)/images/image44.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/nancy-burson-and-jason-salavon/raw/Homework 6 (Nancy Burson _ Jason Salavon)/images/image35.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "fengyi_all-the-ways",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/nancy-burson-and-jason-salavon/raw/Homework 6 (Nancy Burson _ Jason Salavon)/images/image20.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/nancy-burson-and-jason-salavon/raw/Homework 6 (Nancy Burson _ Jason Salavon)/images/image55.png",
+          "start": "",
+          "duration": "",
+          "notes": "Color palette image also in image16.png."
+        }
+      },
+      {
+        "id": "vivian_all-the-ways",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/nancy-burson-and-jason-salavon/raw/Homework 6 (Nancy Burson _ Jason Salavon)/images/image31.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/nancy-burson-and-jason-salavon/raw/Homework 6 (Nancy Burson _ Jason Salavon)/images/image48.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      }
+    ]
+  },
+  {
+    "artist": "Claire Hentschker",
+    "artistSlug": "claire-hentschker",
+    "mediaFolder": "hentschker",
+    "entries": [
+      {
+        "id": "yufeng_biker-on-the-road",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/nancy-burson-and-jason-salavon/raw/Homework 6 (Nancy Burson _ Jason Salavon)/images/image47.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/nancy-burson-and-jason-salavon/raw/Homework 6 (Nancy Burson _ Jason Salavon)/images/image57.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      }
+    ]
+  },
+  {
+    "artist": "Myron Krueger",
+    "artistSlug": "myron-krueger",
+    "mediaFolder": "krueger",
+    "entries": [
+      {
+        "id": "sun_videoplace",
+        "original": {
+          "sourceType": "youtube",
+          "source": "https://www.youtube.com/watch?v=dqZyZrN3Pl0",
+          "start": "32",
+          "duration": "18",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "youtube",
+          "source": "https://www.youtube.com/watch?v=TOqAjIYPzc4",
+          "start": "4",
+          "duration": "50",
+          "notes": ""
+        }
+      },
+      {
+        "id": "anyang_videoplace",
+        "original": {
+          "sourceType": "youtube",
+          "source": "https://www.youtube.com/watch?v=dmmxVA5xhuo",
+          "start": "95",
+          "duration": "10",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_gif",
+          "source": "../../../contentDump/myron-kreuger-and-camille-utterback/raw/Homework 7/images/image25.gif",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "ana_videoplace",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/myron-kreuger-and-camille-utterback/raw/Homework 7/images/image30.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_gif",
+          "source": "../../../contentDump/myron-kreuger-and-camille-utterback/raw/Homework 7/images/image3.gif",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "lia_videoplace",
+        "original": {
+          "sourceType": "local_gif",
+          "source": "../../../contentDump/myron-kreuger-and-camille-utterback/raw/Homework 7/images/image35.gif",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_gif",
+          "source": "../../../contentDump/myron-kreuger-and-camille-utterback/raw/Homework 7/images/image39.gif",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "annie_videoplace",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/myron-kreuger-and-camille-utterback/raw/Homework 7/images/image12.png",
+          "start": "",
+          "duration": "",
+          "notes": "Second original image also in image27.png."
+        },
+        "recreation": {
+          "sourceType": "local_gif",
+          "source": "../../../contentDump/myron-kreuger-and-camille-utterback/raw/Homework 7/images/image32.gif",
+          "start": "",
+          "duration": "",
+          "notes": "Alternate recreations also in image11.gif and image22.gif."
+        }
+      },
+      {
+        "id": "vivian_videoplace",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/myron-kreuger-and-camille-utterback/raw/Homework 7/images/image15.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_gif",
+          "source": "../../../contentDump/myron-kreuger-and-camille-utterback/raw/Homework 7/images/image23.gif",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "haotian_videoplace",
+        "original": {
+          "sourceType": "youtube",
+          "source": "https://www.youtube.com/watch?v=d4DUIeXSEpk",
+          "start": "79",
+          "duration": "24",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/myron-kreuger-and-camille-utterback/raw/Homework 7/images/image8.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "shiman_videoplace",
+        "original": {
+          "sourceType": "youtube",
+          "source": "https://www.youtube.com/watch?v=dqZyZrN3Pl0",
+          "start": "25",
+          "duration": "7",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/myron-kreuger-and-camille-utterback/raw/Homework 7/images/image18.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "eitan_small-planet",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/myron-kreuger-and-camille-utterback/raw/Homework 7/images/image29.jpg",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_gif",
+          "source": "../../../contentDump/myron-kreuger-and-camille-utterback/raw/Homework 7/images/image37.gif",
+          "start": "",
+          "duration": "",
+          "notes": "Second recreation GIF also in image16.gif."
+        }
+      },
+      {
+        "id": "fengyi_videoplace",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/myron-kreuger-and-camille-utterback/raw/Homework 7/images/image38.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/myron-kreuger-and-camille-utterback/raw/Homework 7/images/image5.png",
+          "start": "",
+          "duration": "",
+          "notes": "Student also submitted a YouTube recreation video: https://youtu.be/tfKY_-UrRIg"
+        }
+      }
+    ]
+  },
+  {
+    "artist": "Camille Utterback",
+    "artistSlug": "camille-utterback",
+    "mediaFolder": "utterback",
+    "entries": [
+      {
+        "id": "aimee_text-rain",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/myron-kreuger-and-camille-utterback/raw/Homework 7/images/image36.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/myron-kreuger-and-camille-utterback/raw/Homework 7/images/image21.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "jae_text-rain",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/myron-kreuger-and-camille-utterback/raw/Homework 7/images/image26.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/myron-kreuger-and-camille-utterback/raw/Homework 7/images/image28.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "alex_text-rain",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/myron-kreuger-and-camille-utterback/raw/Homework 7/images/image2.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/myron-kreuger-and-camille-utterback/raw/Homework 7/images/image31.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      }
+    ]
+  },
+  {
+    "artist": "Woody and Steina Vasulka",
+    "artistSlug": "woody-vasulka",
+    "mediaFolder": "vasulka",
+    "entries": [
+      {
+        "id": "haotian_noisefields",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/Woody-and-Steina-Vasulka-and-Rosa-Menkman/Homework 8 (Woody and Steina Vasulka _ Rosa Menkman)/images/image23.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/Woody-and-Steina-Vasulka-and-Rosa-Menkman/Homework 8 (Woody and Steina Vasulka _ Rosa Menkman)/images/image20.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "shiman_noisefields",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/Woody-and-Steina-Vasulka-and-Rosa-Menkman/Homework 8 (Woody and Steina Vasulka _ Rosa Menkman)/images/image32.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/Woody-and-Steina-Vasulka-and-Rosa-Menkman/Homework 8 (Woody and Steina Vasulka _ Rosa Menkman)/images/image13.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "ash_noisefields",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/Woody-and-Steina-Vasulka-and-Rosa-Menkman/Homework 8 (Woody and Steina Vasulka _ Rosa Menkman)/images/image29.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/Woody-and-Steina-Vasulka-and-Rosa-Menkman/Homework 8 (Woody and Steina Vasulka _ Rosa Menkman)/images/image16.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "yufeng_c-trend",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/Woody-and-Steina-Vasulka-and-Rosa-Menkman/Homework 8 (Woody and Steina Vasulka _ Rosa Menkman)/images/image47.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_gif",
+          "source": "../../../contentDump/Woody-and-Steina-Vasulka-and-Rosa-Menkman/Homework 8 (Woody and Steina Vasulka _ Rosa Menkman)/images/image28.gif",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "aimee_c-trend",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/Woody-and-Steina-Vasulka-and-Rosa-Menkman/Homework 8 (Woody and Steina Vasulka _ Rosa Menkman)/images/image48.jpg",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/Woody-and-Steina-Vasulka-and-Rosa-Menkman/Homework 8 (Woody and Steina Vasulka _ Rosa Menkman)/images/image25.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "anyang_transformations",
+        "original": {
+          "sourceType": "youtube",
+          "source": "https://www.youtube.com/watch?v=gHy3DCpZM6o",
+          "start": "773",
+          "duration": "20",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_gif",
+          "source": "../../../contentDump/Woody-and-Steina-Vasulka-and-Rosa-Menkman/Homework 8 (Woody and Steina Vasulka _ Rosa Menkman)/images/image1.gif",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "vivian_transformations",
+        "original": {
+          "sourceType": "youtube",
+          "source": "https://www.youtube.com/watch?v=gHy3DCpZM6o",
+          "start": "773",
+          "duration": "20",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/Woody-and-Steina-Vasulka-and-Rosa-Menkman/Homework 8 (Woody and Steina Vasulka _ Rosa Menkman)/images/image36.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "emily_transformations",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/Woody-and-Steina-Vasulka-and-Rosa-Menkman/Homework 8 (Woody and Steina Vasulka _ Rosa Menkman)/images/image12.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_video",
+          "source": "../../../contentDump/Woody-and-Steina-Vasulka-and-Rosa-Menkman/emily_recreation.mp4",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "eitan_untitled-1978",
+        "original": {
+          "sourceType": "youtube",
+          "source": "https://www.youtube.com/watch?v=DaLNCtE3kaI",
+          "start": "3094",
+          "duration": "37",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/Woody-and-Steina-Vasulka-and-Rosa-Menkman/Homework 8 (Woody and Steina Vasulka _ Rosa Menkman)/images/image22.jpg",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "annie_vasulka-effect",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/Woody-and-Steina-Vasulka-and-Rosa-Menkman/Homework 8 (Woody and Steina Vasulka _ Rosa Menkman)/images/image26.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_gif",
+          "source": "../../../contentDump/Woody-and-Steina-Vasulka-and-Rosa-Menkman/Homework 8 (Woody and Steina Vasulka _ Rosa Menkman)/images/image40.gif",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "jae_vasulka-effect",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/Woody-and-Steina-Vasulka-and-Rosa-Menkman/Homework 8 (Woody and Steina Vasulka _ Rosa Menkman)/images/image15.jpg",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_gif",
+          "source": "../../../contentDump/Woody-and-Steina-Vasulka-and-Rosa-Menkman/Homework 8 (Woody and Steina Vasulka _ Rosa Menkman)/images/image5.gif",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "alex_vasulka-effect",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/Woody-and-Steina-Vasulka-and-Rosa-Menkman/Homework 8 (Woody and Steina Vasulka _ Rosa Menkman)/images/image26.png",
+          "start": "",
+          "duration": "",
+          "notes": "Second image (Teddy Roosevelt reference) also in image31.png."
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/Woody-and-Steina-Vasulka-and-Rosa-Menkman/Homework 8 (Woody and Steina Vasulka _ Rosa Menkman)/images/image42.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      }
+    ]
+  },
+  {
+    "artist": "Rosa Menkman",
+    "artistSlug": "rosa-menkman",
+    "mediaFolder": "menkman",
+    "entries": [
+      {
+        "id": "fengyi_ghost-for-de-calibration",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/Woody-and-Steina-Vasulka-and-Rosa-Menkman/Homework 8 (Woody and Steina Vasulka _ Rosa Menkman)/images/image19.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/Woody-and-Steina-Vasulka-and-Rosa-Menkman/Homework 8 (Woody and Steina Vasulka _ Rosa Menkman)/images/image18.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
         }
       }
     ]

@@ -24,6 +24,10 @@ function getMediaType(pair, side) {
   return pair.recreationMediaType || pair.recreationMedia?.type || "image";
 }
 
+function isVideoType(mediaType) {
+  return mediaType === "video" || mediaType === "gif";
+}
+
 function getMediaSrc(artist, pair, side) {
   const mediaObject = side === "original" ? pair.originalMedia : pair.recreationMedia;
 
@@ -34,7 +38,7 @@ function getMediaSrc(artist, pair, side) {
   const suffix = side === "original" ? "o" : "r";
   const folder = side === "original" ? "originals" : "recreations";
   const mediaType = getMediaType(pair, side);
-  const extension = mediaType === "video" ? "mp4" : "jpg";
+  const extension = isVideoType(mediaType) ? "mp4" : "jpg";
 
   return `/media/${artist.mediaFolder}/${folder}/${pair.id}_${suffix}.${extension}`;
 }
@@ -54,7 +58,7 @@ function MediaPreview({ artist, pair, side }) {
   const mediaType = getMediaType(pair, side);
   const src = getMediaSrc(artist, pair, side);
 
-  if (mediaType === "video") {
+  if (isVideoType(mediaType)) {
     return (
       <div className="media-preview video-preview">
         <img
@@ -76,11 +80,12 @@ function FullMedia({ artist, pair, side }) {
   const mediaType = getMediaType(pair, side);
   const src = getMediaSrc(artist, pair, side);
 
-  if (mediaType === "video") {
+  if (isVideoType(mediaType)) {
     return (
       <video
         className="fullscreen-media"
         controls
+        muted
         poster={getPosterSrc(artist, pair, side)}
       >
         <source src={src} type="video/mp4" />
@@ -99,7 +104,7 @@ function MediaTile({ artist, pair, side, hoveredSide, setHoveredSide, openPair }
       </>
     ) : (
       <>
-        {pair.student}, Recreation
+        {pair.student}, <em>Recreation</em>
       </>
     );
 
@@ -153,6 +158,10 @@ function ArtworkRow({ artist, pair, index, openPair }) {
           openPair={openPair}
         />
       </div>
+
+      <aside className="student-aside">
+        <div className="student-name">{pair.student}</div>
+      </aside>
     </div>
   );
 }
@@ -241,6 +250,7 @@ function ArtistSection({ artist, setSelected, sectionRef }) {
         <div className="structure-inline-inner">
           <div />
           <div className="structure-center">Original — Recreation</div>
+          <div />
         </div>
       </div>
 
