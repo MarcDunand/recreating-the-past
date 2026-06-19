@@ -279,14 +279,14 @@
         "recreationLink": "https://editor.p5js.org/janejanejaneyay/sketches/HLSXnH7yE"
       },
       {
-        "id": "anyang_permutations",
-        "originalTitle": "Permutations",
+        "id": "anyang_experiments-in-motion-graphics",
+        "originalTitle": "Experiments in Motion Graphics",
         "originalYear": "1968",
         "originalMediaType": "image",
         "originalLink": "https://www.youtube.com/watch?v=BzB31mD4NmA",
         "student": "Anyang Zu",
         "recreationMediaType": "image",
-        "recreationLink": "https://editor.p5js.org/azu100/sketches/390qwBmjG"
+        "recreationLink": ""
       },
       {
         "id": "shiman_matrix",
@@ -534,10 +534,10 @@
         "id": "anyang_typographic-shapes",
         "originalTitle": "Typographic Shapes",
         "originalYear": "unknown",
-        "originalMediaType": "image",
+        "originalMediaType": "video",
         "originalLink": "https://www.youtube.com/watch?v=CDMqmnW0IRk",
         "student": "Anyang Zu",
-        "recreationMediaType": "image",
+        "recreationMediaType": "video",
         "recreationLink": "https://editor.p5js.org/azu100/sketches/GioJNNFfv",
         "notes": "Original title not identified. YouTube link is the student's reference for the original work."
       },
@@ -908,16 +908,6 @@
         "recreationLink": ""
       },
       {
-        "id": "alex_morphing-grid",
-        "originalTitle": "Morphing Grid",
-        "originalYear": "1979",
-        "originalMediaType": "image",
-        "originalLink": "https://www.katevassgalerie.com/blog/nancy-burson",
-        "student": "Alex Dang",
-        "recreationMediaType": "image",
-        "recreationLink": ""
-      },
-      {
         "id": "ivy_primate-composite",
         "originalTitle": "Untitled (Human-Primate Composite)",
         "originalYear": "unknown",
@@ -967,6 +957,16 @@
         "recreationMediaType": "image",
         "recreationLink": "",
         "notes": "Recreation is a composite of Caravaggio portraits made in p5.js."
+      },
+            {
+        "id": "alex_local-index",
+        "originalTitle": "Local Index (Tessellated)",
+        "originalYear": "2015",
+        "originalMediaType": "image",
+        "originalLink": "https://taimodern.com/detail/?eventId=4136&offset=7&a=",
+        "student": "Alex Dang",
+        "recreationMediaType": "image",
+        "recreationLink": ""
       },
       {
         "id": "annie_class-of-1988",
@@ -1063,7 +1063,7 @@
         "originalLink": "https://en.wikipedia.org/wiki/Videoplace",
         "student": "Sun Chuanqi",
         "recreationMediaType": "video",
-        "recreationLink": "https://youtu.be/TOqAjIYPzc4"
+        "recreationLink": ""
       },
       {
         "id": "anyang_videoplace",
@@ -1139,7 +1139,7 @@
       {
         "id": "eitan_small-planet",
         "originalTitle": "Small Planet",
-        "originalYear": "1977",
+        "originalYear": "1985",
         "originalMediaType": "image",
         "originalLink": "https://history.siggraph.org/artwork/myron-w-krueger-small-planet/",
         "student": "Eitan Wolf",
@@ -1221,16 +1221,6 @@
         "recreationLink": "https://editor.p5js.org/shimanxxx/full/kPj9EcmOK"
       },
       {
-        "id": "ash_noisefields",
-        "originalTitle": "Noisefields",
-        "originalYear": "1974",
-        "originalMediaType": "image",
-        "originalLink": "",
-        "student": "Ash He",
-        "recreationMediaType": "image",
-        "recreationLink": "https://editor.p5js.org/kevin1753008444/full/qdAra_cZY"
-      },
-      {
         "id": "yufeng_c-trend",
         "originalTitle": "C-Trend",
         "originalYear": "1974",
@@ -1287,7 +1277,7 @@
         "originalMediaType": "video",
         "originalLink": "",
         "student": "Eitan Wolf",
-        "recreationMediaType": "image",
+        "recreationMediaType": "video",
         "recreationLink": "https://openprocessing.org/@u587985/2939367"
       },
       {
@@ -1336,6 +1326,16 @@
         "student": "Fengyi Ye",
         "recreationMediaType": "image",
         "recreationLink": "https://editor.p5js.org/fengyiye68/full/g4dYNIFiC"
+      },
+      {
+        "id": "ash_menkman",
+        "originalTitle": "Untitled",
+        "originalYear": "2016",
+        "originalMediaType": "image",
+        "originalLink": "",
+        "student": "Ash He",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/kevin1753008444/full/qdAra_cZY"
       }
     ]
   }

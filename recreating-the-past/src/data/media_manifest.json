@@ -454,17 +454,17 @@
         }
       },
       {
-        "id": "anyang_permutations",
+        "id": "anyang_experiments-in-motion-graphics",
         "original": {
           "sourceType": "local_image",
-          "source": "../../../contentDump/john-whitney/anyang_permutations_o.png",
+          "source": "../../../contentDump/john-whitney/anyang_experiments-in-motion-graphics_o.png",
           "start": "",
           "duration": "",
           "notes": ""
         },
         "recreation": {
           "sourceType": "local_image",
-          "source": "../../../contentDump/john-whitney/anyang_permutations_r.png",
+          "source": "../../../contentDump/john-whitney/anyang_experiments-in-motion-graphics_r.png",
           "start": "",
           "duration": "",
           "notes": ""
@@ -871,14 +871,14 @@
       {
         "id": "anyang_typographic-shapes",
         "original": {
-          "sourceType": "local_image",
+          "sourceType": "local_video",
           "source": "../../../contentDump/muriel-cooper/raw/Homework 3 (Muriel Cooper)/images/image20.png",
           "start": "",
           "duration": "",
           "notes": ""
         },
         "recreation": {
-          "sourceType": "local_image",
+          "sourceType": "local_video",
           "source": "../../../contentDump/muriel-cooper/raw/Homework 3 (Muriel Cooper)/images/image25.png",
           "start": "",
           "duration": "",
@@ -1482,23 +1482,6 @@
         }
       },
       {
-        "id": "alex_morphing-grid",
-        "original": {
-          "sourceType": "local_image",
-          "source": "../../../contentDump/nancy-burson-and-jason-salavon/raw/Homework 6 (Nancy Burson _ Jason Salavon)/images/image39.png",
-          "start": "",
-          "duration": "",
-          "notes": ""
-        },
-        "recreation": {
-          "sourceType": "local_image",
-          "source": "../../../contentDump/nancy-burson-and-jason-salavon/raw/Homework 6 (Nancy Burson _ Jason Salavon)/images/image38.png",
-          "start": "",
-          "duration": "",
-          "notes": "Recreation also includes image17.png (wireframe triangulation mesh of a face)."
-        }
-      },
-      {
         "id": "ivy_primate-composite",
         "original": {
           "sourceType": "local_image",
@@ -1571,6 +1554,23 @@
           "start": "",
           "duration": "",
           "notes": ""
+        }
+      },
+      {
+        "id": "alex_local-index",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/nancy-burson-and-jason-salavon/raw/Homework 6 (Nancy Burson _ Jason Salavon)/images/image39.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/nancy-burson-and-jason-salavon/raw/Homework 6 (Nancy Burson _ Jason Salavon)/images/image38.png",
+          "start": "",
+          "duration": "",
+          "notes": "Recreation also includes image17.png (wireframe triangulation mesh of a face)."
         }
       },
       {
@@ -1976,23 +1976,6 @@
         }
       },
       {
-        "id": "ash_noisefields",
-        "original": {
-          "sourceType": "local_image",
-          "source": "../../../contentDump/Woody-and-Steina-Vasulka-and-Rosa-Menkman/Homework 8 (Woody and Steina Vasulka _ Rosa Menkman)/images/image29.png",
-          "start": "",
-          "duration": "",
-          "notes": ""
-        },
-        "recreation": {
-          "sourceType": "local_image",
-          "source": "../../../contentDump/Woody-and-Steina-Vasulka-and-Rosa-Menkman/Homework 8 (Woody and Steina Vasulka _ Rosa Menkman)/images/image16.png",
-          "start": "",
-          "duration": "",
-          "notes": ""
-        }
-      },
-      {
         "id": "yufeng_c-trend",
         "original": {
           "sourceType": "local_image",
@@ -2087,7 +2070,7 @@
           "notes": ""
         },
         "recreation": {
-          "sourceType": "local_image",
+          "sourceType": "local_video",
           "source": "../../../contentDump/Woody-and-Steina-Vasulka-and-Rosa-Menkman/Homework 8 (Woody and Steina Vasulka _ Rosa Menkman)/images/image22.jpg",
           "start": "",
           "duration": "",
@@ -2164,6 +2147,23 @@
         "recreation": {
           "sourceType": "local_image",
           "source": "../../../contentDump/Woody-and-Steina-Vasulka-and-Rosa-Menkman/Homework 8 (Woody and Steina Vasulka _ Rosa Menkman)/images/image18.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "ash_menkman",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/Woody-and-Steina-Vasulka-and-Rosa-Menkman/Homework 8 (Woody and Steina Vasulka _ Rosa Menkman)/images/image29.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/Woody-and-Steina-Vasulka-and-Rosa-Menkman/Homework 8 (Woody and Steina Vasulka _ Rosa Menkman)/images/image16.png",
           "start": "",
           "duration": "",
           "notes": ""
