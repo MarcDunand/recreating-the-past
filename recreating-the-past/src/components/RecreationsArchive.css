@@ -336,26 +336,28 @@ main {
   text-align: left;
 }
 
-/* Final project placeholder */
+/* Final project section — no vertical timeline line, artist name per row */
 
-.final-project-section {
-  padding: 24px 4vw 120px;
+.final-timeline-item {
+  padding-top: 4px;
 }
 
-.final-project-break {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  width: min(100%, 1200px);
-  margin: 0 auto;
-  font-size: 30px;
+.final-timeline-copy {
+  max-width: 170px;
+  font-size: 13px;
+  line-height: 1.25;
 }
 
-.final-project-break::before,
-.final-project-break::after {
-  content: "";
-  flex: 1;
-  border-top: 1px solid black;
+.final-artist-name {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.final-project-link.is-active .final-project-diamond {
+  background: white;
+  outline: 1px solid black;
+  outline-offset: 4px;
 }
 
 /* Fullscreen comparison */
@@ -435,7 +437,8 @@ main {
     grid-template-columns: 170px minmax(0, 1fr) 170px;
   }
 
-  .timeline-copy {
+  .timeline-copy,
+  .final-timeline-copy {
     max-width: 130px;
     font-size: 12px;
   }
@@ -507,7 +510,8 @@ main {
     display: none;
   }
 
-  .timeline-copy {
+  .timeline-copy,
+  .final-timeline-copy {
     max-width: none;
   }
 

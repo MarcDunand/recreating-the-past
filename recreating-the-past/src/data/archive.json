@@ -1338,5 +1338,119 @@
         "recreationLink": "https://editor.p5js.org/kevin1753008444/full/qdAra_cZY"
       }
     ]
+  },
+  {
+    "artist": "Final Project",
+    "artistSlug": "final",
+    "mediaFolder": "final",
+    "pairs": [
+      {
+        "id": "alex_gala",
+        "artist": "Bridget Riley",
+        "originalTitle": "Gala",
+        "originalYear": "1974",
+        "originalMediaType": "image",
+        "originalLink": "https://www.sothebys.com/en/auctions/ecatalogue/2009/contemporary-evening-sale-l09620/lot.9.html",
+        "student": "Alex Dang",
+        "recreationMediaType": "image",
+        "recreationLink": "https://www.desmos.com/calculator/n1k2gwvexx",
+        "notes": "First of Alex's two Riley recreations; second is excluded per user instruction. Sotheby's 2009 auction documentation used for original link."
+      },
+      {
+        "id": "shiman_p-197pz",
+        "artist": "Manfred Mohr",
+        "originalTitle": "P-197pz",
+        "originalYear": "1978",
+        "originalMediaType": "image",
+        "originalLink": "https://www.artsy.net/artwork/manfred-mohr-p-197pz",
+        "student": "Shiman Xu",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/shimanxxx/full/xaor3gDBz",
+        "notes": "Doc labels the year as 1977–87; user confirmed 1978."
+      },
+      {
+        "id": "sun_p-197-j",
+        "artist": "Manfred Mohr",
+        "originalTitle": "P-197 J",
+        "originalYear": "1979",
+        "originalMediaType": "image",
+        "originalLink": "https://www.mercedes-benz.art/en/artwork/p-197-j-manfred-mohr-1979/",
+        "student": "Sun Chuanqi",
+        "recreationMediaType": "image",
+        "recreationLink": "https://code.chuanqisun.com/recreating-the-past/mohr/"
+      },
+      {
+        "id": "jae_microimage-a-05",
+        "artist": "Casey Reas",
+        "originalTitle": "MicroImage A-05",
+        "originalYear": "2002",
+        "originalMediaType": "image",
+        "originalLink": "https://reas.com/microimage",
+        "student": "Jae In Yoo",
+        "recreationMediaType": "image",
+        "recreationLink": "https://www.figma.com/deck/VAKOSlZRLEzJqnHZBhyq63",
+        "notes": "Doc table incorrectly listed Manfred Mohr P-197-J links for both original and recreation; user provided corrected links."
+      },
+      {
+        "id": "vivian_dots-infinity",
+        "artist": "Yayoi Kusama",
+        "originalTitle": "Dots Infinity",
+        "originalYear": "2003",
+        "originalMediaType": "image",
+        "originalLink": "https://www.myartbroker.com/artist-yayoi-kusama/collection-dots/artwork-dots-infinity-signed-print-woodcut?lang=en&slug=yayoi-kusama&collectionTaxonomy=collection&collection=dots&artworkSlug=dots-infinity-signed-print-woodcut",
+        "student": "Vivian Kong",
+        "recreationMediaType": "image",
+        "recreationLink": "https://editor.p5js.org/vivian20206/full/4gmgAULKZ",
+        "notes": "MFA Boston link is for 'Dots Infinity NOWH' (2003) — closest confirmed museum record for this title and year. Verify this is the specific work Vivian referenced."
+      },
+      {
+        "id": "eitan_art-of-reproduction",
+        "artist": "Martin Wattenberg",
+        "originalTitle": "The Art of Reproduction",
+        "originalYear": "2011",
+        "originalMediaType": "image",
+        "originalLink": "http://hint.fm/projects/reproduction/",
+        "student": "Eitan Wolf",
+        "recreationMediaType": "image",
+        "recreationLink": "https://github.com/eitanwolf/Recreating-The-Past-2026/tree/rtp-main/Final%20Project",
+        "notes": "Student's recreation titled 'The Art of Interpretation.' Co-created with Fernanda Viegas. Original image in doc appears to show a source painting used in Wattenberg's mosaic, not the project interface."
+      },
+      {
+        "id": "anyang_artificiata-ii",
+        "artist": "Manfred Mohr",
+        "originalTitle": "Artificiata II",
+        "originalYear": "2012",
+        "originalMediaType": "image",
+        "originalLink": "http://www.emohr.com/www_artif2/main-artif2.html",
+        "student": "Anyang Zu",
+        "recreationMediaType": "image",
+        "recreationLink": "https://zuanyang0809-droid.github.io/artificiata-ii-compose/",
+        "notes": "Doc original link (emohr.com/ww4_out.html) was broken; replaced with direct Artificiata II page on emohr.com."
+      },
+      {
+        "id": "yufeng_a-humument",
+        "artist": "Tom Phillips",
+        "originalTitle": "A Humument",
+        "originalYear": "2016",
+        "originalMediaType": "image",
+        "originalLink": "https://www.tomphillips.co.uk/works/humument",
+        "student": "Yufeng Zhao",
+        "recreationMediaType": "image",
+        "recreationLink": "https://github.com/yz3440/inhumument",
+        "notes": "Year refers to a specific page/edition of the ongoing project (original work began 1966)."
+      },
+      {
+        "id": "lia_nyt-chromebook",
+        "artist": "John Provencher",
+        "originalTitle": "NYT Chromebook",
+        "originalYear": "2022",
+        "originalMediaType": "gif",
+        "originalLink": "https://www.nytimes.com/2022/08/18/technology/chromebooks-pandemic-star.html",
+        "student": "Lia Chen",
+        "recreationMediaType": "gif",
+        "recreationLink": "",
+        "notes": "Original link not found — NYT Chromebook not publicly indexed. Recreation was done in p5.js but no URL was provided in the source document."
+      }
+    ]
   }
 ]

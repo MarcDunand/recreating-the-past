@@ -225,12 +225,93 @@ function ArtistMenu({ artists, activeArtistSlug }) {
           </a>
         ))}
 
-        <a className="artist-menu-item final-project-link" href="#final-project">
+        <a
+          className={`artist-menu-item final-project-link${activeArtistSlug === "final" ? " is-active" : ""}`}
+          href="#final-project"
+        >
           <span className="final-project-diamond" />
           <span className="artist-menu-label">Final Project</span>
         </a>
       </div>
     </nav>
+  );
+}
+
+function FinalArtworkRow({ pair, openPair }) {
+  const [hoveredSide, setHoveredSide] = useState(null);
+  const syntheticArtist = { artist: pair.artist, mediaFolder: "final" };
+
+  return (
+    <div className="artwork-row">
+      <aside className="final-timeline-item">
+        <div className="final-timeline-copy">
+          <div className="final-artist-name">{pair.artist}</div>
+          <div className="timeline-title">{pair.originalTitle}</div>
+          <div className="timeline-year">{pair.originalYear}</div>
+        </div>
+      </aside>
+
+      <div className="pair-diptych">
+        <MediaTile
+          artist={syntheticArtist}
+          pair={pair}
+          side="original"
+          hoveredSide={hoveredSide}
+          setHoveredSide={setHoveredSide}
+          openPair={openPair}
+        />
+        <div className="pair-gutter" />
+        <MediaTile
+          artist={syntheticArtist}
+          pair={pair}
+          side="recreation"
+          hoveredSide={hoveredSide}
+          setHoveredSide={setHoveredSide}
+          openPair={openPair}
+        />
+      </div>
+
+      <aside className="student-aside">
+        <div className="student-name">{pair.student}</div>
+      </aside>
+    </div>
+  );
+}
+
+function FinalProjectSection({ finalData, setSelected, sectionRef }) {
+  const sortedPairs = useMemo(() => getSortedPairs(finalData.pairs), [finalData.pairs]);
+
+  return (
+    <section
+      id="final-project"
+      ref={sectionRef}
+      className="artist-section final-project-section"
+      data-artist-slug="final"
+    >
+      <h2 className="artist-heading">Final Project: Choose Your Own Artist</h2>
+
+      <div className="structure-inline" aria-hidden="true">
+        <div className="structure-inline-inner">
+          <div />
+          <div className="structure-center">Original — Recreation</div>
+          <div />
+        </div>
+      </div>
+
+      <div className="work-list">
+        {sortedPairs.map((pair, index) => (
+          <FinalArtworkRow
+            key={pair.id}
+            pair={pair}
+            index={index}
+            openPair={() => {
+              const syntheticArtist = { artist: pair.artist, mediaFolder: "final" };
+              setSelected({ artist: syntheticArtist, pair, pairIndex: index });
+            }}
+          />
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -271,7 +352,11 @@ function ArtistSection({ artist, setSelected, sectionRef }) {
 
 export default function RecreationsArchive({ archive }) {
   const [selected, setSelected] = useState(null);
-  const [activeArtistSlug, setActiveArtistSlug] = useState(archive[0]?.artistSlug);
+
+  const regularArtists = useMemo(() => archive.filter((a) => a.artistSlug !== "final"), [archive]);
+  const finalProject = useMemo(() => archive.find((a) => a.artistSlug === "final"), [archive]);
+
+  const [activeArtistSlug, setActiveArtistSlug] = useState(regularArtists[0]?.artistSlug);
 
   const sectionRefs = useRef({});
 
@@ -312,11 +397,9 @@ export default function RecreationsArchive({ archive }) {
       </header>
 
       <main>
-        <ArtistMenu artists={archive} activeArtistSlug={activeArtistSlug} />
+        <ArtistMenu artists={regularArtists} activeArtistSlug={activeArtistSlug} />
 
-        {/* removed global structure bar — labels are inline within each artist section */}
-
-        {archive.map((artist) => (
+        {regularArtists.map((artist) => (
           <ArtistSection
             key={artist.artistSlug}
             artist={artist}
@@ -327,11 +410,15 @@ export default function RecreationsArchive({ archive }) {
           />
         ))}
 
-        <section id="final-project" className="final-project-section">
-          <div className="final-project-break">
-            <span>Final Project</span>
-          </div>
-        </section>
+        {finalProject && (
+          <FinalProjectSection
+            finalData={finalProject}
+            setSelected={setSelected}
+            sectionRef={(element) => {
+              sectionRefs.current["final"] = element;
+            }}
+          />
+        )}
 
         <FullscreenComparison selected={selected} close={() => setSelected(null)} />
       </main>

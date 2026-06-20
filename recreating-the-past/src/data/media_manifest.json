@@ -2170,5 +2170,165 @@
         }
       }
     ]
+  },
+  {
+    "artist": "Final Project",
+    "artistSlug": "final",
+    "mediaFolder": "final",
+    "entries": [
+      {
+        "id": "alex_gala",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/final/Final homework _ BYOA/images/image22.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/final/Final homework _ BYOA/images/image13.png",
+          "start": "",
+          "duration": "",
+          "notes": "First recreation (Desmos). Second pair (image4.png / image8.png) excluded per user instruction."
+        }
+      },
+      {
+        "id": "shiman_p-197pz",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/final/Final homework _ BYOA/images/image25.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/final/Final homework _ BYOA/images/image10.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "sun_p-197-j",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/final/Final homework _ BYOA/images/image1.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/final/Final homework _ BYOA/images/image21.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "jae_microimage-a-05",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/final/Final homework _ BYOA/images/image26.png",
+          "start": "",
+          "duration": "",
+          "notes": "Doc table showed wrong links (Manfred Mohr P-197-J) but images should be Jae's actual Casey Reas originals — verify visually."
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/final/Final homework _ BYOA/images/image16.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "vivian_dots-infinity",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/final/Final homework _ BYOA/images/image24.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/final/Final homework _ BYOA/images/image6.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "eitan_art-of-reproduction",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/final/Final homework _ BYOA/images/image2.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Image in doc appears to show a source painting used in Wattenberg's mosaic project, not the project interface itself."
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/final/Final homework _ BYOA/images/image7.jpg",
+          "start": "",
+          "duration": "",
+          "notes": "Student's piece titled 'The Art of Interpretation.'"
+        }
+      },
+      {
+        "id": "anyang_artificiata-ii",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/final/Final homework _ BYOA/images/image5.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/final/Final homework _ BYOA/images/image18.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "yufeng_a-humument",
+        "original": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/final/Final homework _ BYOA/images/image9.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_image",
+          "source": "../../../contentDump/final/Final homework _ BYOA/images/image27.png",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      },
+      {
+        "id": "lia_nyt-chromebook",
+        "original": {
+          "sourceType": "local_gif",
+          "source": "../../../contentDump/final/Final homework _ BYOA/images/image19.gif",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        },
+        "recreation": {
+          "sourceType": "local_gif",
+          "source": "../../../contentDump/final/Final homework _ BYOA/images/image20.gif",
+          "start": "",
+          "duration": "",
+          "notes": ""
+        }
+      }
+    ]
   }
 ]
