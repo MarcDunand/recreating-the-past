@@ -4,6 +4,7 @@
 
 :root {
   --side-gutter: 260px; /* space reserved on left/right for menu and balance */
+  --text-sm: 16px;      /* base size for small/body text — change once to scale all */
 }
 
 html {
@@ -12,7 +13,7 @@ html {
 
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Jost', Arial, Helvetica, sans-serif;
   color: black;
   background: white;
 }
@@ -25,39 +26,50 @@ button {
 
 .artist-menu {
   position: fixed;
-  left: 18px;
-  top: 50%;
+  left: 20px;
+  top: 92px;    /* clears nav (48px) + sticky bar (44px) */
+  bottom: 20px; /* breathing room from viewport bottom */
   z-index: 40;
-  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-/* Reserve equal space on left and right so the menu labels don't overlap the timeline */
+/* Left padding makes room for the fixed dot menu; right has no balance padding to maximise center width */
 main {
   padding-left: var(--side-gutter);
-  padding-right: var(--side-gutter);
+  padding-right: 0;
+  padding-top: 167px;
 }
 
 .artist-menu-list {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  /* No flex gap — spacing is padding inside each item so the full strip is clickable */
+  padding-left: 6px;
+  min-height: 0;    /* allow flex container to shrink the list when screen is short */
+  overflow: hidden; /* clips items that overflow + enables programmatic scrollTop */
 }
 
 .artist-menu-item {
   position: relative;
   display: flex;
   align-items: center;
-  width: 14px;
-  min-height: 14px;
+  /* No fixed width — item naturally spans dot + gap + label text */
+  gap: 14px;
+  /* Padding distributes spacing so the dead zone between items is clickable */
+  padding-block: clamp(4px, 0.75vh, 7px);
   color: black;
   text-decoration: none;
 }
 
 .artist-menu-dot {
+  flex-shrink: 0;
   width: 7px;
   height: 7px;
   border-radius: 999px;
   background: black;
+  transition: transform 120ms ease;
 }
 
 .artist-menu-item.is-active .artist-menu-dot {
@@ -66,19 +78,31 @@ main {
   outline-offset: 4px;
 }
 
+.artist-menu-item:not(.is-active):hover .artist-menu-dot {
+  transform: scale(1.35);
+}
+
 .artist-menu-label {
-  position: absolute;
-  left: 22px;
+  /* In-flow (not absolute) so the <a> naturally spans dot + label for full-width clicks */
   white-space: nowrap;
-  font-size: 13px;
+  font-size: var(--text-sm);
   opacity: 0;
-  pointer-events: none;
   transform: translateX(-4px);
   transition: opacity 140ms ease, transform 140ms ease;
+  /* Constrain to left gutter so labels never overlap content */
+  max-width: calc(var(--side-gutter) - 50px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.artist-menu-item:hover .artist-menu-label {
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .artist-menu:hover .artist-menu-label,
-.artist-menu-item:focus .artist-menu-label {
+.artist-menu-item:focus .artist-menu-label,
+.artist-menu.is-expanded .artist-menu-label {
   opacity: 1;
   transform: translateX(0);
 }
@@ -88,11 +112,17 @@ main {
 }
 
 .final-project-diamond {
+  flex-shrink: 0;
   width: 9px;
   height: 9px;
-  background: #ffd400;
+  background: #75C9C8;
   border: 1px solid black;
   transform: rotate(45deg);
+  transition: transform 120ms ease;
+}
+
+.final-project-link:hover .final-project-diamond {
+  transform: rotate(45deg) scale(1.35);
 }
 
 /* Top nav */
@@ -105,10 +135,6 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* extend the nav to span the full viewport while keeping its inner content aligned with the main grid */
-  width: calc(100% + var(--side-gutter) * 2);
-  margin-left: calc(-1 * var(--side-gutter));
-  box-sizing: border-box;
   padding: 0 24px;
   border-bottom: 1px solid black;
   background: white;
@@ -116,6 +142,18 @@ main {
 
 .site-title {
   font-weight: 600;
+  font-size: 25px;
+  color: black;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.site-title-recreating {
+  color: #DAAE00;
+}
+
+.site-title-past {
+  color: #d45113;
 }
 
 .top-nav nav {
@@ -128,75 +166,115 @@ main {
   text-decoration: none;
 }
 
-/* Structural Original -> Recreation bar */
+/* Sticky sub-bar */
 
-.structure-bar {
+.sticky-bar {
   position: sticky;
   top: 48px;
   z-index: 29;
-  height: 52px;
+  height: 44px;
+  background: white;
+  border-bottom: 1px solid black;
+  /* left matches main side-gutter + section 4vw; right matches section 4vw only (main has no right padding) */
+  padding: 0 4vw 0 calc(var(--side-gutter) + 4vw);
   display: flex;
   align-items: center;
-  border-bottom: 1px solid black;
-  background: white;
 }
 
-.structure-bar-inner {
-  width: min(100%, 1200px);
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
+.sticky-bar-inner {
+  width: 100%;
+  max-width: 1500px;
   margin: 0 auto;
-  padding: 0 4vw;
-}
-
-/* Inline structure label inside artist section */
-.structure-inline {
-  width: min(100%, 1500px);
-  margin: 0 auto 8px;
-  display: block;
-}
-
-.structure-inline-inner {
   display: grid;
-  grid-template-columns: 220px minmax(0, 1200px) 220px;
+  grid-template-columns: 220px minmax(0, 1200px);
+  column-gap: 34px;
   align-items: center;
 }
 
-.structure-center {
+.sticky-bar-artist {
   text-align: left;
-  font-size: 20px;
-  color: black;
-  font-weight: 500;
-}
-
-.top-nav nav {
-  padding-left: 24px;
-  padding-right: 24px;
-}
-
-.structure-label {
-  font-size: 20px;
-  color: black;
-  text-align: center;
-}
-
-.structure-arrow {
-  padding: 0 12px;
+  padding-left: 32px; /* matches artist-heading-span indent */
   font-size: 22px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: visible;
+}
+
+.sticky-bar-diptych {
+  display: grid;
+  grid-template-columns: 1fr 14px 1fr;
+  align-items: center;
+}
+
+.sticky-bar-original {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: #d45113;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.sticky-bar-recreation {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: #DAAE00;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 /* Artist sections */
 
 .artist-section {
-  scroll-margin-top: 120px;
-  padding: 56px 4vw 88px;
+  scroll-margin-top: 96px; /* top-nav 48px + sticky-bar 44px + 4px buffer */
+  padding: 0 4vw 82px;
+}
+
+.artwork-row.artist-heading-row {
+  margin-bottom: 98px; /* two-class selector beats .artwork-row { margin: 0 auto } */
+}
+
+.artist-heading-span {
+  grid-column: 1 / 3;
+  position: relative;
+  padding-left: 32px; /* 18px dot col + 14px gap — aligns h2 with timeline text */
+  padding-bottom: 4px;
+}
+
+/* Horizontal underline from the timeline x-position to right edge of recreation col */
+.artist-heading-span::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 3px; /* matches timeline-item::before left */
+  right: 0;
+  height: 1px;
+  background: black;
+}
+
+/* Short vertical tick below underline — decorative anchor */
+.artist-heading-span::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 3px; /* matches timeline-item::before left */
+  width: 1px;
+  height: 16px;
+  background: black;
 }
 
 .artist-heading {
+  font-size: 22px;
+  font-weight: 500;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.final-heading {
   width: min(100%, 1200px);
-  margin: 0 auto 28px;
-  font-size: 34px;
+  margin: 0 auto 24px;
+  font-size: 28px;
   font-weight: normal;
   text-align: left;
 }
@@ -211,20 +289,11 @@ main {
 .artwork-row {
   width: min(100%, 1500px);
   display: grid;
-  grid-template-columns: 220px minmax(0, 1200px) 220px;
+  grid-template-columns: 220px minmax(0, 1200px);
   column-gap: 34px;
   margin: 0 auto;
 }
 
-.student-aside {
-  padding-top: 4px;
-  font-size: 13px;
-  line-height: 1.25;
-}
-
-.student-name {
-  max-width: 170px;
-}
 
 .timeline-item {
   position: relative;
@@ -247,6 +316,10 @@ main {
   bottom: 0;
 }
 
+.work-list > .artwork-row:first-child .timeline-item::before {
+  top: -82px; /* 98px margin-bottom − 16px stub = 82px gap to bridge */
+}
+
 .timeline-dot {
   position: relative;
   z-index: 1;
@@ -259,8 +332,19 @@ main {
 
 .timeline-copy {
   max-width: 170px;
-  font-size: 13px;
+  font-size: var(--text-sm);
   line-height: 1.25;
+}
+
+/* Subtle link style matching the left dot-menu labels */
+.list-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.list-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .timeline-title {
@@ -289,18 +373,18 @@ main {
   aspect-ratio: 1 / 1;
   display: block;
   padding: 0;
-  border: 1px solid black;
+  border: 1px solid transparent;
   background: white;
   cursor: pointer;
   overflow: hidden;
 }
 
-.media-tile img,
-.media-preview img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: contain; /* ensure non-square images fit inside the square frame */
+.media-tile-original.is-hovered {
+  border-color: #d45113;
+}
+
+.media-tile-recreation.is-hovered {
+  border-color: #DAAE00;
 }
 
 .media-preview {
@@ -309,8 +393,23 @@ main {
   height: 100%;
 }
 
-.video-preview {
-  background: #f4f4f4;
+.media-bg-blur {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(32px);
+  transform: scale(1.2);
+  opacity: 0.3;
+}
+
+.media-fg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .play-indicator {
@@ -331,7 +430,7 @@ main {
   padding: 8px 10px;
   background: rgba(255, 255, 255, 0.8);
   color: black;
-  font-size: 14px;
+  font-size: var(--text-sm);
   line-height: 1.25;
   text-align: left;
 }
@@ -344,7 +443,7 @@ main {
 
 .final-timeline-copy {
   max-width: 170px;
-  font-size: 13px;
+  font-size: var(--text-sm);
   line-height: 1.25;
 }
 
@@ -355,7 +454,7 @@ main {
 }
 
 .final-project-link.is-active .final-project-diamond {
-  background: white;
+  background: #75C9C8;
   outline: 1px solid black;
   outline-offset: 4px;
 }
@@ -367,21 +466,42 @@ main {
   inset: 0;
   z-index: 100;
   background: white;
-  padding: 72px 32px 32px;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+}
+
+.fullscreen-nav {
+  flex-shrink: 0;
+  width: 100%;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: black;
+  cursor: pointer;
+  font-size: 22px;
+  color: white;
+  font-family: inherit;
+}
+
+.fullscreen-nav:disabled {
+  opacity: 0.2;
+  cursor: default;
 }
 
 .fullscreen-close {
-  position: fixed;
-  top: 16px;
+  position: absolute;
+  top: 8px;
   right: 24px;
   z-index: 101;
   border: 0;
-  background: white;
-  color: black;
+  background: transparent;
+  color: white;
   font-size: 42px;
   cursor: pointer;
+  line-height: 1;
 }
 
 .fullscreen-grid {
@@ -390,6 +510,7 @@ main {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 32px;
+  padding: 16px 32px;
 }
 
 .fullscreen-side {
@@ -403,23 +524,50 @@ main {
   flex-shrink: 0;
   font-size: 18px;
   margin-bottom: 8px;
+  text-align: center;
+}
+
+.fullscreen-media-wrapper {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fullscreen-media-square {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-height: 100%;
 }
 
 .fullscreen-media {
-  flex: 1;
-  min-height: 0;
+  position: absolute;
+  inset: 0;
   width: 100%;
+  height: 100%;
   display: block;
   object-fit: contain;
-  border: 1px solid black;
-  background: white;
 }
 
-.fullscreen-side a {
-  flex-shrink: 0;
-  display: inline-block;
-  margin-top: 10px;
+.fullscreen-label a {
   color: black;
+  text-decoration: underline;
+}
+
+.media-loading-skeleton {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #e0e0e0 25%, #cacaca 50%, #e0e0e0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes skeleton-shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
 
 /* Responsive */
@@ -429,24 +577,25 @@ main {
     --side-gutter: 200px;
   }
   .artwork-row {
-    grid-template-columns: 170px minmax(0, 1fr) 170px;
+    grid-template-columns: 170px minmax(0, 1fr);
     column-gap: 24px;
   }
 
-  .structure-inline-inner {
-    grid-template-columns: 170px minmax(0, 1fr) 170px;
+  .sticky-bar-inner {
+    grid-template-columns: 170px minmax(0, 1fr);
+    column-gap: 24px;
+  }
+
+  .sticky-bar-diptych {
+    grid-template-columns: 1fr 10px 1fr;
   }
 
   .timeline-copy,
   .final-timeline-copy {
     max-width: 130px;
-    font-size: 12px;
+    font-size: var(--text-sm);
   }
 
-  .student-name {
-    max-width: 130px;
-    font-size: 12px;
-  }
 }
 
 @media (max-width: 800px) {
@@ -467,39 +616,45 @@ main {
     font-size: 14px;
   }
 
-  .structure-bar {
-    height: 44px;
+  .sticky-bar {
+    padding: 0 14px;
   }
 
-  .structure-bar-inner {
-    width: 100%;
-    padding: 0 4vw;
+  .sticky-bar-inner {
+    grid-template-columns: 1fr;
+    column-gap: 0;
   }
 
-  .structure-label {
-    font-size: 15px;
+  .sticky-bar-diptych,
+  .sticky-bar-inner > div:last-child {
+    display: none;
   }
 
-  .structure-arrow {
-    font-size: 16px;
-    padding: 0 8px;
+  .sticky-bar-artist {
+    text-align: left;
   }
 
   .artist-section {
     padding: 36px 4vw 64px;
   }
 
+  .artist-heading-span {
+    grid-column: 1;
+    padding-left: 0;
+  }
+
+  .artist-heading-span::before,
+  .artist-heading-span::after {
+    display: none;
+  }
+
   .artist-heading {
-    font-size: 28px;
+    font-size: 24px;
   }
 
   .artwork-row {
     grid-template-columns: 1fr;
     row-gap: 12px;
-  }
-
-  .student-aside {
-    display: none;
   }
 
   .timeline-item {
@@ -524,25 +679,21 @@ main {
     padding: 6px 8px;
   }
 
-  .fullscreen-overlay {
-    padding: 64px 16px 24px;
-    display: block;
-    overflow-y: auto;
-  }
-
   .fullscreen-grid {
     height: auto;
+    overflow-y: auto;
     grid-template-columns: 1fr;
     gap: 20px;
+    padding: 16px;
   }
 
-  .fullscreen-side {
-    display: block;
-  }
-
-  .fullscreen-media {
+  .fullscreen-media-wrapper {
     flex: none;
     height: auto;
-    max-height: 70vh;
+    width: 100%;
+  }
+
+  .fullscreen-media-square {
+    max-height: none;
   }
 }
