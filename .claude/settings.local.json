@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(*)",
+      "PowerShell(*)",
+      "Edit(*)",
+      "Write(*)",
+      "WebFetch(domain:www.semanticscholar.org)",
+      "WebSearch",
+      "WebFetch(domain:dada.compart-bremen.de)",
+      "WebFetch(domain:www.kenknowlton.com)",
+      "WebFetch(domain:dam.org)",
+      "WebFetch(domain:www.artsy.net)",
+      "WebFetch(domain:www.mutualart.com)",
+      "WebFetch(domain:www.ragnardigital.art)",
+      "WebFetch(domain:www.gathering4gardner.org)"
+    ]
+  }
+}
