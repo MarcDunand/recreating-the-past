@@ -26,7 +26,7 @@ button {
 
 .artist-menu {
   position: fixed;
-  left: 20px;
+  left: 12px;
   top: 92px;    /* clears nav (48px) + sticky bar (44px) */
   bottom: 20px; /* breathing room from viewport bottom */
   z-index: 40;
@@ -39,14 +39,14 @@ button {
 main {
   padding-left: var(--side-gutter);
   padding-right: 0;
-  padding-top: 167px;
+  padding-top: 70px;
 }
 
 .artist-menu-list {
   display: flex;
   flex-direction: column;
   /* No flex gap — spacing is padding inside each item so the full strip is clickable */
-  padding-left: 6px;
+  padding-left: 14px;
   min-height: 0;    /* allow flex container to shrink the list when screen is short */
   overflow: hidden; /* clips items that overflow + enables programmatic scrollTop */
 }
@@ -125,46 +125,7 @@ main {
   transform: rotate(45deg) scale(1.35);
 }
 
-/* Top nav */
-
-.top-nav {
-  position: sticky;
-  top: 0;
-  z-index: 30;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 24px;
-  border-bottom: 1px solid black;
-  background: white;
-}
-
-.site-title {
-  font-weight: 600;
-  font-size: 25px;
-  color: black;
-  text-decoration: none;
-  letter-spacing: -0.01em;
-}
-
-.site-title-recreating {
-  color: #DAAE00;
-}
-
-.site-title-past {
-  color: #d45113;
-}
-
-.top-nav nav {
-  display: flex;
-  gap: 32px;
-}
-
-.top-nav a {
-  color: black;
-  text-decoration: none;
-}
+/* Top nav — styles live in src/styles/top-nav.css (shared across all pages) */
 
 /* Sticky sub-bar */
 
@@ -191,6 +152,12 @@ main {
   align-items: center;
 }
 
+.sticky-bar-artist-group {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
 .sticky-bar-artist {
   text-align: left;
   padding-left: 32px; /* matches artist-heading-span indent */
@@ -198,6 +165,30 @@ main {
   font-weight: 500;
   white-space: nowrap;
   overflow: visible;
+}
+
+/* Hamburger — only shown at narrow widths (≤800px) where the fixed dot menu
+   is hidden; toggles the artist menu as an overlay. */
+.sticky-bar-hamburger {
+  display: none; /* revealed in the ≤800px media query */
+  flex-shrink: 0;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  width: 26px;
+  height: 26px;
+  padding: 4px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.sticky-bar-hamburger span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: black;
+  border-radius: 1px;
 }
 
 .sticky-bar-diptych {
@@ -273,9 +264,9 @@ main {
 
 .final-heading {
   width: min(100%, 1200px);
-  margin: 0 auto 24px;
+  margin: 0 auto 100px;
   font-size: 28px;
-  font-weight: normal;
+  font-weight: 600;
   text-align: left;
 }
 
@@ -412,16 +403,6 @@ main {
   object-fit: contain;
 }
 
-.play-indicator {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  font-size: 34px;
-  color: black;
-  pointer-events: none;
-}
-
 .tile-caption {
   position: absolute;
   left: 0;
@@ -437,8 +418,34 @@ main {
 
 /* Final project section — no vertical timeline line, artist name per row */
 
+.final-project-section {
+  padding-top: 41px; /* 50% more above-heading space vs sibling sections' 82px bottom padding */
+}
+
+.final-project-section .work-list {
+  row-gap: 63px;
+}
+
+/* Horizontal rule hovering just above each final-project row — spans from the
+   start of the artist-name text (32px inset) to the right edge of the
+   recreation box (row right edge). */
+.final-project-section .artwork-row {
+  position: relative;
+}
+
+.final-project-section .artwork-row::before {
+  content: "";
+  position: absolute;
+  top: -18px;
+  left: 0;  /* aligns with the section heading text and the row text below */
+  right: 0; /* right edge of the recreation column */
+  height: 1px;
+  background: black;
+}
+
 .final-timeline-item {
   padding-top: 4px;
+  padding-left: 0; /* left-align with the section heading text (no timeline in this section) */
 }
 
 .final-timeline-copy {
@@ -481,7 +488,6 @@ main {
   border: none;
   background: black;
   cursor: pointer;
-  font-size: 22px;
   color: white;
   font-family: inherit;
 }
@@ -491,11 +497,33 @@ main {
   cursor: default;
 }
 
+/* Thin chevron drawn from two borders — crisper and more elegant than a glyph
+   arrow, and it inherits the button's color (white / dimmed when disabled). */
+.fullscreen-chevron {
+  display: block;
+  width: 13px;
+  height: 13px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+}
+
+.fullscreen-nav-prev .fullscreen-chevron {
+  transform: translateY(3px) rotate(-135deg); /* points up, optically centered */
+}
+
+.fullscreen-nav-next .fullscreen-chevron {
+  transform: translateY(-3px) rotate(45deg); /* points down, optically centered */
+}
+
 .fullscreen-close {
   position: absolute;
-  top: 8px;
+  top: 0;
   right: 24px;
+  height: 46px; /* matches the top nav bar so the × centers on its middle */
+  display: flex;
+  align-items: center;
   z-index: 101;
+  padding: 0;
   border: 0;
   background: transparent;
   color: white;
@@ -552,6 +580,46 @@ main {
   object-fit: contain;
 }
 
+/* Video squares are clickable (toggle pause/play, double-click for fullscreen) */
+.fullscreen-media-square.is-video {
+  cursor: pointer;
+}
+
+/* YouTube-style centered pause/play control. Semi-transparent, fades in on
+   mouse movement and out after an idle pause; pointer-events off so clicks
+   fall through to the square, which owns the toggle. */
+.video-control {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 76px;
+  height: 76px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  transition: opacity 180ms ease;
+  pointer-events: none;
+}
+
+.video-control.is-visible {
+  opacity: 1;
+}
+
+.video-control-glyph {
+  color: white;
+  font-size: 30px;
+  line-height: 1;
+  letter-spacing: 2px;
+}
+
+/* Optically center the play triangle within the circle */
+.video-control-glyph.is-play {
+  transform: translateX(3px);
+  letter-spacing: 0;
+}
+
 .fullscreen-label a {
   color: black;
   text-decoration: underline;
@@ -599,21 +667,45 @@ main {
 }
 
 @media (max-width: 800px) {
+  /* The fixed dot menu is hidden; a hamburger in the sticky bar re-opens it
+     as an overlay via the .is-open class. */
   .artist-menu {
     display: none;
   }
 
+  .artist-menu.is-open {
+    display: flex;
+    left: 0;
+    top: 92px;        /* sits below top-nav (48px) + sticky bar (44px) */
+    bottom: 0;
+    z-index: 60;      /* above sticky bar (29) and the comparison content */
+    justify-content: flex-start;
+    padding: 20px 24px 20px 20px;
+    background: white;
+    border-right: 1px solid black;
+    box-shadow: 4px 0 18px rgba(0, 0, 0, 0.15);
+  }
+
+  .artist-menu.is-open .artist-menu-list {
+    overflow-y: auto;
+  }
+
+  /* Labels are always visible in the overlay (no hover on touch). */
+  .artist-menu.is-open .artist-menu-label {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Dim + tap-to-close layer behind the overlay panel. */
+  .artist-menu-backdrop {
+    position: fixed;
+    inset: 92px 0 0 0;
+    z-index: 59;
+    background: rgba(0, 0, 0, 0.3);
+  }
+
   :root {
     --side-gutter: 0;
-  }
-
-  .top-nav {
-    padding: 0 14px;
-  }
-
-  .top-nav nav {
-    gap: 14px;
-    font-size: 14px;
   }
 
   .sticky-bar {
@@ -630,8 +722,13 @@ main {
     display: none;
   }
 
+  .sticky-bar-hamburger {
+    display: flex;
+  }
+
   .sticky-bar-artist {
     text-align: left;
+    padding-left: 14px; /* hamburger now provides the left inset */
   }
 
   .artist-section {
@@ -679,21 +776,49 @@ main {
     padding: 6px 8px;
   }
 
+}
+
+/* Fullscreen portrait layout — triggers when viewport is taller than ~80% of
+   its width (aspect ratio < 0.8), regardless of absolute pixel dimensions. */
+@media (max-aspect-ratio: 4/5) {
+  /* Stack the two sides vertically, each taking exactly half the available
+     height — this guarantees no overlap without needing to scroll. */
   .fullscreen-grid {
-    height: auto;
-    overflow-y: auto;
     grid-template-columns: 1fr;
-    gap: 20px;
-    padding: 16px;
+    grid-template-rows: 1fr 1fr;
+    gap: 6px;
+    padding: 10px 16px;
   }
 
+  /* Each side must be allowed to shrink below its content size so the
+     1fr row constraint actually controls the height. */
+  .fullscreen-side {
+    min-height: 0;
+  }
+
+  /* Recreation side: reverse column order so the label appears at the
+     bottom (above the down-nav) rather than at the top. */
+  .fullscreen-side:last-child {
+    flex-direction: column-reverse;
+  }
+
+  /* Compact labels in portrait so images get the maximum room. */
+  .fullscreen-label {
+    font-size: 14px;
+    margin-bottom: 4px;
+    padding: 2px 0;
+  }
+
+  /* Media wrapper fills the remaining height inside the row. */
   .fullscreen-media-wrapper {
-    flex: none;
-    height: auto;
     width: 100%;
   }
 
+  /* Square constrained by the wrapper's height (not forced to full width),
+     so it never bleeds outside its half of the grid. */
   .fullscreen-media-square {
-    max-height: none;
+    width: auto;
+    height: 100%;
+    max-width: 100%;
   }
 }

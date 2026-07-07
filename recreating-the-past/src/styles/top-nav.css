@@ -1,0 +1,70 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   Shared top navigation bar — single source of truth for every page.
+
+   Imported globally by index.astro, people.astro, and about.astro so the bar
+   looks and scales identically everywhere. (Previously each page carried its
+   own copy with a different — or missing — breakpoint, so the bar shrank at
+   different widths from page to page.)
+
+   Fluid sizing
+   ------------
+   The bar stays at full size until the right-hand nav links come within ~100px
+   of the "Recreating the Past" title, then scales down smoothly to a floor.
+   Because it is driven by viewport width with identical clamp() formulas on
+   every page, there are no per-page breakpoints left to drift out of sync, and
+   there is no discrete jump — it eases continuously.
+
+   The clamp() ramps are engineered so every value reaches its MAX exactly at a
+   ~620px viewport (the point where the title and links are ~100px apart) and
+   its MIN at a ~360px viewport. Each ramp is: value = MAX at 620px, falling
+   linearly to MIN at 360px, held flat outside that range.
+
+   Tuning
+   ------
+   To move where shrinking begins, change the 620px crossover. Each clamp's
+   middle term is `slope*vw + intercept`, chosen so the line hits MAX at 620px
+   and MIN at 360px; shifting the crossover means recomputing those two terms
+   (quick to redo — just ask).
+   ───────────────────────────────────────────────────────────────────────── */
+
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  height: 48px; /* fixed: keeps sticky-bar/scroll offsets stable as text scales */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(8px, calc(6.15vw - 14.15px), 24px);
+  border-bottom: 1px solid black;
+  background: white;
+}
+
+.site-title {
+  font-weight: 600;
+  font-size: clamp(17px, calc(3.08vw + 5.9px), 25px);
+  line-height: 1;
+  color: black;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  white-space: nowrap; /* scale rather than wrap as space tightens */
+}
+
+.site-title-recreating { color: #daae00; }
+.site-title-past       { color: #d45113; }
+
+.top-nav nav {
+  display: flex;
+  gap: clamp(8px, calc(9.23vw - 25.2px), 32px);
+  font-size: clamp(12px, calc(1.54vw + 6.46px), 16px);
+  white-space: nowrap;
+}
+
+.top-nav a { color: black; text-decoration: none; }
+
+.top-nav a.nav-current {
+  text-decoration: underline;
+  text-decoration-color: #75c9c8;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+}

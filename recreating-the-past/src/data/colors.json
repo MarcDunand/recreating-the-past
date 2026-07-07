@@ -1,0 +1,518 @@
+{
+  "sun_microcosmos-hommage-a-bartok": {
+    "fill": "#e1d3c8",
+    "innerFill": "#d1afa8"
+  },
+  "ana_hommage-a-barbaud": {
+    "fill": "#bababa",
+    "innerFill": "#383838"
+  },
+  "vivian_structure-of-squares": {
+    "fill": "#f5f0ea",
+    "innerFill": "#dcd8d2"
+  },
+  "lia_interstices": {
+    "fill": "#927b90",
+    "innerFill": "#775975"
+  },
+  "marc_interruptions": {
+    "fill": "#e2e2e2",
+    "innerFill": "#d5d5d5"
+  },
+  "haotian_divergent-lines": {
+    "fill": "#ffffff",
+    "innerFill": "#fafafa"
+  },
+  "aimee_life-in-m": {
+    "fill": "#0550b1",
+    "innerFill": "#14256f"
+  },
+  "emily_1-carre-et-63-quadrangles": {
+    "fill": "#010101",
+    "innerFill": "#fcfcfc"
+  },
+  "anyang_saint-victoire-en-2-bleus-a": {
+    "fill": "#ffffff",
+    "innerFill": "#3f87c9"
+  },
+  "an_lent-mouvement-bleu-orange-rouge-et-noir": {
+    "fill": "#e1ded7",
+    "innerFill": "#b3c5d9"
+  },
+  "shiman_25-carres": {
+    "fill": "#5a78ce",
+    "innerFill": "#5170cc"
+  },
+  "jae-in_deporte-du-sillon": {
+    "fill": "#d3d9e7",
+    "innerFill": "#f94833"
+  },
+  "yufeng_de-la-serie-des-ordres-detail": {
+    "fill": "#fefefe",
+    "innerFill": "#f2f2f2"
+  },
+  "malvika_untitled-line-grid": {
+    "fill": "#f5f3f4",
+    "innerFill": "#e6e4e5"
+  },
+  "ash_four-randomly-distributed-elements": {
+    "fill": "#f5f5f5",
+    "innerFill": "#e3e3e3"
+  },
+  "fengyi_emergence-dune-croix": {
+    "fill": "#f4f0e5",
+    "innerFill": "#4b8c40"
+  },
+  "annie_desordres": {
+    "fill": "#f4f4f4",
+    "innerFill": "#d1e4e0"
+  },
+  "eitan_untitled": {
+    "fill": "#2d2c2a",
+    "innerFill": "#e3dfd6"
+  },
+  "sun_permutations": {
+    "fill": "#030001",
+    "innerFill": "#1f371d"
+  },
+  "ash_catalog": {
+    "fill": "#010101",
+    "innerFill": "#183525"
+  },
+  "fengyi_matrix-iii": {
+    "fill": "#0a090f",
+    "innerFill": "#4c4a51"
+  },
+  "haotian_matrix-iii": {
+    "fill": "#010001",
+    "innerFill": "#a75b8b"
+  },
+  "ana_catalog": {
+    "fill": "#000000",
+    "innerFill": "#080808"
+  },
+  "malvika_digital-harmony": {
+    "fill": "#010001",
+    "innerFill": "#521d16"
+  },
+  "jae_permutations": {
+    "fill": "#010101",
+    "innerFill": "#202725"
+  },
+  "anyang_experiments-in-motion-graphics": {
+    "fill": "#0f0f0f",
+    "innerFill": "#424242"
+  },
+  "shiman_matrix": {
+    "fill": "#74b126",
+    "innerFill": "#446d1c"
+  },
+  "aimee_matrix-iii": {
+    "fill": "#010000",
+    "innerFill": "#693f52"
+  },
+  "vivian_permutations": {
+    "fill": "#010001",
+    "innerFill": "#0e0b0e"
+  },
+  "lia_matrix-iii": {
+    "fill": "#0f1918",
+    "innerFill": "#a06b83"
+  },
+  "annie_matrix-iii": {
+    "fill": "#000000",
+    "innerFill": "#484848"
+  },
+  "yufeng_matrix-iii": {
+    "fill": "#595959",
+    "innerFill": "#373737"
+  },
+  "emily_permutations": {
+    "fill": "#020202",
+    "innerFill": "#7f4ba0"
+  },
+  "eitan_experiments-in-motion-graphics": {
+    "fill": "#121011",
+    "innerFill": "#989697"
+  },
+  "ash_typographic-color-work": {
+    "fill": "#eeefec",
+    "innerFill": "#c84631"
+  },
+  "shiman_typographic-color-layers": {
+    "fill": "#f3f2e6",
+    "innerFill": "#d13002"
+  },
+  "fengyi_mit-press-colophon": {
+    "fill": "#f5f4f2",
+    "innerFill": "#4a2433"
+  },
+  "ana_typographic-work": {
+    "fill": "#fefefd",
+    "innerFill": "#f2646e"
+  },
+  "an_mit-press-colophon": {
+    "fill": "#ffffff",
+    "innerFill": "#ececec"
+  },
+  "ivy_mit-press-colophon": {
+    "fill": "#fefbd2",
+    "innerFill": "#ffffde"
+  },
+  "haotian_mit-press-colophon": {
+    "fill": "#000000",
+    "innerFill": "#fdfdfd"
+  },
+  "annie_information-landscapes": {
+    "fill": "#010101",
+    "innerFill": "#1d231a"
+  },
+  "malvika_concentric-squares": {
+    "fill": "#2c5594",
+    "innerFill": "#d34634"
+  },
+  "lia_bauhaus-poster": {
+    "fill": "#f6f6f6",
+    "innerFill": "#33292f"
+  },
+  "emily_mit-press-cover": {
+    "fill": "#0751c0",
+    "innerFill": "#3544a0"
+  },
+  "yufeng_bauhaus": {
+    "fill": "#5c5c5c",
+    "innerFill": "#faf8ea"
+  },
+  "eitan_messages-and-means": {
+    "fill": "#2f2019",
+    "innerFill": "#f17547"
+  },
+  "aimee_muriel-cooper-at-mit": {
+    "fill": "#020202",
+    "innerFill": "#6f7781"
+  },
+  "anyang_typographic-shapes": {
+    "fill": "#ebc24c",
+    "innerFill": "#f8cd4f"
+  },
+  "jae_mit-press-cover": {
+    "fill": "#1a478b",
+    "innerFill": "#e62d1d"
+  },
+  "sun_morisawa-6": {
+    "fill": "#030303",
+    "innerFill": "#fcfcfc"
+  },
+  "vivian_morisawa-9": {
+    "fill": "#e66b6a",
+    "innerFill": "#fd0504"
+  },
+  "jae_design-for-wall-hanging": {
+    "fill": "#958d92",
+    "innerFill": "#d83e25"
+  },
+  "ash_gr-i": {
+    "fill": "#2434ba",
+    "innerFill": "#bd3e25"
+  },
+  "ivy_unknown-textile-work": {
+    "fill": "#595959",
+    "innerFill": "#999999"
+  },
+  "ana_scroll": {
+    "fill": "#000000",
+    "innerFill": "#8f6630"
+  },
+  "anyang_yellow-meander": {
+    "fill": "#f0c933",
+    "innerFill": "#ebcc56"
+  },
+  "lia_movement-in-squares": {
+    "fill": "#f7f7f7",
+    "innerFill": "#b3b3b3"
+  },
+  "shiman_red-meander": {
+    "fill": "#ebe7da",
+    "innerFill": "#8a695c"
+  },
+  "fengyi_untitled": {
+    "fill": "#fd4302",
+    "innerFill": "#ea5422"
+  },
+  "yufeng_connections": {
+    "fill": "#565657",
+    "innerFill": "#d3d49d"
+  },
+  "annie_second-movement": {
+    "fill": "#fbf1e0",
+    "innerFill": "#ba1407"
+  },
+  "alex_tr-ii": {
+    "fill": "#669063",
+    "innerFill": "#6d9069"
+  },
+  "haotian_second-movement-i": {
+    "fill": "#0d0a06",
+    "innerFill": "#f9ecc7"
+  },
+  "emily_gr-i": {
+    "fill": "#1b2587",
+    "innerFill": "#3642a5"
+  },
+  "aimee_second-movement-i": {
+    "fill": "#f7f4e0",
+    "innerFill": "#e3decc"
+  },
+  "sun_olympiad": {
+    "fill": "#110f0d",
+    "innerFill": "#465916"
+  },
+  "jae_untitled-37": {
+    "fill": "#ec7a44",
+    "innerFill": "#ef9469"
+  },
+  "annie_homage-to-duchamp": {
+    "fill": "#010001",
+    "innerFill": "#7c7583"
+  },
+  "malvika_enigma": {
+    "fill": "#010200",
+    "innerFill": "#44962c"
+  },
+  "vivian_eismc2": {
+    "fill": "#030303",
+    "innerFill": "#bcbcbc"
+  },
+  "emily_obama": {
+    "fill": "#ffffff",
+    "innerFill": "#010101"
+  },
+  "lia_dominoportrait-of-charlie-chaplin": {
+    "fill": "#000000",
+    "innerFill": "#0b0b0b"
+  },
+  "anyang_martin-gardner": {
+    "fill": "#201d1c",
+    "innerFill": "#2d2928"
+  },
+  "ana_studies-in-perception-i": {
+    "fill": "#1e1e1e",
+    "innerFill": "#dbdbdb"
+  },
+  "haotian_eismc2": {
+    "fill": "#040404",
+    "innerFill": "#cecece"
+  },
+  "eitan_studies-in-perception-i": {
+    "fill": "#dddfd1",
+    "innerFill": "#d3d5c7"
+  },
+  "fengyi_variable-weight-alphabet": {
+    "fill": "#fefefe",
+    "innerFill": "#030303"
+  },
+  "anyang_composites": {
+    "fill": "#1a1a1a",
+    "innerFill": "#e3e3e3"
+  },
+  "aimee_androgyny": {
+    "fill": "#f1f1f1",
+    "innerFill": "#b1b1b1"
+  },
+  "shiman_morphing-grid": {
+    "fill": "#f4f4f4",
+    "innerFill": "#fefefe"
+  },
+  "jae_composites": {
+    "fill": "#ac9d8c",
+    "innerFill": "#ae8572"
+  },
+  "ivy_primate-composite": {
+    "fill": "#4b4945",
+    "innerFill": "#e1baa8"
+  },
+  "haotian_animal-composite": {
+    "fill": "#010101",
+    "innerFill": "#1f1f1f"
+  },
+  "sun_class-of-1988": {
+    "fill": "#010101",
+    "innerFill": "#5c5c5c"
+  },
+  "lia_portrait-hals": {
+    "fill": "#1e1510",
+    "innerFill": "#a67c53"
+  },
+  "alex_local-index": {
+    "fill": "#364428",
+    "innerFill": "#c1c84d"
+  },
+  "annie_class-of-1988": {
+    "fill": "#e9e9e9",
+    "innerFill": "#d6d6d6"
+  },
+  "ana_class-of-1988": {
+    "fill": "#fefefe",
+    "innerFill": "#d0d0d0"
+  },
+  "eitan_late-night-triad": {
+    "fill": "#14060b",
+    "innerFill": "#602038"
+  },
+  "ash_newlyweds": {
+    "fill": "#d4cbc5",
+    "innerFill": "#9d7664"
+  },
+  "fengyi_all-the-ways": {
+    "fill": "#9ba17b",
+    "innerFill": "#aab281"
+  },
+  "vivian_all-the-ways": {
+    "fill": "#b18087",
+    "innerFill": "#a77655"
+  },
+  "yufeng_biker-on-the-road": {
+    "fill": "#746b80",
+    "innerFill": "#9b5c47"
+  },
+  "sun_videoplace": {
+    "fill": "#000000",
+    "innerFill": "#fdfbfe"
+  },
+  "anyang_videoplace": {
+    "fill": "#efefef",
+    "innerFill": "#c6c6c6"
+  },
+  "ana_videoplace": {
+    "fill": "#0b0c0b",
+    "innerFill": "#6b32f4"
+  },
+  "lia_videoplace": {
+    "fill": "#040303",
+    "innerFill": "#fb0203"
+  },
+  "annie_videoplace": {
+    "fill": "#010001",
+    "innerFill": "#f182ed"
+  },
+  "vivian_videoplace": {
+    "fill": "#060600",
+    "innerFill": "#f4681f"
+  },
+  "haotian_videoplace": {
+    "fill": "#fbfafa",
+    "innerFill": "#b9b9b7"
+  },
+  "shiman_videoplace": {
+    "fill": "#ffffff",
+    "innerFill": "#010101"
+  },
+  "eitan_small-planet": {
+    "fill": "#3d4e40",
+    "innerFill": "#31593a"
+  },
+  "fengyi_videoplace": {
+    "fill": "#15141a",
+    "innerFill": "#5b6ebd"
+  },
+  "aimee_text-rain": {
+    "fill": "#a2917e",
+    "innerFill": "#6a483d"
+  },
+  "jae_text-rain": {
+    "fill": "#c0c0c0",
+    "innerFill": "#a7abae"
+  },
+  "alex_text-rain": {
+    "fill": "#17171f",
+    "innerFill": "#4671a9"
+  },
+  "haotian_noisefields": {
+    "fill": "#4d403e",
+    "innerFill": "#52552c"
+  },
+  "shiman_noisefields": {
+    "fill": "#000101",
+    "innerFill": "#788d51"
+  },
+  "yufeng_c-trend": {
+    "fill": "#040705",
+    "innerFill": "#486556"
+  },
+  "aimee_c-trend": {
+    "fill": "#0b0b0b",
+    "innerFill": "#7d7f82"
+  },
+  "anyang_transformations": {
+    "fill": "#504f4b",
+    "innerFill": "#474642"
+  },
+  "vivian_transformations": {
+    "fill": "#8b8b8b",
+    "innerFill": "#c1c1c1"
+  },
+  "emily_transformations": {
+    "fill": "#010101",
+    "innerFill": "#7e7e7e"
+  },
+  "eitan_untitled-1978": {
+    "fill": "#8d847c",
+    "innerFill": "#6b625a"
+  },
+  "annie_vasulka-effect": {
+    "fill": "#070708",
+    "innerFill": "#8a878e"
+  },
+  "jae_vasulka-effect": {
+    "fill": "#101010",
+    "innerFill": "#363636"
+  },
+  "alex_vasulka-effect": {
+    "fill": "#171717",
+    "innerFill": "#282828"
+  },
+  "fengyi_ghost-for-de-calibration": {
+    "fill": "#babbbd",
+    "innerFill": "#c847b8"
+  },
+  "ash_menkman": {
+    "fill": "#878686",
+    "innerFill": "#32302f"
+  },
+  "alex_gala": {
+    "fill": "#e2e3e2",
+    "innerFill": "#c0573c"
+  },
+  "shiman_p-197pz": {
+    "fill": "#0e0d0f",
+    "innerFill": "#8053ac"
+  },
+  "sun_p-197-j": {
+    "fill": "#f1ebeb",
+    "innerFill": "#d9d3d3"
+  },
+  "jae_microimage-a-05": {
+    "fill": "#d1a28e",
+    "innerFill": "#c78a72"
+  },
+  "vivian_dots-infinity": {
+    "fill": "#f3ce28",
+    "innerFill": "#fee12b"
+  },
+  "eitan_art-of-reproduction": {
+    "fill": "#33322a",
+    "innerFill": "#b2a07d"
+  },
+  "anyang_artificiata-ii": {
+    "fill": "#101010",
+    "innerFill": "#d38069"
+  },
+  "yufeng_a-humument": {
+    "fill": "#fefdfd",
+    "innerFill": "#5a4c57"
+  },
+  "lia_nyt-chromebook": {
+    "fill": "#cfcfcf",
+    "innerFill": "#a9b4c4"
+  }
+}

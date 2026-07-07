@@ -13,7 +13,23 @@
       "WebFetch(domain:www.artsy.net)",
       "WebFetch(domain:www.mutualart.com)",
       "WebFetch(domain:www.ragnardigital.art)",
-      "WebFetch(domain:www.gathering4gardner.org)"
+      "WebFetch(domain:www.gathering4gardner.org)",
+      "Bash(python -c \"import PIL; print\\('PIL ok'\\)\")",
+      "Bash(python -c \"import sklearn; print\\('sklearn ok'\\)\")",
+      "Bash(python -c \"import skimage; print\\('skimage ok'\\)\")",
+      "Bash(python -c \"import numpy; print\\('numpy ok'\\)\")",
+      "WebFetch(domain:salavon.com)",
+      "WebFetch(domain:www.centerforvisualmusic.org)",
+      "WebFetch(domain:www.lillian.com)",
+      "WebFetch(domain:readymag.com)",
+      "WebFetch(domain:www.oscars.org)",
+      "Bash(npm run *)",
+      "Bash(curl -s http://localhost:4322/)",
+      "Bash(powershell -NoProfile -Command 'Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -match '\\\\''astro preview'\\\\'' } | ForEach-Object { Stop-Process -Id $_.ProcessId -Force }')",
+      "PowerShell($conn = Get-NetTCPConnection -LocalPort 4322 -State Listen -ErrorAction SilentlyContinue; if \\($conn\\) { Stop-Process -Id $conn.OwningProcess -Force; \"stopped\" } else { \"not running\" })",
+      "Bash(cat .gitignore)",
+      "Bash(cat recreating-the-past/.gitignore)",
+      "Bash(awk '{printf \"%.1f MB %s\\\\n\", $1/1048576, $2}')"
     ]
   }
 }

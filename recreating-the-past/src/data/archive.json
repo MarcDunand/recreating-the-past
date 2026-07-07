@@ -117,16 +117,6 @@
         "recreationLink": "https://editor.p5js.org/shimanxxx/sketches/1GiVQxuN5"
       },
       {
-        "id": "philipp_mouvement",
-        "originalTitle": "Mouvement",
-        "originalYear": "1959",
-        "originalMediaType": "image",
-        "originalLink": "https://ropac.net/ko/artworks/12824-vera-molnar-mouvement-1959/",
-        "student": "Philipp Hugenroth",
-        "recreationMediaType": "image",
-        "recreationLink": "https://gist.github.com/tudi2d/14d75443a29b855f28469770f63d8136"
-      },
-      {
         "id": "jae-in_deporte-du-sillon",
         "originalTitle": "Deporté du Sillon",
         "originalYear": "1990",
@@ -190,7 +180,7 @@
       {
         "id": "eitan_untitled",
         "originalTitle": "Untitled",
-        "originalYear": "unknown",
+        "originalYear": "1952",
         "originalMediaType": "image",
         "originalLink": "https://www.moma.org/collection/works/409639",
         "student": "Eitan Wolf",
@@ -323,7 +313,7 @@
         "originalTitle": "Matrix III",
         "originalYear": "1972",
         "originalMediaType": "video",
-        "originalLink": "https://www.youtube.com/watch?v=ZrKgyY5aDvA&list=RDZrKgyY5aDvA&start_radio=1",
+        "originalLink": "https://youtu.be/ZrKgyY5aDvA?list=PLA61D26B1099384D3&t=140",
         "student": "Lia Chen",
         "recreationMediaType": "video",
         "recreationLink": "https://editor.p5js.org/qc311/sketches/QBJ592JTi"
@@ -333,7 +323,7 @@
         "originalTitle": "Matrix III",
         "originalYear": "1972",
         "originalMediaType": "video",
-        "originalLink": "https://youtu.be/ZrKgyY5aDvA?list=PLA61D26B1099384D3&t=140",
+        "originalLink": "https://www.youtube.com/watch?v=ZrKgyY5aDvA&list=RDZrKgyY5aDvA&start_radio=1",
         "student": "Annie Yining Chen",
         "recreationMediaType": "video",
         "recreationLink": "https://editor.p5js.org/ychenannie8/sketches/stiOxIPEE"
@@ -466,16 +456,6 @@
         "student": "Malvika Dwivedi",
         "recreationMediaType": "image",
         "recreationLink": ""
-      },
-      {
-        "id": "ayah_communication-by-design",
-        "originalTitle": "Communication by Design",
-        "originalYear": "1964",
-        "originalMediaType": "image",
-        "originalLink": "https://www.commarts.com/project/7900/communication-by-design-poster",
-        "student": "Ayah Mahmoud",
-        "recreationMediaType": "image",
-        "recreationLink": "https://editor.p5js.org/ayahm2021/sketches/Pbbmx0Uqw"
       },
       {
         "id": "lia_bauhaus-poster",
@@ -762,7 +742,7 @@
         "originalTitle": "Homage to Duchamp",
         "originalYear": "1974",
         "originalLink": "https://history.siggraph.org/artwork/lillian-f-schwartz-homage-to-duchamp/",
-        "student": "Annie Chen",
+        "student": "Annie Yining Chen",
         "recreationMediaType": "image",
         "notes": "Original video not yet sourced — original display image is a proxy recreation frame. Student made static and video recreations using a parametric wireframe system."
       },
@@ -1086,22 +1066,22 @@
         "recreationLink": "https://github.com/anaschonml/RTP-code/tree/main/objects"
       },
       {
-        "id": "lia_videoplace",
-        "originalTitle": "Videoplace",
-        "originalYear": "1970",
-        "originalMediaType": "gif",
-        "originalLink": "",
-        "student": "Lia Chen",
-        "recreationMediaType": "gif",
-        "recreationLink": ""
-      },
-      {
         "id": "annie_videoplace",
         "originalTitle": "Videoplace",
         "originalYear": "1970",
         "originalMediaType": "image",
         "originalLink": "",
         "student": "Annie Yining Chen",
+        "recreationMediaType": "gif",
+        "recreationLink": ""
+      },
+      {
+        "id": "lia_videoplace",
+        "originalTitle": "Videoplace",
+        "originalYear": "1970",
+        "originalMediaType": "gif",
+        "originalLink": "",
+        "student": "Lia Chen",
         "recreationMediaType": "gif",
         "recreationLink": ""
       },

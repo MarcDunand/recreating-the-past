@@ -1,0 +1,715 @@
+---
+import people from "../data/people.json";
+import archive from "../data/archive.json";
+import colors from "../data/colors.json";
+import "../styles/top-nav.css";
+
+const lastName   = (name: string) => name.trim().split(/\s+/).pop()!;
+const shortLabel = (fullName: string): string => {
+  const overrides: Record<string, string> = {
+    "Woody and Steina Vasulka": "Vasulka",
+  };
+  return overrides[fullName] ?? fullName.split(/\s+/).pop()!;
+};
+
+function thumbSrc(mediaFolder: string, pair: any): string {
+  const t = (pair.recreationMediaType || "image").toLowerCase();
+  if (t === "video" || t === "gif") return `/media/${mediaFolder}/posters/${pair.id}_r.jpg`;
+  return `/media/${mediaFolder}/recreations/${pair.id}_r.jpg`;
+}
+
+const colorsMap    = colors as Record<string, { fill: string; innerFill?: string }>;
+const allArtists   = archive as any[];
+const regularArtists = allArtists.filter(a => a.artistSlug !== "final");
+const finalProject   = allArtists.find(a => a.artistSlug === "final") as any;
+
+const SLUG_REMAP: Record<string, string> = {
+  "anni-albers":       "john-maeda",
+  "ken-knowlton":      "lillian-schwartz",
+  "claire-hentschker": "nancy-burson",
+  "jason-salavon":     "nancy-burson",
+  "camille-utterback": "myron-krueger",
+  "rosa-menkman":      "woody-vasulka",
+};
+
+const LABEL_OVERRIDE: Record<string, string> = {
+  "john-maeda":       "Maeda/Albers",
+  "lillian-schwartz": "Schwartz/Knowlton",
+  "nancy-burson":     "Burson/Salavon",
+  "myron-krueger":    "Krueger/Utterback",
+  "woody-vasulka":    "Vasulka/Menkman",
+};
+
+const MERGED_SECONDARY: Record<string, { slug: string; label: string }> = {
+  "john-maeda":       { slug: "anni-albers",      label: "Albers" },
+  "lillian-schwartz": { slug: "ken-knowlton",      label: "Knowlton" },
+  "nancy-burson":     { slug: "jason-salavon",     label: "Salavon" },
+  "myron-krueger":    { slug: "camille-utterback", label: "Utterback" },
+  "woody-vasulka":    { slug: "rosa-menkman",      label: "Menkman" },
+};
+
+type PairEntry = { pairId: string; src: string; artistSlug: string; fill: string; innerFill: string };
+
+function pairsForStudent(studentName: string): PairEntry[] {
+  const norm = studentName.toLowerCase();
+  const results: PairEntry[] = [];
+  for (const artist of regularArtists) {
+    for (const pair of artist.pairs) {
+      if ((pair.student || "").toLowerCase() === norm) {
+        const c = colorsMap[pair.id] ?? { fill: "#cccccc", innerFill: "#aaaaaa" };
+        const displaySlug = SLUG_REMAP[artist.artistSlug] ?? artist.artistSlug;
+        results.push({ pairId: pair.id, src: thumbSrc(artist.mediaFolder, pair), artistSlug: displaySlug, ...c });
+      }
+    }
+  }
+  if (finalProject) {
+    for (const pair of finalProject.pairs) {
+      if ((pair.student || "").toLowerCase() === norm) {
+        const c = colorsMap[pair.id] ?? { fill: "#cccccc", innerFill: "#aaaaaa" };
+        results.push({ pairId: pair.id, src: thumbSrc(finalProject.mediaFolder, pair), artistSlug: "final", ...c });
+      }
+    }
+  }
+  return results;
+}
+
+type ArtistCol = { slug: string; label: string; fullName: string; link: string; secondSlug?: string; secondLabel?: string };
+const artistCols: ArtistCol[] = [
+  ...regularArtists
+    .filter((a: any) => !(a.artistSlug in SLUG_REMAP))
+    .map((a: any): ArtistCol => {
+      const sec = MERGED_SECONDARY[a.artistSlug];
+      return {
+        slug:        a.artistSlug,
+        label:       shortLabel(a.artist),
+        fullName:    LABEL_OVERRIDE[a.artistSlug] ?? a.artist,
+        link:        `/#${a.artistSlug}`,
+        secondSlug:  sec?.slug,
+        secondLabel: sec?.label,
+      };
+    }),
+  { slug: "final", label: "Final", fullName: "Final Project", link: "/#final-project" },
+];
+
+const weekSepSlugs = new Set(["vera-molnar", "john-whitney", "muriel-cooper", "john-maeda", "lillian-schwartz", "nancy-burson", "myron-krueger"]);
+
+const professor = (people as any[]).filter(p => p.role === "professor");
+const tas       = (people as any[])
+  .filter(p => p.role === "ta")
+  .sort((a, b) => lastName(a.name).localeCompare(lastName(b.name)));
+const students  = (people as any[])
+  .filter(p => p.role === "student")
+  .map(p => ({ ...p, pairs: pairsForStudent(p.name) }))
+  // Most completed assignments (filled boxes) first; ties broken by last name
+  .sort((a, b) => b.pairs.length - a.pairs.length || lastName(a.name).localeCompare(lastName(b.name)));
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>People — Recreating the Past</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  </head>
+
+  <body>
+    <header class="top-nav">
+      <a href="/" class="site-title">
+        <span class="site-title-recreating">Recreating</span>{" the "}
+        <span class="site-title-past">Past</span>
+      </a>
+      <nav>
+        <a href="/">Recreations</a>
+        <a href="/people" class="nav-current">People</a>
+        <a href="/about">About</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="people-content">
+
+        <!-- Professor -->
+        <div class="people-group people-group--first">
+          <div class="group-header">
+            <h2 class="group-label">Professor</h2>
+          </div>
+          <ul class="people-list">
+            {professor.map((person: any) => (
+              <li class="people-item people-item--professor">
+                <span class="people-dot people-dot--professor" aria-hidden="true" />
+                {person.link
+                  ? <a href={person.link} class="people-name people-name--linked" target="_blank" rel="noreferrer">{person.name}</a>
+                  : <span class="people-name">{person.name}</span>
+                }
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Teaching Assistants -->
+        <div class="people-group people-group--ta">
+          <div class="group-header">
+            <h2 class="group-label">Teaching Assistants</h2>
+          </div>
+          <ul class="people-list">
+            {tas.map((person: any) => (
+              <li class="people-item people-item--ta">
+                <span class="people-dot people-dot--ta" aria-hidden="true" />
+                {person.link
+                  ? <a href={person.link} class="people-name people-name--linked" target="_blank" rel="noreferrer">{person.name}</a>
+                  : <span class="people-name">{person.name}</span>
+                }
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Students — work table -->
+        <div class="people-group people-group--students">
+          <div class="group-header">
+            <h2 class="group-label">Students and Student Work</h2>
+          </div>
+          <div class="work-table-wrap">
+            <table class="work-table">
+              <thead>
+                <tr>
+                  <th class="name-th">
+                    <span class="corner-label">Students</span>
+                    <span class="corner-axis-label">Artist Studies</span>
+                  </th>
+                  {artistCols.map((col, i) => (
+                    <th
+                      class={`artist-th${col.slug === "final" ? " artist-th--final" : ""}${weekSepSlugs.has(col.slug) ? " artist-th--week-sep" : ""}${i === artistCols.length - 2 ? " artist-th--pre-final" : ""}`}
+                      title={col.fullName}
+                    >
+                      {col.secondSlug ? (
+                        <span class="artist-th-link">
+                          <a href={col.link} class="artist-th-part">{col.label}</a>/<a href={`/#${col.secondSlug}`} class="artist-th-part">{col.secondLabel}</a>
+                        </span>
+                      ) : (
+                        <a href={col.link} class="artist-th-link">{col.label}</a>
+                      )}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {students.map((person: any) => (
+                  <tr class="student-row">
+                    <td class="name-cell">
+                      <div class="name-inner">
+                        <span class="people-dot people-dot--student" aria-hidden="true" />
+                        {person.link
+                          ? <a href={person.link} class="people-name people-name--linked" target="_blank" rel="noreferrer">{person.name}</a>
+                          : <span class="people-name">{person.name}</span>
+                        }
+                      </div>
+                    </td>
+                    {artistCols.map(col => {
+                      const cellPairs = (person.pairs as PairEntry[]).filter(p => p.artistSlug === col.slug);
+                      return (
+                        <td class={`work-cell${col.slug === "final" ? " work-cell--final" : ""}${weekSepSlugs.has(col.slug) ? " work-cell--week-sep" : ""}`}>
+                          {cellPairs.map(pair => (
+                            <button
+                              class="sq"
+                              data-pair-id={pair.pairId}
+                              style={`background-color:${pair.fill};`}
+                              aria-label={`View recreation ${pair.pairId}`}
+                            >
+                              <div class="sq-inner" style={`background-color:${pair.innerFill};`} />
+                              <img src={pair.src} alt="" loading="lazy" class="sq-thumb" />
+                            </button>
+                          ))}
+                        </td>
+                      );
+                    })}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </body>
+</html>
+
+<script>
+  // Colors are pre-computed at build time (inline styles). This only handles click navigation.
+  document.querySelectorAll<HTMLButtonElement>(".sq").forEach(sq => {
+    sq.addEventListener("click", () => {
+      window.location.href = `/?pair=${sq.dataset.pairId}`;
+    });
+  });
+</script>
+
+<style>
+  * { box-sizing: border-box; }
+
+  :root {
+    --color-orange: #d45113;
+    --color-yellow: #DAAE00;
+    --color-teal:   #75C9C8;
+    --text-sm: 16px;
+
+    /* Dot alignment — nudge each bullet independently against the vertical line */
+    /* positive = right, negative = left */
+    --dot-nudge-prof:     -1px;
+    --dot-nudge-ta:       0px;
+    --dot-nudge-students: -1px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    font-family: 'Jost', Arial, Helvetica, sans-serif;
+    color: black;
+    background: white;
+  }
+
+  /* ── Top nav ── styles live in src/styles/top-nav.css (shared) ── */
+
+  /* ── Page layout ── */
+
+  main {
+    padding: 64px 4vw 120px;
+  }
+
+  .people-content {
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  /* ── Group sections ── */
+
+  .people-group {
+    padding-top: 0;
+    padding-bottom: 82px;
+  }
+
+
+  .group-header {
+    position: relative;
+    padding-left: 32px;
+    padding-bottom: 4px;
+    margin-bottom: 16px;
+  }
+
+  /* Horizontal underline — upside-down L crossbar */
+  .group-header::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 3px;
+    right: 0;
+    height: 1px;
+    background: black;
+  }
+
+  /* Short vertical tick below underline — connects to timeline */
+  .group-header::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 3px;
+    width: 1px;
+    height: 16px;
+    background: black;
+  }
+
+  /* Students section: no tick, no gap — chart's vertical line starts right at the underline */
+  .people-group--students .group-header {
+    margin-bottom: 0;
+  }
+
+  .people-group--students .group-header::before {
+    display: none;
+  }
+
+  .group-label {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 500;
+  }
+
+  /* ── People list (professor + TAs) ── */
+
+  .people-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+  }
+
+  .people-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 18px 1fr;
+    column-gap: 14px;
+    padding: 10;
+    align-items: center;
+  }
+
+  .people-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: -20px;
+    left: 3px;
+    border-left: 1px solid black;
+  }
+
+  .people-list > .people-item:last-child::before {
+    bottom: 0;
+  }
+
+  /* ── Dots ── */
+
+  .people-dot {
+    display: block;
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .people-dot--professor {
+    width: 9px;
+    height: 9px;
+    background: var(--color-teal);
+    border: 1px solid black;
+    border-radius: 0;
+    transform: rotate(45deg);
+    margin-left: var(--dot-nudge-prof);
+  }
+
+  .people-dot--ta {
+    background: white;
+    outline: 1px solid black;
+    outline-offset: 3px;
+    box-shadow: 0 0 0 3px white; /* fills outline-offset gap so line is hidden inside */
+    margin-left: var(--dot-nudge-ta);
+  }
+
+  .people-dot--student {
+    background: black;
+    margin-left: var(--dot-nudge-students);
+  }
+
+  /* ── Names ── */
+
+  .people-item--professor .people-name { font-size: 18px; font-weight: 600; }
+
+  .people-name {
+    color: black;
+    text-decoration: none;
+    white-space: nowrap;
+    font-size: var(--text-sm);
+  }
+
+  a.people-name--linked {
+    text-decoration: underline;
+    text-decoration-color: rgba(0, 0, 0, 0.4);
+    text-underline-offset: 2px;
+    transition: text-decoration-color 120ms ease;
+  }
+
+  a.people-name--linked:hover {
+    text-decoration-color: rgba(0, 0, 0, 1);
+  }
+
+  /* ── Work table ── */
+
+  .work-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .work-table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: 0;
+  }
+
+  /* Top-left corner cell */
+  .name-th {
+    position: relative;
+    vertical-align: bottom;
+    padding-bottom: 12px;
+    text-align: center; /* centers "Students" */
+    border-bottom: 1px solid #d8d8d8;
+  }
+
+  /* Vertical timeline line through the header cell */
+  .name-th::before {
+    content: "";
+    position: absolute;
+    left: 3px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: black;
+    pointer-events: none;
+  }
+
+  /* Partial separator */
+  .name-th::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: #e4e4e4;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Shared style for both axis labels */
+  .corner-label,
+  .corner-axis-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: black;
+    white-space: nowrap;
+    line-height: 1;
+    font-family: inherit;
+  }
+
+  /* "STUDENTS" — block so text-align:center on parent works */
+  .corner-label {
+    display: block;
+  }
+
+  /* "ARTIST STUDIES" — rotated, centered along the 195px separator line */
+  .corner-axis-label {
+    position: absolute;
+    right: 15px;
+    bottom: 35px;
+    display: inline-block;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+
+  /* Column header: rotated artist name */
+  .artist-th {
+    height: 225px;
+    min-width: 57px;
+    width: 57px;
+    vertical-align: bottom;
+    text-align: center;
+    padding-bottom: 28px;
+    padding-inline: 1px;
+    font-weight: 400;
+    border-bottom: 1px solid #d8d8d8;
+    border-right: 1px solid #e8e8e8;
+  }
+
+  .artist-th-link {
+    display: inline-block;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: var(--text-sm);
+    color: black;
+    text-decoration: none;
+    white-space: nowrap;
+    font-family: inherit;
+  }
+
+  a.artist-th-link {
+    text-decoration: underline;
+    text-decoration-color: rgba(0, 0, 0, 0.4);
+    text-underline-offset: 2px;
+    transition: text-decoration-color 120ms ease;
+  }
+
+  a.artist-th-link:hover { text-decoration-color: rgba(0, 0, 0, 1); }
+
+  .artist-th-part {
+    color: black;
+    text-decoration: underline;
+    text-decoration-color: rgba(0, 0, 0, 0.4);
+    text-underline-offset: 2px;
+    transition: text-decoration-color 120ms ease;
+  }
+
+  .artist-th-part:hover { text-decoration-color: rgba(0, 0, 0, 1); }
+
+  /* Final column: partial separators left and right, same 195px height as all other lines */
+  .artist-th--final {
+    position: relative;
+    min-width: 57px;
+    width: 57px;
+    border-right: none;
+  }
+
+  .artist-th--final::before,
+  .artist-th--final::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: #e4e4e4;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .artist-th--final::before { left: 0; }
+  .artist-th--final::after  { right: 0; }
+
+  .artist-th--final .artist-th-link {
+    color: var(--color-teal);
+    font-weight: 500;
+    text-decoration-color: var(--color-teal);
+  }
+
+  /* Student name cell */
+  .name-cell {
+    position: relative;
+    padding-right: 20px;
+    padding-block: 6px;
+    white-space: nowrap;
+    vertical-align: middle;
+    border-right: 1px solid #e4e4e4;
+  }
+
+  /* Vertical line — painted above the horizontal row divider */
+  .name-cell::before {
+    content: "";
+    position: absolute;
+    left: 3px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: black;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* Horizontal row divider — starts after the vertical line so they never overlap */
+  .name-cell::after {
+    content: "";
+    position: absolute;
+    left: 4px;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: #f0f0f0;
+  }
+
+  .student-row:last-child .name-cell::after { background: #e4e4e4; }
+
+  .student-row:last-child .work-cell {
+    border-bottom: 1px solid #e4e4e4;
+  }
+
+  .name-inner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Work data cell */
+  .work-cell {
+    vertical-align: middle;
+    text-align: center;
+    padding: 0;
+    min-width: 57px;
+    width: 57px;
+  }
+
+  .work-cell--final {
+    min-width: 57px;
+    width: 57px;
+    border-right: 1px solid #e4e4e4;
+  }
+
+  .artist-th--week-sep {
+    position: relative;
+    border-right: none;
+  }
+
+  .artist-th--pre-final { border-right: none; }
+
+  .artist-th--week-sep::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: #e4e4e4;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+
+  /* ── Recreation squares ── */
+
+  .sq {
+    position: relative;
+    display: inline-block;
+    width: 57px;
+    height: 57px;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 160ms ease;
+    transform-origin: center;
+    z-index: 0;
+    vertical-align: middle;
+  }
+
+  .sq:hover {
+    transform: scale(1.35);
+    z-index: 10;
+  }
+
+  /* Inner accent circle — size/position tuned via top/left/width/height,
+     exactly as the square was. Equal width & height give a true circle;
+     unequal values give an oval. */
+  .sq-inner {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    height: 50%;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .sq-thumb {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 120ms ease;
+    display: block;
+    z-index: 2;
+  }
+
+  .sq:hover .sq-thumb { opacity: 1; }
+
+  /* ── Responsive ── */
+
+  @media (max-width: 700px) {
+    main { padding: 40px 14px 80px; }
+  }
+</style>

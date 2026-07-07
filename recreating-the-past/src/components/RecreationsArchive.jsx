@@ -54,56 +54,262 @@ function getPosterSrc(artist, pair, side) {
   return `/media/${artist.mediaFolder}/posters/${pair.id}_${suffix}.jpg`;
 }
 
-function MediaPreview({ artist, pair, side }) {
+// Length of the one-shot hover preview shown on the scrolling view (seconds)
+const PREVIEW_SECONDS = 2;
+
+function MediaPreview({ artist, pair, side, isHovered }) {
   const mediaType = getMediaType(pair, side);
   const src = getMediaSrc(artist, pair, side);
   const isVideo = isVideoType(mediaType);
-  const fgSrc = isVideo ? getPosterSrc(artist, pair, side) : src;
+  const poster = isVideo ? getPosterSrc(artist, pair, side) : src;
 
   return (
     <div className={`media-preview${isVideo ? " video-preview" : ""}`}>
-      <img className="media-bg-blur" src={fgSrc} alt="" aria-hidden="true" />
-      <img className="media-fg" src={fgSrc} alt="" />
-      {isVideo && <div className="play-indicator">▶</div>}
+      <img className="media-bg-blur" src={poster} alt="" aria-hidden="true" />
+      {isVideo && isHovered ? (
+        // Hover preview: play just the first couple of seconds once, then hold.
+        // The video remounts fresh on each hover, so it restarts from 0 when the
+        // mouse leaves and returns. Independent of the global pause/play state.
+        <video
+          className="media-fg"
+          src={src}
+          poster={poster}
+          muted
+          autoPlay
+          playsInline
+          preload="metadata"
+          onTimeUpdate={(e) => {
+            if (e.currentTarget.currentTime >= PREVIEW_SECONDS) e.currentTarget.pause();
+          }}
+        />
+      ) : (
+        <img className="media-fg" src={poster} alt="" />
+      )}
     </div>
   );
 }
 
-function FullMedia({ artist, pair, side }) {
-  const mediaType = getMediaType(pair, side);
-  const src = getMediaSrc(artist, pair, side);
-  const isVideo = isVideoType(mediaType);
-  const bgSrc = isVideo ? getPosterSrc(artist, pair, side) : src;
-  const [loaded, setLoaded] = useState(false);
+const PLAY_GLYPH = "▶";
+const PAUSE_GLYPH = "❚❚";
 
-  useEffect(() => { setLoaded(false); }, [src]);
+// Renders the two-up comparison and coordinates the video playback:
+// trims both videos to the shorter one's length, keeps them in sync, and
+// drives the shared centered play/pause control. Pause/play is a global
+// prop so it persists across pairs and (via localStorage) across pages.
+function ComparisonViewer({ selected, paused, setPaused }) {
+  const { artist, pair } = selected;
+
+  const origIsVideo = isVideoType(getMediaType(pair, "original"));
+  const recIsVideo = isVideoType(getMediaType(pair, "recreation"));
+
+  const origRef = useRef(null);
+  const recRef = useRef(null);
+  const pausedRef = useRef(paused);
+  const durations = useRef({});
+  const loopLimit = useRef(Infinity);
+  const hideTimer = useRef(null);
+  const clickTimer = useRef(null);
+
+  const [controlsVisible, setControlsVisible] = useState(false);
+  const [loaded, setLoaded] = useState({});
+
+  useEffect(() => { pausedRef.current = paused; }, [paused]);
+
+  const activeVideos = () =>
+    [origIsVideo ? origRef.current : null, recIsVideo ? recRef.current : null].filter(Boolean);
+
+  const recomputeLimit = () => {
+    const vals = [];
+    if (origIsVideo && durations.current.orig) vals.push(durations.current.orig);
+    if (recIsVideo && durations.current.rec) vals.push(durations.current.rec);
+    // Stop just short of the shorter clip's true end so we loop cleanly.
+    loopLimit.current = vals.length ? Math.min(...vals) - 0.05 : Infinity;
+  };
+
+  // Reset per-pair bookkeeping when navigating to a different pair.
+  useEffect(() => {
+    durations.current = {};
+    loopLimit.current = Infinity;
+    setLoaded({});
+  }, [pair.id]);
+
+  // Apply the global pause/play state to the real media elements.
+  useEffect(() => {
+    for (const v of activeVideos()) {
+      if (paused) v.pause();
+      else v.play().catch(() => {});
+    }
+  }, [paused, pair.id]);
+
+  // While playing, enforce the trimmed loop length and keep the pair in sync.
+  useEffect(() => {
+    if (paused) return;
+    let raf;
+    const tick = () => {
+      const orig = origIsVideo ? origRef.current : null;
+      const rec = recIsVideo ? recRef.current : null;
+      const driver = orig || rec;
+      if (driver && loopLimit.current !== Infinity) {
+        if (driver.currentTime >= loopLimit.current) {
+          if (orig) orig.currentTime = 0;
+          if (rec) rec.currentTime = 0;
+          for (const v of activeVideos()) v.play().catch(() => {});
+        } else if (orig && rec && Math.abs(rec.currentTime - orig.currentTime) > 0.2) {
+          rec.currentTime = orig.currentTime;
+        }
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [paused, pair.id, origIsVideo, recIsVideo]);
+
+  useEffect(() => () => {
+    if (hideTimer.current) clearTimeout(hideTimer.current);
+    if (clickTimer.current) clearTimeout(clickTimer.current);
+  }, []);
+
+  // Show native controls only while a single video is in browser fullscreen;
+  // strip them again on exit so the inline view stays chrome-free.
+  useEffect(() => {
+    const onFsChange = () => {
+      if (!document.fullscreenElement) {
+        for (const v of [origRef.current, recRef.current]) {
+          if (v) v.controls = false;
+        }
+      }
+    };
+    document.addEventListener("fullscreenchange", onFsChange);
+    return () => document.removeEventListener("fullscreenchange", onFsChange);
+  }, []);
+
+  // Show the control and arm the 2s idle fade-out.
+  const nudgeControls = () => {
+    setControlsVisible(true);
+    if (hideTimer.current) clearTimeout(hideTimer.current);
+    hideTimer.current = setTimeout(() => setControlsVisible(false), 2000);
+  };
+
+  // Hide immediately when the pointer leaves a video entirely.
+  const hideControls = () => {
+    if (hideTimer.current) clearTimeout(hideTimer.current);
+    setControlsVisible(false);
+  };
+
+  // Single click toggles pause/play; a double click (fullscreen) cancels it.
+  const handleClick = () => {
+    nudgeControls();
+    if (clickTimer.current) return;
+    clickTimer.current = setTimeout(() => {
+      clickTimer.current = null;
+      setPaused(!pausedRef.current);
+    }, 220);
+  };
+
+  const handleDblClick = (ref) => {
+    if (clickTimer.current) {
+      clearTimeout(clickTimer.current);
+      clickTimer.current = null;
+    }
+    const el = ref.current;
+    if (el?.requestFullscreen) {
+      el.controls = true;
+      el.requestFullscreen().catch(() => {});
+    }
+  };
+
+  const markLoaded = (side) => setLoaded((prev) => ({ ...prev, [side]: true }));
+
+  const renderSquare = (side, ref, isVideo) => {
+    const src = getMediaSrc(artist, pair, side);
+    const poster = getPosterSrc(artist, pair, side);
+    const bgSrc = isVideo ? poster : src;
+    const isLoaded = !!loaded[side];
+
+    return (
+      <div
+        className={`fullscreen-media-square${isVideo ? " is-video" : ""}`}
+        onMouseEnter={isVideo ? nudgeControls : undefined}
+        onMouseMove={isVideo ? nudgeControls : undefined}
+        onMouseLeave={isVideo ? hideControls : undefined}
+        onClick={isVideo ? handleClick : undefined}
+        onDoubleClick={isVideo ? () => handleDblClick(ref) : undefined}
+      >
+        <img className="media-bg-blur" src={bgSrc} alt="" aria-hidden="true" />
+        {!isLoaded && <div className="media-loading-skeleton" />}
+        {isVideo ? (
+          <video
+            key={src}
+            ref={ref}
+            className="fullscreen-media"
+            muted
+            playsInline
+            poster={poster}
+            style={{ opacity: isLoaded ? 1 : 0 }}
+            onLoadedMetadata={(e) => {
+              durations.current[side === "original" ? "orig" : "rec"] = e.currentTarget.duration;
+              recomputeLimit();
+              if (pausedRef.current) e.currentTarget.currentTime = 0;
+              else e.currentTarget.play().catch(() => {});
+            }}
+            onLoadedData={() => markLoaded(side)}
+          >
+            <source src={src} type="video/mp4" />
+          </video>
+        ) : (
+          <img
+            key={src}
+            src={src}
+            alt=""
+            className="fullscreen-media"
+            style={{ opacity: isLoaded ? 1 : 0 }}
+            onLoad={() => markLoaded(side)}
+          />
+        )}
+        {isVideo && (
+          <div className={`video-control${controlsVisible ? " is-visible" : ""}`} aria-hidden="true">
+            <span className={`video-control-glyph${paused ? " is-play" : ""}`}>
+              {paused ? PLAY_GLYPH : PAUSE_GLYPH}
+            </span>
+          </div>
+        )}
+      </div>
+    );
+  };
 
   return (
-    <div className="fullscreen-media-square">
-      <img className="media-bg-blur" src={bgSrc} alt="" aria-hidden="true" />
-      {!loaded && <div className="media-loading-skeleton" />}
-      {isVideo ? (
-        <video
-          key={src}
-          className="fullscreen-media"
-          controls
-          muted
-          poster={getPosterSrc(artist, pair, side)}
-          onLoadedData={() => setLoaded(true)}
-          style={{ opacity: loaded ? 1 : 0 }}
-        >
-          <source src={src} type="video/mp4" />
-        </video>
-      ) : (
-        <img
-          key={src}
-          src={src}
-          alt=""
-          className="fullscreen-media"
-          onLoad={() => setLoaded(true)}
-          style={{ opacity: loaded ? 1 : 0 }}
-        />
-      )}
+    <div className="fullscreen-grid">
+      <div className="fullscreen-side">
+        <div className="fullscreen-label">
+          {pair.originalLink ? (
+            <a href={pair.originalLink} target="_blank" rel="noreferrer">
+              {artist.artist}, <em>{pair.originalTitle}</em>, {pair.originalYear}
+            </a>
+          ) : (
+            <>{artist.artist}, <em>{pair.originalTitle}</em>, {pair.originalYear}</>
+          )}
+        </div>
+
+        <div className="fullscreen-media-wrapper">
+          {renderSquare("original", origRef, origIsVideo)}
+        </div>
+      </div>
+
+      <div className="fullscreen-side">
+        <div className="fullscreen-label">
+          {pair.recreationLink ? (
+            <a href={pair.recreationLink} target="_blank" rel="noreferrer">
+              {pair.student}, <em>Recreation</em>, 2026
+            </a>
+          ) : (
+            <>{pair.student}, <em>Recreation</em>, 2026</>
+          )}
+        </div>
+
+        <div className="fullscreen-media-wrapper">
+          {renderSquare("recreation", recRef, recIsVideo)}
+        </div>
+      </div>
     </div>
   );
 }
@@ -129,7 +335,7 @@ function MediaTile({ artist, pair, side, hoveredSide, setHoveredSide, openPair }
       onBlur={() => setHoveredSide(null)}
       onClick={openPair}
     >
-      <MediaPreview artist={artist} pair={pair} side={side} />
+      <MediaPreview artist={artist} pair={pair} side={side} isHovered={hoveredSide !== null} />
 
       {hoveredSide !== null && <div className="tile-caption">{caption}</div>}
     </button>
@@ -147,14 +353,11 @@ function ArtworkRow({ artist, pair, index, openPair }) {
           {pair.originalLink ? (
             <a href={pair.originalLink} target="_blank" rel="noreferrer" className="list-link">
               <div className="timeline-title">{pair.originalTitle}</div>
-              <div className="timeline-year">{pair.originalYear}</div>
             </a>
           ) : (
-            <>
-              <div className="timeline-title">{pair.originalTitle}</div>
-              <div className="timeline-year">{pair.originalYear}</div>
-            </>
+            <div className="timeline-title">{pair.originalTitle}</div>
           )}
+          <div className="timeline-year">{pair.originalYear}</div>
         </div>
       </aside>
 
@@ -184,7 +387,7 @@ function ArtworkRow({ artist, pair, index, openPair }) {
   );
 }
 
-function FullscreenComparison({ selected, close, onPrev, onNext }) {
+function FullscreenComparison({ selected, close, onPrev, onNext, paused, setPaused }) {
   const overlayRef = useRef(null);
   const lastWheelRef = useRef(0);
 
@@ -227,8 +430,6 @@ function FullscreenComparison({ selected, close, onPrev, onNext }) {
 
   if (!selected) return null;
 
-  const { artist, pair } = selected;
-
   return (
     <div className="fullscreen-overlay" ref={overlayRef}>
       <button
@@ -237,46 +438,14 @@ function FullscreenComparison({ selected, close, onPrev, onNext }) {
         disabled={!onPrev}
         aria-label="Previous"
       >
-        ↑
+        <span className="fullscreen-chevron" aria-hidden="true" />
       </button>
 
       <button className="fullscreen-close" onClick={close} aria-label="Close">
         ×
       </button>
 
-      <div className="fullscreen-grid">
-        <div className="fullscreen-side">
-          <div className="fullscreen-label">
-            {pair.originalLink ? (
-              <a href={pair.originalLink} target="_blank" rel="noreferrer">
-                {artist.artist}, <em>{pair.originalTitle}</em>, {pair.originalYear}
-              </a>
-            ) : (
-              <>{artist.artist}, <em>{pair.originalTitle}</em>, {pair.originalYear}</>
-            )}
-          </div>
-
-          <div className="fullscreen-media-wrapper">
-            <FullMedia artist={artist} pair={pair} side="original" />
-          </div>
-        </div>
-
-        <div className="fullscreen-side">
-          <div className="fullscreen-label">
-            {pair.recreationLink ? (
-              <a href={pair.recreationLink} target="_blank" rel="noreferrer">
-                {pair.student}, <em>Recreation</em>, 2026
-              </a>
-            ) : (
-              <>{pair.student}, <em>Recreation</em>, 2026</>
-            )}
-          </div>
-
-          <div className="fullscreen-media-wrapper">
-            <FullMedia artist={artist} pair={pair} side="recreation" />
-          </div>
-        </div>
-      </div>
+      <ComparisonViewer selected={selected} paused={paused} setPaused={setPaused} />
 
       <button
         className="fullscreen-nav fullscreen-nav-next"
@@ -284,13 +453,13 @@ function FullscreenComparison({ selected, close, onPrev, onNext }) {
         disabled={!onNext}
         aria-label="Next"
       >
-        ↓
+        <span className="fullscreen-chevron" aria-hidden="true" />
       </button>
     </div>
   );
 }
 
-function StickyBar({ stickySlug, regularArtists }) {
+function StickyBar({ stickySlug, regularArtists, onToggleMenu }) {
   const displayName =
     stickySlug === "final"
       ? "Final Project"
@@ -299,7 +468,19 @@ function StickyBar({ stickySlug, regularArtists }) {
   return (
     <div className="sticky-bar">
       <div className="sticky-bar-inner">
-        <div className="sticky-bar-artist">{displayName}</div>
+        <div className="sticky-bar-artist-group">
+          <button
+            type="button"
+            className="sticky-bar-hamburger"
+            onClick={onToggleMenu}
+            aria-label="Open artist menu"
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+          <div className="sticky-bar-artist">{displayName}</div>
+        </div>
         <div className="sticky-bar-diptych">
           <span className="sticky-bar-original">Original</span>
           <span />
@@ -310,7 +491,7 @@ function StickyBar({ stickySlug, regularArtists }) {
   );
 }
 
-function ArtistMenu({ artists, activeArtistSlug, isExpanded }) {
+function ArtistMenu({ artists, activeArtistSlug, isExpanded, isOpen, onClose }) {
   const listRef = useRef(null);
 
   useEffect(() => {
@@ -326,30 +507,38 @@ function ArtistMenu({ artists, activeArtistSlug, isExpanded }) {
   }, [activeArtistSlug]);
 
   return (
-    <nav className={`artist-menu${isExpanded ? " is-expanded" : ""}`} aria-label="Artist navigation">
-      <div className="artist-menu-list" ref={listRef}>
-        {artists.map((artist) => (
-          <a
-            key={artist.artistSlug}
-            className={`artist-menu-item ${
-              activeArtistSlug === artist.artistSlug ? "is-active" : ""
-            }`}
-            href={`#${artist.artistSlug}`}
-          >
-            <span className="artist-menu-dot" />
-            <span className="artist-menu-label">{artist.artist}</span>
-          </a>
-        ))}
+    <>
+      {isOpen && <div className="artist-menu-backdrop" onClick={onClose} />}
+      <nav
+        className={`artist-menu${isExpanded ? " is-expanded" : ""}${isOpen ? " is-open" : ""}`}
+        aria-label="Artist navigation"
+      >
+        <div className="artist-menu-list" ref={listRef}>
+          {artists.map((artist) => (
+            <a
+              key={artist.artistSlug}
+              className={`artist-menu-item ${
+                activeArtistSlug === artist.artistSlug ? "is-active" : ""
+              }`}
+              href={`#${artist.artistSlug}`}
+              onClick={onClose}
+            >
+              <span className="artist-menu-dot" />
+              <span className="artist-menu-label">{artist.artist}</span>
+            </a>
+          ))}
 
-        <a
-          className={`artist-menu-item final-project-link${activeArtistSlug === "final" ? " is-active" : ""}`}
-          href="#final-project"
-        >
-          <span className="final-project-diamond" />
-          <span className="artist-menu-label">Final Project</span>
-        </a>
-      </div>
-    </nav>
+          <a
+            className={`artist-menu-item final-project-link${activeArtistSlug === "final" ? " is-active" : ""}`}
+            href="#final-project"
+            onClick={onClose}
+          >
+            <span className="final-project-diamond" />
+            <span className="artist-menu-label">Final Project</span>
+          </a>
+        </div>
+      </nav>
+    </>
   );
 }
 
@@ -365,14 +554,11 @@ function FinalArtworkRow({ pair, openPair }) {
           {pair.originalLink ? (
             <a href={pair.originalLink} target="_blank" rel="noreferrer" className="list-link">
               <div className="timeline-title">{pair.originalTitle}</div>
-              <div className="timeline-year">{pair.originalYear}</div>
             </a>
           ) : (
-            <>
-              <div className="timeline-title">{pair.originalTitle}</div>
-              <div className="timeline-year">{pair.originalYear}</div>
-            </>
+            <div className="timeline-title">{pair.originalTitle}</div>
           )}
+          <div className="timeline-year">{pair.originalYear}</div>
         </div>
       </aside>
 
@@ -410,7 +596,7 @@ function FinalProjectSection({ finalData, setSelected, sectionRef, headingRef })
       className="artist-section final-project-section"
       data-artist-slug="final"
     >
-      <h2 className="final-heading" ref={headingRef}>Final Project: Choose Your Own Artist</h2>
+      <h2 className="final-heading" ref={headingRef}>Final Project: Bring Your Own Artist</h2>
 
       <div className="work-list">
         {sortedPairs.map((pair, index) => (
@@ -460,8 +646,25 @@ function ArtistSection({ artist, setSelected, sectionRef, headingRef }) {
   );
 }
 
+const PAUSED_STORAGE_KEY = "rtp-video-paused";
+
 export default function RecreationsArchive({ archive }) {
   const [selected, setSelected] = useState(null);
+
+  // Global pause/play state, shared across every pair and persisted to
+  // localStorage so it survives navigating away and back.
+  const [paused, setPausedState] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return window.localStorage.getItem(PAUSED_STORAGE_KEY) === "true";
+  });
+  const setPaused = (value) => {
+    setPausedState(value);
+    try {
+      window.localStorage.setItem(PAUSED_STORAGE_KEY, String(value));
+    } catch {
+      /* ignore storage failures (private mode, etc.) */
+    }
+  };
 
   const regularArtists = useMemo(() => archive.filter((a) => a.artistSlug !== "final"), [archive]);
   const finalProject = useMemo(() => archive.find((a) => a.artistSlug === "final"), [archive]);
@@ -484,9 +687,23 @@ export default function RecreationsArchive({ archive }) {
   const [activeArtistSlug, setActiveArtistSlug] = useState(regularArtists[0]?.artistSlug);
   const [stickyArtistSlug, setStickyArtistSlug] = useState(regularArtists[0]?.artistSlug);
   const [isNearTop, setIsNearTop] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const sectionRefs = useRef({});
   const headingRefs = useRef({});
+
+  // Auto-open a pair from ?pair=<id> URL parameter (linked from the People page)
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const pairId = params.get("pair");
+    if (!pairId) return;
+    const found = allPairs.find(({ pair }) => pair.id === pairId);
+    if (!found) return;
+    setSelected(found);
+    const url = new URL(window.location.href);
+    url.searchParams.delete("pair");
+    window.history.replaceState({}, "", url.toString());
+  }, [allPairs]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -539,16 +756,26 @@ export default function RecreationsArchive({ archive }) {
         </a>
 
         <nav>
-          <a href="/">Recreations</a>
+          <a href="/" className="nav-current">Recreations</a>
           <a href="/people">People</a>
           <a href="/about">About</a>
         </nav>
       </header>
 
-      <StickyBar stickySlug={stickyArtistSlug} regularArtists={regularArtists} />
+      <StickyBar
+        stickySlug={stickyArtistSlug}
+        regularArtists={regularArtists}
+        onToggleMenu={() => setMenuOpen((open) => !open)}
+      />
 
       <main>
-        <ArtistMenu artists={regularArtists} activeArtistSlug={activeArtistSlug} isExpanded={isNearTop} />
+        <ArtistMenu
+          artists={regularArtists}
+          activeArtistSlug={activeArtistSlug}
+          isExpanded={isNearTop}
+          isOpen={menuOpen}
+          onClose={() => setMenuOpen(false)}
+        />
 
         {regularArtists.map((artist) => (
           <ArtistSection
@@ -571,6 +798,8 @@ export default function RecreationsArchive({ archive }) {
 
         <FullscreenComparison
           selected={selected}
+          paused={paused}
+          setPaused={setPaused}
           close={() => {
             if (selected) {
               const el = document.querySelector(`[data-pair-id="${selected.pair.id}"]`);

@@ -1,0 +1,266 @@
+---
+import { readdirSync } from "node:fs";
+import { join } from "node:path";
+import "../styles/top-nav.css";
+
+// Banner reads every image from public/media/about-banner/ at build time.
+// To add, remove, or reorder images, edit the files in that folder directly.
+// Prefix filenames with a number (01_, 02_, …) to control display order.
+const bannerSrcs = readdirSync(join(process.cwd(), "public", "media", "about-banner"))
+  .filter(f => /\.(jpe?g|png|webp|gif)$/i.test(f))
+  .sort()
+  .map(f => `/media/about-banner/${f}`);
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>About — Recreating the Past</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  </head>
+
+  <body>
+    <header class="top-nav">
+      <a href="/" class="site-title">
+        <span class="site-title-recreating">Recreating</span>{" the "}
+        <span class="site-title-past">Past</span>
+      </a>
+      <nav>
+        <a href="/">Recreations</a>
+        <a href="/people">People</a>
+        <a href="/about" class="nav-current">About</a>
+      </nav>
+    </header>
+
+    <div class="banner" aria-hidden="true">
+      {bannerSrcs.map(src => (
+        <div class="banner-item">
+          <img src={src} alt="" loading="lazy" />
+        </div>
+      ))}
+    </div>
+
+    <main>
+
+      <!-- ── About text — edit the content below ─────────────────────────── -->
+
+      <p>
+        <em>Recreating the Past</em> is a course taught by{" "}
+        <a href="https://zach.li" target="_blank" rel="noreferrer">Zach Lieberman</a>
+        at the MIT Media Lab.
+        Each week, students study pioneers of computational or media art-working to understand their techniques, tools, and visual language. The assignment: use modern means to recreate their works from scratch.
+      </p>
+
+      <p>
+        This site is an archive of those recreations. Each entry pairs the original work with the student's version. Gradually, students move beyond simple recreation to reinterpreation. This culminates with an open-ended BYOA (Bring Your Own Artist) final, where students create an artwork based on an artist of their choice.
+      </p>
+
+      <p>
+        The artists studied span the history of computational and media art:
+      </p>
+
+      <dl class="week-list">
+        <dt><a href="/#vera-molnar">Week 1</a></dt>
+        <dd>
+          <a href="https://dam.org/museum/artists_ui/artists/molnar-vera/" target="_blank" rel="noreferrer">Vera Molnár</a>
+        </dd>
+
+        <dt><a href="/#john-whitney">Week 2</a></dt>
+        <dd>
+          <a href="https://www.oscars.org/film-archive/collections/whitney-collection" target="_blank" rel="noreferrer">John Whitney</a>
+        </dd>
+
+        <dt><a href="/#muriel-cooper">Week 3</a></dt>
+        <dd>
+          <a href="https://readymag.com/designingwomen/profiles/muriel-cooper/" target="_blank" rel="noreferrer">Muriel Cooper</a>
+        </dd>
+
+        <dt><a href="/#john-maeda">Week 4</a></dt>
+        <dd>
+          <a href="https://maedastudio.com/" target="_blank" rel="noreferrer">John Maeda</a>,&nbsp;<a href="https://www.albersfoundation.org/" target="_blank" rel="noreferrer">Anni Albers</a>
+        </dd>
+
+        <dt><a href="/#lillian-schwartz">Week 5</a></dt>
+        <dd>
+          <a href="https://dam.org/museum/artists_ui/artists/schwartz-lillian/" target="_blank" rel="noreferrer">Lillian Schwartz</a>,&nbsp;<a href="https://www.kenknowlton.com/" target="_blank" rel="noreferrer">Ken Knowlton</a>
+        </dd>
+
+        <dt><a href="/#nancy-burson">Week 6</a></dt>
+        <dd>
+          <a href="https://www.nancyburson.com/" target="_blank" rel="noreferrer">Nancy Burson</a>,&nbsp;<a href="https://salavon.com/" target="_blank" rel="noreferrer">Jason Salavon</a>
+        </dd>
+
+        <dt><a href="/#myron-krueger">Week 7</a></dt>
+        <dd>
+          <a href="https://dam.org/museum/artists_ui/artists/krueger-myron/" target="_blank" rel="noreferrer">Myron Krueger</a>,&nbsp;<a href="https://camilleutterback.com/" target="_blank" rel="noreferrer">Camille Utterback</a>
+        </dd>
+
+        <dt><a href="/#woody-vasulka">Week 8</a></dt>
+        <dd>
+          <a href="https://vasulka.org/" target="_blank" rel="noreferrer">Woody and Steina Vasulka</a>,&nbsp;<a href="https://beyondresolution.info/HOME" target="_blank" rel="noreferrer">Rosa Menkman</a>
+        </dd>
+      </dl>
+
+      <!-- ──────────────────────────────────────────────────────────────────── -->
+
+    </main>
+
+    <footer>
+      <p>
+        Website created by{" "}
+        <a href="https://marcdunand.com" target="_blank" rel="noreferrer">Marc Dunand</a>
+      </p>
+    </footer>
+  </body>
+</html>
+
+<style>
+  * { box-sizing: border-box; }
+
+  :root {
+    --color-orange: #d45113;
+    --color-yellow: #DAAE00;
+    --color-teal:   #75C9C8;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    font-family: 'Jost', Arial, Helvetica, sans-serif;
+    color: black;
+    background: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── Top nav ── */
+
+  /* ── Top nav ── styles live in src/styles/top-nav.css (shared) ── */
+
+  /* ── Banner ── */
+
+  .banner {
+    display: flex;
+    height: 260px;
+    border-bottom: 1px solid black;
+  }
+
+  .banner-item {
+    flex: 1 1 0%;
+    overflow: hidden;
+  }
+
+  .banner-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ── Main content ── */
+
+  main {
+    flex: 1;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 72px 24px 96px;
+  }
+
+  main p {
+    font-size: 18px;
+    line-height: 1.7;
+    margin: 0 0 1.5em;
+    font-weight: 300;
+  }
+
+  main p:last-child { margin-bottom: 0; }
+
+  main a {
+    color: black;
+    text-decoration: underline;
+    text-decoration-color: rgba(0, 0, 0, 0.35);
+    text-underline-offset: 2px;
+    transition: text-decoration-color 120ms ease;
+  }
+
+  main a:hover { text-decoration-color: black; }
+
+  /* ── Footer ── */
+
+  footer {
+    border-top: 1px solid black;
+    padding: 18px 24px;
+    text-align: center;
+  }
+
+  footer p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(0, 0, 0, 1);
+  }
+
+  footer a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: rgba(0, 0, 0, 0.5);
+    text-underline-offset: 2px;
+    transition: text-decoration-color 120ms ease;
+  }
+
+  footer a:hover { text-decoration-color: rgba(0, 0, 0, 0.7); }
+
+  /* ── Week list ── */
+
+  .week-list {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    margin: 2em 0 0;
+    padding: 0;
+  }
+
+  .week-list dt,
+  .week-list dd {
+    padding: 11px 0;
+    margin: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+  }
+
+  /* No rule below the final week */
+  .week-list dt:last-of-type,
+  .week-list dd:last-of-type {
+    border-bottom: none;
+  }
+
+  .week-list dt {
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.38);
+    white-space: nowrap;
+    padding-right: 28px;
+  }
+
+  .week-list dd {
+    font-size: 17px;
+    font-weight: 300;
+  }
+
+  /* Week labels link to the recreations page — keep them as muted labels,
+     overriding the underlined `main a` style. */
+  .week-list dt a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 120ms ease;
+  }
+
+  .week-list dt a:hover { color: rgba(0, 0, 0, 0.7); }
+</style>

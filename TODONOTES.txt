@@ -1,0 +1,2 @@
+Next big prompt is about adding in color subsquares for greyscale squares:
+

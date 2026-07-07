@@ -1,0 +1,284 @@
+[
+  {
+    "name": "Zach Lieberman",
+    "role": "professor",
+    "link": "https://zach.li",
+    "pieces": []
+  },
+  {
+    "name": "Marc Dunand",
+    "role": "ta",
+    "link": "https://marcdunand.com",
+    "pieces": ["marc_interruptions"]
+  },
+  {
+    "name": "Yufeng Zhao",
+    "role": "ta",
+    "pieces": [
+      "yufeng_de-la-serie-des-ordres-detail",
+      "yufeng_matrix-iii",
+      "yufeng_bauhaus",
+      "yufeng_connections",
+      "yufeng_biker-on-the-road",
+      "yufeng_c-trend",
+      "yufeng_a-humument"
+    ]
+  },
+  {
+    "name": "Aimee Ye",
+    "role": "student",
+    "pieces": [
+      "aimee_life-in-m",
+      "aimee_matrix-iii",
+      "aimee_muriel-cooper-at-mit",
+      "aimee_second-movement-i",
+      "aimee_androgyny",
+      "aimee_text-rain",
+      "aimee_c-trend"
+    ]
+  },
+  {
+    "name": "Alex Dang",
+    "role": "student",
+    "flag": true,
+    "flagNote": "5 submissions",
+    "pieces": [
+      "alex_tr-ii",
+      "alex_local-index",
+      "alex_text-rain",
+      "alex_vasulka-effect",
+      "alex_gala"
+    ]
+  },
+  {
+    "name": "An Kong",
+    "role": "student",
+    "flag": true,
+    "flagNote": "2 submissions",
+    "pieces": [
+      "an_lent-mouvement-bleu-orange-rouge-et-noir",
+      "an_mit-press-colophon"
+    ]
+  },
+  {
+    "name": "Ana Schon",
+    "role": "student",
+    "pieces": [
+      "ana_hommage-a-barbaud",
+      "ana_catalog",
+      "ana_typographic-work",
+      "ana_scroll",
+      "ana_studies-in-perception-i",
+      "ana_class-of-1988",
+      "ana_videoplace"
+    ]
+  },
+  {
+    "name": "Annie Yining Chen",
+    "role": "student",
+    "link": "https://editor.p5js.org/ychenannie8/full/EHjSyyybs",
+    "pieces": [
+      "annie_desordres",
+      "annie_matrix-iii",
+      "annie_information-landscapes",
+      "annie_second-movement",
+      "annie_homage-to-duchamp",
+      "annie_class-of-1988",
+      "annie_videoplace",
+      "annie_vasulka-effect"
+    ]
+  },
+  {
+    "name": "Anyang Zu",
+    "role": "student",
+    "link": "https://anyangzu.com/",
+    "pieces": [
+      "anyang_saint-victoire-en-2-bleus-a",
+      "anyang_experiments-in-motion-graphics",
+      "anyang_typographic-shapes",
+      "anyang_yellow-meander",
+      "anyang_martin-gardner",
+      "anyang_composites",
+      "anyang_videoplace",
+      "anyang_transformations",
+      "anyang_artificiata-ii"
+    ]
+  },
+  {
+    "name": "Ash He",
+    "role": "student",
+    "pieces": [
+      "ash_four-randomly-distributed-elements",
+      "ash_catalog",
+      "ash_typographic-color-work",
+      "ash_gr-i",
+      "ash_newlyweds",
+      "ash_menkman"
+    ]
+  },
+  {
+    "name": "Eitan Wolf",
+    "role": "student",
+    "link": "https://www.instagram.com/eitan_wolf/",
+    "pieces": [
+      "eitan_untitled",
+      "eitan_experiments-in-motion-graphics",
+      "eitan_messages-and-means",
+      "eitan_studies-in-perception-i",
+      "eitan_late-night-triad",
+      "eitan_small-planet",
+      "eitan_untitled-1978",
+      "eitan_art-of-reproduction"
+    ]
+  },
+  {
+    "name": "Emily Guan",
+    "role": "student",
+    "pieces": [
+      "emily_1-carre-et-63-quadrangles",
+      "emily_permutations",
+      "emily_mit-press-cover",
+      "emily_gr-i",
+      "emily_obama",
+      "emily_transformations"
+    ]
+  },
+  {
+    "name": "Fengyi Ye",
+    "role": "student",
+    "link": "https://fengyiye-art.com",
+    "pieces": [
+      "fengyi_emergence-dune-croix",
+      "fengyi_matrix-iii",
+      "fengyi_mit-press-colophon",
+      "fengyi_untitled",
+      "fengyi_variable-weight-alphabet",
+      "fengyi_all-the-ways",
+      "fengyi_videoplace",
+      "fengyi_ghost-for-de-calibration"
+    ]
+  },
+  {
+    "name": "Haotian Wang",
+    "role": "student",
+    "pieces": [
+      "haotian_divergent-lines",
+      "haotian_matrix-iii",
+      "haotian_mit-press-colophon",
+      "haotian_second-movement-i",
+      "haotian_eismc2",
+      "haotian_animal-composite",
+      "haotian_videoplace",
+      "haotian_noisefields"
+    ]
+  },
+  {
+    "name": "Ivy Zheng",
+    "role": "student",
+    "flag": true,
+    "flagNote": "3 submissions",
+    "pieces": [
+      "ivy_mit-press-colophon",
+      "ivy_unknown-textile-work",
+      "ivy_primate-composite"
+    ]
+  },
+  {
+    "name": "Jae In Yoo",
+    "role": "student",
+    "pieces": [
+      "jae-in_deporte-du-sillon",
+      "jae_permutations",
+      "jae_mit-press-cover",
+      "jae_design-for-wall-hanging",
+      "jae_untitled-37",
+      "jae_composites",
+      "jae_text-rain",
+      "jae_vasulka-effect",
+      "jae_microimage-a-05"
+    ]
+  },
+  {
+    "name": "Lia Chen",
+    "role": "student",
+    "pieces": [
+      "lia_interstices",
+      "lia_matrix-iii",
+      "lia_bauhaus-poster",
+      "lia_movement-in-squares",
+      "lia_dominoportrait-of-charlie-chaplin",
+      "lia_portrait-hals",
+      "lia_videoplace",
+      "lia_vasulka-effect",
+      "lia_nyt-chromebook"
+    ]
+  },
+  {
+    "name": "Malvika Dwivedi",
+    "role": "student",
+    "flag": true,
+    "flagNote": "4 submissions",
+    "pieces": [
+      "malvika_untitled-line-grid",
+      "malvika_digital-harmony",
+      "malvika_concentric-squares",
+      "malvika_enigma"
+    ]
+  },
+  {
+    "name": "Shiman Xu",
+    "role": "student",
+    "pieces": [
+      "shiman_25-carres",
+      "shiman_matrix",
+      "shiman_typographic-color-layers",
+      "shiman_red-meander",
+      "shiman_morphing-grid",
+      "shiman_videoplace",
+      "shiman_noisefields",
+      "shiman_p-197pz"
+    ]
+  },
+  {
+    "name": "Sun Chuanqi",
+    "role": "student",
+    "link": "https://chuanqisun.com/",
+    "pieces": [
+      "sun_microcosmos-hommage-a-bartok",
+      "sun_permutations",
+      "sun_morisawa-6",
+      "sun_olympiad",
+      "sun_class-of-1988",
+      "sun_videoplace",
+      "sun_p-197-j"
+    ]
+  },
+  {
+    "name": "Vivian Kong",
+    "role": "student",
+    "link": "https://www.linkedin.com/in/vkongvk/",
+    "pieces": [
+      "vivian_structure-of-squares",
+      "vivian_permutations",
+      "vivian_morisawa-9",
+      "vivian_eismc2",
+      "vivian_all-the-ways",
+      "vivian_videoplace",
+      "vivian_transformations",
+      "vivian_dots-infinity"
+    ]
+  },
+  {
+    "name": "Yufeng Zhao",
+    "role": "student",
+    "pieces": [
+      "yufeng_de-la-serie-des-ordres-detail",
+      "yufeng_matrix-iii",
+      "yufeng_bauhaus",
+      "yufeng_connections",
+      "yufeng_biker-on-the-road",
+      "yufeng_c-trend",
+      "yufeng_a-humument"
+    ]
+  }
+]
