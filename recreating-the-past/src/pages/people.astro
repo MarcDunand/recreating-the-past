@@ -2,6 +2,7 @@
 import people from "../data/people.json";
 import archive from "../data/archive.json";
 import colors from "../data/colors.json";
+import PeoplePairViewer from "../components/PeoplePairViewer.jsx";
 import "../styles/top-nav.css";
 
 const lastName   = (name: string) => name.trim().split(/\s+/).pop()!;
@@ -12,10 +13,11 @@ const shortLabel = (fullName: string): string => {
   return overrides[fullName] ?? fullName.split(/\s+/).pop()!;
 };
 
+// Hover previews use pre-generated 100x100 thumbnails (scripts/generate_thumbnails.py)
+// — a few KB each instead of the full recreation. Clicking a square still opens
+// the full-size media (handled by the fullscreen viewer, which loads originals).
 function thumbSrc(mediaFolder: string, pair: any): string {
-  const t = (pair.recreationMediaType || "image").toLowerCase();
-  if (t === "video" || t === "gif") return `/media/${mediaFolder}/posters/${pair.id}_r.jpg`;
-  return `/media/${mediaFolder}/recreations/${pair.id}_r.jpg`;
+  return `/media/${mediaFolder}/thumbnails/${pair.id}_r.jpg`;
 }
 
 const colorsMap    = colors as Record<string, { fill: string; innerFill?: string }>;
@@ -24,7 +26,7 @@ const regularArtists = allArtists.filter(a => a.artistSlug !== "final");
 const finalProject   = allArtists.find(a => a.artistSlug === "final") as any;
 
 const SLUG_REMAP: Record<string, string> = {
-  "anni-albers":       "john-maeda",
+  "john-maeda":        "muriel-cooper",
   "ken-knowlton":      "lillian-schwartz",
   "claire-hentschker": "nancy-burson",
   "jason-salavon":     "nancy-burson",
@@ -33,7 +35,7 @@ const SLUG_REMAP: Record<string, string> = {
 };
 
 const LABEL_OVERRIDE: Record<string, string> = {
-  "john-maeda":       "Maeda/Albers",
+  "muriel-cooper":    "Cooper/Maeda",
   "lillian-schwartz": "Schwartz/Knowlton",
   "nancy-burson":     "Burson/Salavon",
   "myron-krueger":    "Krueger/Utterback",
@@ -41,7 +43,7 @@ const LABEL_OVERRIDE: Record<string, string> = {
 };
 
 const MERGED_SECONDARY: Record<string, { slug: string; label: string }> = {
-  "john-maeda":       { slug: "anni-albers",      label: "Albers" },
+  "muriel-cooper":    { slug: "john-maeda",        label: "Maeda" },
   "lillian-schwartz": { slug: "ken-knowlton",      label: "Knowlton" },
   "nancy-burson":     { slug: "jason-salavon",     label: "Salavon" },
   "myron-krueger":    { slug: "camille-utterback", label: "Utterback" },
@@ -91,7 +93,7 @@ const artistCols: ArtistCol[] = [
   { slug: "final", label: "Final", fullName: "Final Project", link: "/#final-project" },
 ];
 
-const weekSepSlugs = new Set(["vera-molnar", "john-whitney", "muriel-cooper", "john-maeda", "lillian-schwartz", "nancy-burson", "myron-krueger"]);
+const weekSepSlugs = new Set(["vera-molnar", "john-whitney", "muriel-cooper", "anni-albers", "lillian-schwartz", "nancy-burson", "myron-krueger"]);
 
 const professor = (people as any[]).filter(p => p.role === "professor");
 const tas       = (people as any[])
@@ -219,7 +221,7 @@ const students  = (people as any[])
                               aria-label={`View recreation ${pair.pairId}`}
                             >
                               <div class="sq-inner" style={`background-color:${pair.innerFill};`} />
-                              <img src={pair.src} alt="" loading="lazy" class="sq-thumb" />
+                              <img src={pair.src} alt="" class="sq-thumb" loading="eager" decoding="async" />
                             </button>
                           ))}
                         </td>
@@ -234,14 +236,20 @@ const students  = (people as any[])
 
       </div>
     </main>
+
+    <PeoplePairViewer archive={archive} client:load />
   </body>
 </html>
 
 <script>
-  // Colors are pre-computed at build time (inline styles). This only handles click navigation.
+  // Colors are pre-computed at build time (inline styles). Thumbnails are tiny
+  // (~few KB, 100x100), so they preload eagerly via a plain src in the markup —
+  // the hover reveal is instant. This script just opens the full comparison view
+  // in place (handled by the PeoplePairViewer island) on click, instead of
+  // navigating away to the recreations page.
   document.querySelectorAll<HTMLButtonElement>(".sq").forEach(sq => {
     sq.addEventListener("click", () => {
-      window.location.href = `/?pair=${sq.dataset.pairId}`;
+      window.dispatchEvent(new CustomEvent("open-pair", { detail: sq.dataset.pairId }));
     });
   });
 </script>

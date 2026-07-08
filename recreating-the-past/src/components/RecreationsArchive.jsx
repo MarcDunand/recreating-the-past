@@ -1,61 +1,16 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import "./RecreationsArchive.css";
-
-function getYearNumber(pair) {
-  const match = String(pair.originalYear || "").match(/\d{4}/);
-  return match ? Number(match[0]) : 9999;
-}
-
-function getSortedPairs(pairs) {
-  return [...pairs].sort((a, b) => {
-    const yearA = getYearNumber(a);
-    const yearB = getYearNumber(b);
-
-    if (yearA !== yearB) return yearA - yearB;
-    return a.originalTitle.localeCompare(b.originalTitle);
-  });
-}
-
-function getMediaType(pair, side) {
-  if (side === "original") {
-    return pair.originalMediaType || pair.originalMedia?.type || "image";
-  }
-
-  return pair.recreationMediaType || pair.recreationMedia?.type || "image";
-}
-
-function isVideoType(mediaType) {
-  return mediaType === "video" || mediaType === "gif";
-}
-
-function getMediaSrc(artist, pair, side) {
-  const mediaObject = side === "original" ? pair.originalMedia : pair.recreationMedia;
-
-  if (mediaObject?.src) {
-    return mediaObject.src;
-  }
-
-  const suffix = side === "original" ? "o" : "r";
-  const folder = side === "original" ? "originals" : "recreations";
-  const mediaType = getMediaType(pair, side);
-  const extension = isVideoType(mediaType) ? "mp4" : "jpg";
-
-  return `/media/${artist.mediaFolder}/${folder}/${pair.id}_${suffix}.${extension}`;
-}
-
-function getPosterSrc(artist, pair, side) {
-  const mediaObject = side === "original" ? pair.originalMedia : pair.recreationMedia;
-
-  if (mediaObject?.poster) {
-    return mediaObject.poster;
-  }
-
-  const suffix = side === "original" ? "o" : "r";
-  return `/media/${artist.mediaFolder}/posters/${pair.id}_${suffix}.jpg`;
-}
-
-// Length of the one-shot hover preview shown on the scrolling view (seconds)
-const PREVIEW_SECONDS = 2;
+import {
+  getSortedPairs,
+  getMediaType,
+  isVideoType,
+  getMediaSrc,
+  getPosterSrc,
+  buildAllPairs,
+  FullscreenComparison,
+  PREVIEW_SECONDS,
+  PAUSED_STORAGE_KEY,
+} from "./PairViewer.jsx";
 
 function MediaPreview({ artist, pair, side, isHovered }) {
   const mediaType = getMediaType(pair, side);
@@ -63,9 +18,31 @@ function MediaPreview({ artist, pair, side, isHovered }) {
   const isVideo = isVideoType(mediaType);
   const poster = isVideo ? getPosterSrc(artist, pair, side) : src;
 
+  // Show a shimmer skeleton until the poster/thumbnail loads, then fade the
+  // image in — same loading treatment as the fullscreen viewer. Driven off the
+  // always-present bg-blur img, which shares the poster src with the foreground.
+  const bgRef = useRef(null);
+  const [loaded, setLoaded] = useState(false);
+
+  // Cached images can finish before React attaches onLoad, so also check
+  // .complete on mount — otherwise the skeleton could hang on a cached tile.
+  useEffect(() => {
+    if (bgRef.current?.complete) setLoaded(true);
+  }, [poster]);
+
   return (
     <div className={`media-preview${isVideo ? " video-preview" : ""}`}>
-      <img className="media-bg-blur" src={poster} alt="" aria-hidden="true" />
+      <img
+        ref={bgRef}
+        className="media-bg-blur"
+        src={poster}
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+        decoding="async"
+        onLoad={() => setLoaded(true)}
+      />
+      {!loaded && <div className="media-loading-skeleton" />}
       {isVideo && isHovered ? (
         // Hover preview: play just the first couple of seconds once, then hold.
         // The video remounts fresh on each hover, so it restarts from 0 when the
@@ -83,233 +60,15 @@ function MediaPreview({ artist, pair, side, isHovered }) {
           }}
         />
       ) : (
-        <img className="media-fg" src={poster} alt="" />
+        <img
+          className="media-fg"
+          src={poster}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          style={{ opacity: loaded ? 1 : 0 }}
+        />
       )}
-    </div>
-  );
-}
-
-const PLAY_GLYPH = "▶";
-const PAUSE_GLYPH = "❚❚";
-
-// Renders the two-up comparison and coordinates the video playback:
-// trims both videos to the shorter one's length, keeps them in sync, and
-// drives the shared centered play/pause control. Pause/play is a global
-// prop so it persists across pairs and (via localStorage) across pages.
-function ComparisonViewer({ selected, paused, setPaused }) {
-  const { artist, pair } = selected;
-
-  const origIsVideo = isVideoType(getMediaType(pair, "original"));
-  const recIsVideo = isVideoType(getMediaType(pair, "recreation"));
-
-  const origRef = useRef(null);
-  const recRef = useRef(null);
-  const pausedRef = useRef(paused);
-  const durations = useRef({});
-  const loopLimit = useRef(Infinity);
-  const hideTimer = useRef(null);
-  const clickTimer = useRef(null);
-
-  const [controlsVisible, setControlsVisible] = useState(false);
-  const [loaded, setLoaded] = useState({});
-
-  useEffect(() => { pausedRef.current = paused; }, [paused]);
-
-  const activeVideos = () =>
-    [origIsVideo ? origRef.current : null, recIsVideo ? recRef.current : null].filter(Boolean);
-
-  const recomputeLimit = () => {
-    const vals = [];
-    if (origIsVideo && durations.current.orig) vals.push(durations.current.orig);
-    if (recIsVideo && durations.current.rec) vals.push(durations.current.rec);
-    // Stop just short of the shorter clip's true end so we loop cleanly.
-    loopLimit.current = vals.length ? Math.min(...vals) - 0.05 : Infinity;
-  };
-
-  // Reset per-pair bookkeeping when navigating to a different pair.
-  useEffect(() => {
-    durations.current = {};
-    loopLimit.current = Infinity;
-    setLoaded({});
-  }, [pair.id]);
-
-  // Apply the global pause/play state to the real media elements.
-  useEffect(() => {
-    for (const v of activeVideos()) {
-      if (paused) v.pause();
-      else v.play().catch(() => {});
-    }
-  }, [paused, pair.id]);
-
-  // While playing, enforce the trimmed loop length and keep the pair in sync.
-  useEffect(() => {
-    if (paused) return;
-    let raf;
-    const tick = () => {
-      const orig = origIsVideo ? origRef.current : null;
-      const rec = recIsVideo ? recRef.current : null;
-      const driver = orig || rec;
-      if (driver && loopLimit.current !== Infinity) {
-        if (driver.currentTime >= loopLimit.current) {
-          if (orig) orig.currentTime = 0;
-          if (rec) rec.currentTime = 0;
-          for (const v of activeVideos()) v.play().catch(() => {});
-        } else if (orig && rec && Math.abs(rec.currentTime - orig.currentTime) > 0.2) {
-          rec.currentTime = orig.currentTime;
-        }
-      }
-      raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [paused, pair.id, origIsVideo, recIsVideo]);
-
-  useEffect(() => () => {
-    if (hideTimer.current) clearTimeout(hideTimer.current);
-    if (clickTimer.current) clearTimeout(clickTimer.current);
-  }, []);
-
-  // Show native controls only while a single video is in browser fullscreen;
-  // strip them again on exit so the inline view stays chrome-free.
-  useEffect(() => {
-    const onFsChange = () => {
-      if (!document.fullscreenElement) {
-        for (const v of [origRef.current, recRef.current]) {
-          if (v) v.controls = false;
-        }
-      }
-    };
-    document.addEventListener("fullscreenchange", onFsChange);
-    return () => document.removeEventListener("fullscreenchange", onFsChange);
-  }, []);
-
-  // Show the control and arm the 2s idle fade-out.
-  const nudgeControls = () => {
-    setControlsVisible(true);
-    if (hideTimer.current) clearTimeout(hideTimer.current);
-    hideTimer.current = setTimeout(() => setControlsVisible(false), 2000);
-  };
-
-  // Hide immediately when the pointer leaves a video entirely.
-  const hideControls = () => {
-    if (hideTimer.current) clearTimeout(hideTimer.current);
-    setControlsVisible(false);
-  };
-
-  // Single click toggles pause/play; a double click (fullscreen) cancels it.
-  const handleClick = () => {
-    nudgeControls();
-    if (clickTimer.current) return;
-    clickTimer.current = setTimeout(() => {
-      clickTimer.current = null;
-      setPaused(!pausedRef.current);
-    }, 220);
-  };
-
-  const handleDblClick = (ref) => {
-    if (clickTimer.current) {
-      clearTimeout(clickTimer.current);
-      clickTimer.current = null;
-    }
-    const el = ref.current;
-    if (el?.requestFullscreen) {
-      el.controls = true;
-      el.requestFullscreen().catch(() => {});
-    }
-  };
-
-  const markLoaded = (side) => setLoaded((prev) => ({ ...prev, [side]: true }));
-
-  const renderSquare = (side, ref, isVideo) => {
-    const src = getMediaSrc(artist, pair, side);
-    const poster = getPosterSrc(artist, pair, side);
-    const bgSrc = isVideo ? poster : src;
-    const isLoaded = !!loaded[side];
-
-    return (
-      <div
-        className={`fullscreen-media-square${isVideo ? " is-video" : ""}`}
-        onMouseEnter={isVideo ? nudgeControls : undefined}
-        onMouseMove={isVideo ? nudgeControls : undefined}
-        onMouseLeave={isVideo ? hideControls : undefined}
-        onClick={isVideo ? handleClick : undefined}
-        onDoubleClick={isVideo ? () => handleDblClick(ref) : undefined}
-      >
-        <img className="media-bg-blur" src={bgSrc} alt="" aria-hidden="true" />
-        {!isLoaded && <div className="media-loading-skeleton" />}
-        {isVideo ? (
-          <video
-            key={src}
-            ref={ref}
-            className="fullscreen-media"
-            muted
-            playsInline
-            poster={poster}
-            style={{ opacity: isLoaded ? 1 : 0 }}
-            onLoadedMetadata={(e) => {
-              durations.current[side === "original" ? "orig" : "rec"] = e.currentTarget.duration;
-              recomputeLimit();
-              if (pausedRef.current) e.currentTarget.currentTime = 0;
-              else e.currentTarget.play().catch(() => {});
-            }}
-            onLoadedData={() => markLoaded(side)}
-          >
-            <source src={src} type="video/mp4" />
-          </video>
-        ) : (
-          <img
-            key={src}
-            src={src}
-            alt=""
-            className="fullscreen-media"
-            style={{ opacity: isLoaded ? 1 : 0 }}
-            onLoad={() => markLoaded(side)}
-          />
-        )}
-        {isVideo && (
-          <div className={`video-control${controlsVisible ? " is-visible" : ""}`} aria-hidden="true">
-            <span className={`video-control-glyph${paused ? " is-play" : ""}`}>
-              {paused ? PLAY_GLYPH : PAUSE_GLYPH}
-            </span>
-          </div>
-        )}
-      </div>
-    );
-  };
-
-  return (
-    <div className="fullscreen-grid">
-      <div className="fullscreen-side">
-        <div className="fullscreen-label">
-          {pair.originalLink ? (
-            <a href={pair.originalLink} target="_blank" rel="noreferrer">
-              {artist.artist}, <em>{pair.originalTitle}</em>, {pair.originalYear}
-            </a>
-          ) : (
-            <>{artist.artist}, <em>{pair.originalTitle}</em>, {pair.originalYear}</>
-          )}
-        </div>
-
-        <div className="fullscreen-media-wrapper">
-          {renderSquare("original", origRef, origIsVideo)}
-        </div>
-      </div>
-
-      <div className="fullscreen-side">
-        <div className="fullscreen-label">
-          {pair.recreationLink ? (
-            <a href={pair.recreationLink} target="_blank" rel="noreferrer">
-              {pair.student}, <em>Recreation</em>, 2026
-            </a>
-          ) : (
-            <>{pair.student}, <em>Recreation</em>, 2026</>
-          )}
-        </div>
-
-        <div className="fullscreen-media-wrapper">
-          {renderSquare("recreation", recRef, recIsVideo)}
-        </div>
-      </div>
     </div>
   );
 }
@@ -387,83 +146,14 @@ function ArtworkRow({ artist, pair, index, openPair }) {
   );
 }
 
-function FullscreenComparison({ selected, close, onPrev, onNext, paused, setPaused }) {
-  const overlayRef = useRef(null);
-  const lastWheelRef = useRef(0);
-
-  useEffect(() => {
-    if (!selected) return;
-
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [selected]);
-
-  useEffect(() => {
-    if (!selected) return;
-
-    const handleKeyDown = (e) => {
-      if (e.key === "Escape") close();
-      if ((e.key === "ArrowUp" || e.key === "ArrowLeft") && onPrev) onPrev();
-      if ((e.key === "ArrowDown" || e.key === "ArrowRight") && onNext) onNext();
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [selected, close, onPrev, onNext]);
-
-  useEffect(() => {
-    const el = overlayRef.current;
-    if (!el || !selected) return;
-    const handleWheel = (e) => {
-      e.preventDefault();
-      const now = Date.now();
-      if (now - lastWheelRef.current < 400) return;
-      lastWheelRef.current = now;
-      if (e.deltaY > 0 && onNext) onNext();
-      else if (e.deltaY < 0 && onPrev) onPrev();
-    };
-    el.addEventListener("wheel", handleWheel, { passive: false });
-    return () => el.removeEventListener("wheel", handleWheel);
-  }, [selected, onPrev, onNext]);
-
-  if (!selected) return null;
-
-  return (
-    <div className="fullscreen-overlay" ref={overlayRef}>
-      <button
-        className="fullscreen-nav fullscreen-nav-prev"
-        onClick={onPrev}
-        disabled={!onPrev}
-        aria-label="Previous"
-      >
-        <span className="fullscreen-chevron" aria-hidden="true" />
-      </button>
-
-      <button className="fullscreen-close" onClick={close} aria-label="Close">
-        ×
-      </button>
-
-      <ComparisonViewer selected={selected} paused={paused} setPaused={setPaused} />
-
-      <button
-        className="fullscreen-nav fullscreen-nav-next"
-        onClick={onNext}
-        disabled={!onNext}
-        aria-label="Next"
-      >
-        <span className="fullscreen-chevron" aria-hidden="true" />
-      </button>
-    </div>
-  );
-}
-
-function StickyBar({ stickySlug, regularArtists, onToggleMenu }) {
-  const displayName =
-    stickySlug === "final"
-      ? "Final Project"
-      : regularArtists.find((a) => a.artistSlug === stickySlug)?.artist ?? "";
+function StickyBar({ stickySlug, weekSlug, regularArtists, weekBySlug, onToggleMenu }) {
+  const isFinal = stickySlug === "final";
+  const displayName = isFinal
+    ? "Final Project"
+    : regularArtists.find((a) => a.artistSlug === stickySlug)?.artist ?? "";
+  // The week tracks weekSlug, which never blanks during the name's transition
+  // gap — so it switches straight from one week to the next. The final has none.
+  const week = weekSlug === "final" ? null : weekBySlug[weekSlug];
 
   return (
     <div className="sticky-bar">
@@ -479,6 +169,7 @@ function StickyBar({ stickySlug, regularArtists, onToggleMenu }) {
             <span />
             <span />
           </button>
+          {week != null && <div className="sticky-bar-week">Week {week}:</div>}
           <div className="sticky-bar-artist">{displayName}</div>
         </div>
         <div className="sticky-bar-diptych">
@@ -646,8 +337,6 @@ function ArtistSection({ artist, setSelected, sectionRef, headingRef }) {
   );
 }
 
-const PAUSED_STORAGE_KEY = "rtp-video-paused";
-
 export default function RecreationsArchive({ archive }) {
   const [selected, setSelected] = useState(null);
 
@@ -669,23 +358,34 @@ export default function RecreationsArchive({ archive }) {
   const regularArtists = useMemo(() => archive.filter((a) => a.artistSlug !== "final"), [archive]);
   const finalProject = useMemo(() => archive.find((a) => a.artistSlug === "final"), [archive]);
 
-  const allPairs = useMemo(() => {
-    const list = [];
-    for (const artist of regularArtists) {
-      for (const pair of getSortedPairs(artist.pairs)) {
-        list.push({ artist, pair });
-      }
-    }
-    if (finalProject) {
-      for (const pair of getSortedPairs(finalProject.pairs)) {
-        list.push({ artist: { artist: pair.artist, mediaFolder: "final" }, pair });
-      }
-    }
-    return list;
-  }, [regularArtists, finalProject]);
+  // Explicit course-week grouping — several weeks cover two artists, and Claire
+  // Hentschker joins Week 6 (matching how the People page files her under the
+  // Burson column). Flattened into a plain slug → week-number lookup.
+  const weekBySlug = useMemo(() => {
+    const WEEKS = [
+      ["vera-molnar"],
+      ["john-whitney"],
+      ["muriel-cooper", "john-maeda"],
+      ["anni-albers"],
+      ["lillian-schwartz", "ken-knowlton"],
+      ["nancy-burson", "jason-salavon", "claire-hentschker"],
+      ["myron-krueger", "camille-utterback"],
+      ["woody-vasulka", "rosa-menkman"],
+    ];
+    const map = {};
+    WEEKS.forEach((slugs, i) => {
+      for (const slug of slugs) map[slug] = i + 1;
+    });
+    return map;
+  }, []);
+
+  const allPairs = useMemo(() => buildAllPairs(archive), [archive]);
 
   const [activeArtistSlug, setActiveArtistSlug] = useState(regularArtists[0]?.artistSlug);
   const [stickyArtistSlug, setStickyArtistSlug] = useState(regularArtists[0]?.artistSlug);
+  // Tracks the active artist for the week label. Unlike stickyArtistSlug it is
+  // never blanked between artists, so the week transitions straight across.
+  const [stickyWeekSlug, setStickyWeekSlug] = useState(regularArtists[0]?.artistSlug);
   const [isNearTop, setIsNearTop] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -739,6 +439,7 @@ export default function RecreationsArchive({ archive }) {
         }
       }
       setStickyArtistSlug(goBlank ? null : stickyActive);
+      setStickyWeekSlug(stickyActive);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -764,7 +465,9 @@ export default function RecreationsArchive({ archive }) {
 
       <StickyBar
         stickySlug={stickyArtistSlug}
+        weekSlug={stickyWeekSlug}
         regularArtists={regularArtists}
+        weekBySlug={weekBySlug}
         onToggleMenu={() => setMenuOpen((open) => !open)}
       />
 

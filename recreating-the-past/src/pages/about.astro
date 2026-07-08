@@ -43,6 +43,12 @@ const bannerSrcs = readdirSync(join(process.cwd(), "public", "media", "about-ban
       ))}
     </div>
 
+    <!-- Generative connector line that bounces panel-to-panel. Purely
+         decorative; drawn client-side by the script at the bottom of this file. -->
+    <div class="banner-line" aria-hidden="true">
+      <svg class="banner-line-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+    </div>
+
     <main>
 
       <!-- ── About text — edit the content below ─────────────────────────── -->
@@ -75,12 +81,12 @@ const bannerSrcs = readdirSync(join(process.cwd(), "public", "media", "about-ban
 
         <dt><a href="/#muriel-cooper">Week 3</a></dt>
         <dd>
-          <a href="https://readymag.com/designingwomen/profiles/muriel-cooper/" target="_blank" rel="noreferrer">Muriel Cooper</a>
+          <a href="https://readymag.com/designingwomen/profiles/muriel-cooper/" target="_blank" rel="noreferrer">Muriel Cooper</a>,&nbsp;<a href="https://maedastudio.com/" target="_blank" rel="noreferrer">John Maeda</a>
         </dd>
 
-        <dt><a href="/#john-maeda">Week 4</a></dt>
+        <dt><a href="/#anni-albers">Week 4</a></dt>
         <dd>
-          <a href="https://maedastudio.com/" target="_blank" rel="noreferrer">John Maeda</a>,&nbsp;<a href="https://www.albersfoundation.org/" target="_blank" rel="noreferrer">Anni Albers</a>
+          <a href="https://www.albersfoundation.org/" target="_blank" rel="noreferrer">Anni Albers</a>
         </dd>
 
         <dt><a href="/#lillian-schwartz">Week 5</a></dt>
@@ -162,13 +168,31 @@ const bannerSrcs = readdirSync(join(process.cwd(), "public", "media", "about-ban
     display: block;
   }
 
+  /* ── Generative connector line ── */
+  /* Reserved band the bouncing line lives in. Keep --band-height in sync with
+     CONFIG.bandHeight in the script below. overflow:hidden clips any loop that
+     pokes above the band into the banner. */
+  .banner-line {
+    --band-height: 130px;
+    height: var(--band-height);
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+  }
+
+  .banner-line-svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
   /* ── Main content ── */
 
   main {
     flex: 1;
     max-width: 640px;
     margin: 0 auto;
-    padding: 72px 24px 96px;
+    padding: 44px 24px 96px;
   }
 
   main p {
@@ -264,3 +288,234 @@ const bannerSrcs = readdirSync(join(process.cwd(), "public", "media", "about-ban
 
   .week-list dt a:hover { color: rgba(0, 0, 0, 0.7); }
 </style>
+
+<script>
+  // ══════════════════════════════════════════════════════════════════════════
+  //  About-banner generative connector line
+  //  A line "bounces" from the bottom-center of each banner panel to the next,
+  //  drawing itself panel-by-panel when the banner scrolls into view. It leaves
+  //  each panel straight down and arrives at the next straight up, with playful
+  //  generative curves (and loops) in between. Purely decorative + client-side.
+  // ══════════════════════════════════════════════════════════════════════════
+
+  // ── 1. COLORS ───────────────────────────────────────────────────────────────
+  // One color per banner panel (there are 12). The connector from panel i to
+  // panel i+1 fades linearly from PANEL_COLORS[i] to PANEL_COLORS[i+1]. Edit
+  // these freely — if there are ever more panels than colors, the list repeats.
+  const PANEL_COLORS = [
+    "#E1D3C8", "#0F0F0F", "#F552B1", "#16D3EA",
+    "#D83D26", "#6A6A6A", "#C6DD2E", "#E2E2E2",
+    "#7A4AF4", "#181818", "#FEFEFE", "#FED629",
+  ];
+
+  // ── 2. CURVE / ANIMATION KNOBS ──────────────────────────────────────────────
+  // Tune the generated shape and the draw animation here.
+  const CONFIG = {
+    bandHeight:   130,      // px. MUST match --band-height in the .banner-line CSS.
+    endTangent:   34,       // how far the line runs straight down/up at each panel.
+    hops:         2,        // interior waypoints per segment (higher = wigglier).
+    dip:          72,       // baseline downward arch toward mid-segment (px).
+    wiggleX:      0,       // horizontal jitter of interior waypoints (px).
+    wiggleY:      0,       // vertical jitter of interior waypoints (px).
+    loopiness:    1,     // 0–1 chance of spinning a loop at each waypoint.
+    loopRadius:   50,       // loop size (px).
+    strokeWidth:  1,      // line thickness (px).
+    drawSpeed:    450,      // px per second — constant draw rate. A long/looping
+                            // hop takes proportionally longer than a short one,
+                            // instead of every hop taking the same time.
+    seed:         null,     // null = a fresh random scribble on every page visit
+                            // (navigating away and back reloads the page). Set a
+                            // number to lock one specific shape instead.
+    randomOrder:  false,    // false = connect panels left-to-right in order;
+                            // true = visit them in a totally random order.
+  };
+
+  // ── 3. IMPLEMENTATION ───────────────────────────────────────────────────────
+  // To change the *aesthetic* you normally only touch generateWaypoints() below;
+  // it is the one swappable "generator". Everything else is plumbing.
+  const SVGNS = "http://www.w3.org/2000/svg";
+  const band  = document.querySelector(".banner-line");
+  const svg   = document.querySelector(".banner-line-svg");
+  const panelCount = document.querySelectorAll(".banner-item").length;
+
+  if (band && svg && panelCount >= 2) {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    // Seeded PRNG (mulberry32) so the shape is deterministic across resizes/redraws.
+    function makeRng(seed) {
+      let a = seed >>> 0;
+      return () => {
+        a = (a + 0x6d2b79f5) | 0;
+        let t = Math.imul(a ^ (a >>> 15), 1 | a);
+        t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+      };
+    }
+    const rand  = (rng, lo, hi) => lo + (hi - lo) * rng();
+    const color = (i) => PANEL_COLORS[i % PANEL_COLORS.length];
+
+    // ── The generator: build a list of waypoints from one panel to the next ──
+    // Swap this function to change the line's character. It receives the two
+    // anchor points (both at y = 0, the panel bottoms) and returns the full point
+    // list; toPath() then smooths it and forces vertical tangents at the anchors.
+    function generateWaypoints(start, end, rng, cfg) {
+      const H = cfg.bandHeight;
+      const pts = [start];
+      for (let h = 1; h < cfg.hops; h++) {
+        const t = h / cfg.hops;
+        const bx = start.x + (end.x - start.x) * t + rand(rng, -cfg.wiggleX, cfg.wiggleX);
+        const arch = Math.sin(Math.PI * t); // deepest near the middle
+        let by = cfg.dip * arch + rand(rng, -cfg.wiggleY, cfg.wiggleY);
+        by = Math.max(cfg.loopRadius + 8, Math.min(H - 6, by));
+        pts.push({ x: bx, y: by });
+
+        // Occasionally spin a full loop around this waypoint.
+        if (rng() < cfg.loopiness) {
+          const dir = rng() < 0.5 ? 1 : -1;
+          const a0 = rand(rng, 0, Math.PI * 2);
+          for (let k = 1; k <= 4; k++) {
+            const a = a0 + dir * k * (Math.PI / 2);
+            pts.push({
+              x: bx + cfg.loopRadius * Math.cos(a),
+              y: Math.max(4, Math.min(H - 4, by + cfg.loopRadius * Math.sin(a))),
+            });
+          }
+        }
+      }
+      pts.push(end);
+      return pts;
+    }
+
+    // Smooth a point list into an SVG cubic-Bézier path (Catmull-Rom), forcing a
+    // vertical tangent at the first point (straight down) and last (straight up).
+    function toPath(pts, cfg) {
+      const n = pts.length - 1;
+      const et = cfg.endTangent;
+      const f = (v) => v.toFixed(2);
+      let d = `M ${f(pts[0].x)} ${f(pts[0].y)}`;
+      for (let i = 0; i < n; i++) {
+        const p0 = pts[i - 1], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2];
+        const t1 = (i === 0)     ? { x: 0, y: 6 * et }  : { x: p2.x - p0.x, y: p2.y - p0.y };
+        const t2 = (i === n - 1) ? { x: 0, y: -6 * et } : { x: p3.x - p1.x, y: p3.y - p1.y };
+        const c1 = { x: p1.x + t1.x / 6, y: p1.y + t1.y / 6 };
+        const c2 = { x: p2.x - t2.x / 6, y: p2.y - t2.y / 6 };
+        d += ` C ${f(c1.x)} ${f(c1.y)}, ${f(c2.x)} ${f(c2.y)}, ${f(p2.x)} ${f(p2.y)}`;
+      }
+      return d;
+    }
+
+    let paths = [];
+    let started = false; // has the one-time draw begun?
+    let drawn = false;   // has it finished drawing?
+
+    // A fresh random scribble each page visit. Navigating away and back reloads
+    // the page, which reseeds. Pin CONFIG.seed to a number to lock one shape.
+    const activeSeed = (CONFIG.seed == null)
+      ? (Math.floor(Math.random() * 0x100000000) >>> 0)
+      : (CONFIG.seed >>> 0);
+
+    function build() {
+      const W = band.clientWidth;
+      const H = CONFIG.bandHeight;
+      svg.setAttribute("width", W);
+      svg.setAttribute("height", H);
+      svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+      svg.replaceChildren();
+      paths = [];
+
+      const defs = document.createElementNS(SVGNS, "defs");
+      svg.appendChild(defs);
+
+      const rng = makeRng(activeSeed);
+      const centerX = (i) => (W * (i + 0.5)) / panelCount;
+
+      // Order the line visits the panels in. Left-to-right by default; a seeded
+      // Fisher–Yates shuffle when CONFIG.randomOrder is on (stable across resizes,
+      // fresh each visit). Each panel keeps its own color regardless of order.
+      const order = Array.from({ length: panelCount }, (_, i) => i);
+      if (CONFIG.randomOrder) {
+        for (let i = order.length - 1; i > 0; i--) {
+          const j = Math.floor(rng() * (i + 1));
+          [order[i], order[j]] = [order[j], order[i]];
+        }
+      }
+
+      for (let k = 0; k < panelCount - 1; k++) {
+        const a = order[k], b = order[k + 1];
+        const start = { x: centerX(a), y: 0 };
+        const end   = { x: centerX(b), y: 0 };
+        const d = toPath(generateWaypoints(start, end, rng, CONFIG), CONFIG);
+
+        // Per-segment gradient: fades panel a's color → panel b's color.
+        const grad = document.createElementNS(SVGNS, "linearGradient");
+        grad.setAttribute("id", `bl-grad-${k}`);
+        grad.setAttribute("gradientUnits", "userSpaceOnUse");
+        grad.setAttribute("x1", start.x); grad.setAttribute("y1", 0);
+        grad.setAttribute("x2", end.x);   grad.setAttribute("y2", 0);
+        for (const [off, c] of [["0%", color(a)], ["100%", color(b)]]) {
+          const stop = document.createElementNS(SVGNS, "stop");
+          stop.setAttribute("offset", off);
+          stop.setAttribute("stop-color", c);
+          grad.appendChild(stop);
+        }
+        defs.appendChild(grad);
+
+        const path = document.createElementNS(SVGNS, "path");
+        path.setAttribute("d", d);
+        path.setAttribute("fill", "none");
+        path.setAttribute("stroke", `url(#bl-grad-${k})`);
+        path.setAttribute("stroke-width", CONFIG.strokeWidth);
+        path.setAttribute("stroke-linecap", "round");
+        svg.appendChild(path);
+
+        const len = path.getTotalLength();
+        path.style.strokeDasharray = String(len);
+        path.style.strokeDashoffset = String(len); // start hidden
+        path._len = len;
+        paths.push(path);
+      }
+    }
+
+    const showInstant = () => { for (const p of paths) p.style.strokeDashoffset = "0"; };
+
+    let drawToken = 0;
+    async function animate() {
+      if (reduceMotion) { showInstant(); drawn = true; return; }
+      const token = ++drawToken;               // cancels an in-flight draw on resize
+      for (const p of paths) p.style.strokeDashoffset = String(p._len);
+      void svg.getBoundingClientRect();         // flush the reset
+      for (const p of paths) {
+        if (token !== drawToken) return;
+        const anim = p.animate(
+          [{ strokeDashoffset: p._len }, { strokeDashoffset: 0 }],
+          { duration: Math.max(1, (p._len / CONFIG.drawSpeed) * 1000), easing: "linear", fill: "forwards" }
+        );
+        await anim.finished.catch(() => {});
+        p.style.strokeDashoffset = "0";
+      }
+      drawn = true;
+    }
+
+    // Rebuild on resize. The seed is fixed for this visit, so the shape only
+    // rescales — it does not regenerate. Keep it drawn if already drawn; if a
+    // resize lands mid-draw, restart the draw with the new geometry.
+    let resizeTimer;
+    window.addEventListener("resize", () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        build();
+        if (started) { if (drawn) showInstant(); else animate(); }
+      }, 150);
+    });
+
+    // Draw exactly once, the first time the banner enters the viewport, then stop
+    // observing. It does NOT redraw on scroll re-entry — a new scribble only
+    // appears on a fresh page visit (navigate away and back).
+    const io = new IntersectionObserver((entries, obs) => {
+      if (entries[0].isIntersecting) { obs.disconnect(); started = true; animate(); }
+    }, { threshold: 0.25 });
+
+    build();
+    io.observe(band);
+  }
+</script>

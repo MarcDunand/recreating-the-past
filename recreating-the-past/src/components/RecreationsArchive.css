@@ -156,15 +156,39 @@ main {
   display: flex;
   align-items: center;
   min-width: 0;
+  position: relative; /* anchors the absolutely-placed week label on wide screens */
+  column-gap: 8px;    /* hamburger ↔ week ↔ name gaps on narrow screens */
 }
 
+/* Week label + artist name share one style. Together they read "Week 4: Anni
+   Albers". */
+.sticky-bar-week,
 .sticky-bar-artist {
   text-align: left;
-  padding-left: 32px; /* matches artist-heading-span indent */
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 500;
   white-space: nowrap;
   overflow: visible;
+}
+
+.sticky-bar-artist {
+  padding-left: 32px; /* matches artist-heading-span indent — sits right of the timeline line */
+}
+
+/* Wide screens: hang the week to the LEFT of the vertical timeline line (which
+   sits ~3px into the first column) so the artist name keeps its position. The
+   sticky bar clears the fixed dot menu vertically, so this left gutter is free.
+   On narrow screens this is overridden back into the in-flow row. */
+.sticky-bar-week {
+  /* ▼ ADJUST HERE: horizontal position of the "Week X:" label on wide screens.
+     Increase to move it RIGHT (toward the timeline / artist name); decrease to
+     move it LEFT into the gutter. */
+  --sticky-week-nudge: 10px;
+  position: absolute;
+  right: calc(100% + 8px - var(--sticky-week-nudge));
+  top: 50%;
+  transform: translateY(-50%);
+  flex-shrink: 0;
 }
 
 /* Hamburger — only shown at narrow widths (≤800px) where the fixed dot menu
@@ -256,7 +280,7 @@ main {
 }
 
 .artist-heading {
-  font-size: 22px;
+  font-size: 20px; /* matches the sticky-bar artist name */
   font-weight: 500;
   margin: 0;
   line-height: 1.3;
@@ -401,6 +425,7 @@ main {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  transition: opacity 200ms ease;
 }
 
 .tile-caption {
@@ -532,12 +557,16 @@ main {
   line-height: 1;
 }
 
+.fullscreen-close--dark {
+  color: black;
+}
+
 .fullscreen-grid {
   flex: 1;
   min-height: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 32px;
+  column-gap: 32px;
   padding: 16px 32px;
 }
 
@@ -546,17 +575,35 @@ main {
   min-height: 0;
   display: flex;
   flex-direction: column;
+  /* Center the label+media group vertically so the media sits ~in the middle
+     of the screen while the label stays directly above it. The media wrapper
+     below sizes to the media (flex: 0 1 auto) rather than filling, so the
+     group can center instead of the label pinning to the top. */
+  justify-content: center;
 }
 
 .fullscreen-label {
   flex-shrink: 0;
+  /* Reserve up to two lines and bottom-align the text, so a one-line label and
+     a two-line label occupy the same height. That keeps the media below them
+     at the same y position on both sides — the two media boxes stay aligned. */
+  min-height: 2.6em;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  line-height: 1.3;
   font-size: 18px;
   margin-bottom: 8px;
   text-align: center;
 }
 
 .fullscreen-media-wrapper {
-  flex: 1;
+  /* Size to the media (shrinking if it would overflow) rather than filling, so
+     the parent can center the label+media group. When it shrinks to fit, its
+     height becomes definite, which the square's max-height: 100% resolves
+     against — keeping the media capped. Portrait restores flex: 1 to fill. */
+  flex: 0 1 auto;
+  min-width: 0;
   min-height: 0;
   display: flex;
   align-items: center;
@@ -726,9 +773,14 @@ main {
     display: flex;
   }
 
+  /* Week rejoins the flow, right of the hamburger, pushing the name right. */
+  .sticky-bar-week {
+    position: static;
+    transform: none;
+  }
+
   .sticky-bar-artist {
-    text-align: left;
-    padding-left: 14px; /* hamburger now provides the left inset */
+    padding-left: 0; /* hamburger + column-gap provide the left inset now */
   }
 
   .artist-section {
@@ -790,28 +842,26 @@ main {
     padding: 10px 16px;
   }
 
-  /* Each side must be allowed to shrink below its content size so the
-     1fr row constraint actually controls the height. */
-  .fullscreen-side {
-    min-height: 0;
-  }
-
-  /* Recreation side: reverse column order so the label appears at the
-     bottom (above the down-nav) rather than at the top. */
+  /* Recreation side: reverse column order so the label appears at the bottom
+     (above the down-nav) rather than at the top. */
   .fullscreen-side:last-child {
     flex-direction: column-reverse;
   }
 
-  /* Compact labels in portrait so images get the maximum room. */
+  /* Compact labels with no reserved height in portrait — the sides are stacked,
+     so there's no cross-side alignment to preserve, and images get more room. */
   .fullscreen-label {
     font-size: 14px;
+    min-height: 0;
     margin-bottom: 4px;
     padding: 2px 0;
   }
 
-  /* Media wrapper fills the remaining height inside the row. */
+  /* Media wrapper fills the remaining height inside each half-row (overriding
+     the size-to-content behavior used for the side-by-side layout). */
   .fullscreen-media-wrapper {
     width: 100%;
+    flex: 1;
   }
 
   /* Square constrained by the wrapper's height (not forced to full width),
