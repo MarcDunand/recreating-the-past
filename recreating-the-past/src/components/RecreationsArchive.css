@@ -183,7 +183,7 @@ main {
   /* ▼ ADJUST HERE: horizontal position of the "Week X:" label on wide screens.
      Increase to move it RIGHT (toward the timeline / artist name); decrease to
      move it LEFT into the gutter. */
-  --sticky-week-nudge: 10px;
+  --sticky-week-nudge: -10px;
   position: absolute;
   right: calc(100% + 8px - var(--sticky-week-nudge));
   top: 50%;

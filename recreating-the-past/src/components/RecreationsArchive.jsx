@@ -146,14 +146,15 @@ function ArtworkRow({ artist, pair, index, openPair }) {
   );
 }
 
-function StickyBar({ stickySlug, weekSlug, regularArtists, weekBySlug, onToggleMenu }) {
+function StickyBar({ stickySlug, weekSlug, showWeek, regularArtists, weekBySlug, onToggleMenu }) {
   const isFinal = stickySlug === "final";
   const displayName = isFinal
     ? "Final Project"
     : regularArtists.find((a) => a.artistSlug === stickySlug)?.artist ?? "";
   // The week tracks weekSlug, which never blanks during the name's transition
   // gap — so it switches straight from one week to the next. The final has none.
-  const week = weekSlug === "final" ? null : weekBySlug[weekSlug];
+  // showWeek hides it entirely at the very top until the first artist appears.
+  const week = weekSlug === "final" || !showWeek ? null : weekBySlug[weekSlug];
 
   return (
     <div className="sticky-bar">
@@ -386,6 +387,9 @@ export default function RecreationsArchive({ archive }) {
   // Tracks the active artist for the week label. Unlike stickyArtistSlug it is
   // never blanked between artists, so the week transitions straight across.
   const [stickyWeekSlug, setStickyWeekSlug] = useState(regularArtists[0]?.artistSlug);
+  // Hidden at the very top of the page (before the first artist scrolls up beside
+  // the bar); shown from the moment the first artist reaches the bar onward.
+  const [showWeek, setShowWeek] = useState(false);
   const [isNearTop, setIsNearTop] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -426,6 +430,10 @@ export default function RecreationsArchive({ archive }) {
       for (const [slug, el] of headingEntries) {
         if (el.getBoundingClientRect().top <= stickyThreshold) stickyActive = slug;
       }
+      // Whether any heading has reached the bar yet. False only at the very top,
+      // before the first artist (Vera) scrolls up beside the label — the week text
+      // stays hidden until then, then remains present for the rest of the page.
+      const reachedFirstArtist = stickyActive !== null;
       if (!stickyActive && headingEntries.length > 0) stickyActive = headingEntries[0][0];
 
       // Blank out the sticky name for 100px before the next heading enters — prevents
@@ -440,6 +448,7 @@ export default function RecreationsArchive({ archive }) {
       }
       setStickyArtistSlug(goBlank ? null : stickyActive);
       setStickyWeekSlug(stickyActive);
+      setShowWeek(reachedFirstArtist);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -466,6 +475,7 @@ export default function RecreationsArchive({ archive }) {
       <StickyBar
         stickySlug={stickyArtistSlug}
         weekSlug={stickyWeekSlug}
+        showWeek={showWeek}
         regularArtists={regularArtists}
         weekBySlug={weekBySlug}
         onToggleMenu={() => setMenuOpen((open) => !open)}

@@ -1,6 +1,7 @@
 ---
 import { readdirSync } from "node:fs";
 import { join } from "node:path";
+import { SITE_URL, SITE_NAME, OG_IMAGE } from "../site.js";
 import "../styles/top-nav.css";
 
 // Banner reads every image from public/media/about-banner/ at build time.
@@ -10,13 +11,32 @@ const bannerSrcs = readdirSync(join(process.cwd(), "public", "media", "about-ban
   .filter(f => /\.(jpe?g|png|webp|gif)$/i.test(f))
   .sort()
   .map(f => `/media/about-banner/${f}`);
+
+const title = "About — Recreating the Past";
+const description = "How Recreating the Past works: each week, students at the MIT Media Lab study a pioneer of computational or media art and recreate their work with modern tools.";
+const path = "/about";
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>About — Recreating the Past</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={SITE_URL + path} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#0f0f0f" />
+    <!-- Open Graph / social preview -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={SITE_URL + path} />
+    <meta property="og:image" content={SITE_URL + OG_IMAGE} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={SITE_URL + OG_IMAGE} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
@@ -57,11 +77,11 @@ const bannerSrcs = readdirSync(join(process.cwd(), "public", "media", "about-ban
         <em>Recreating the Past</em> is a course taught by{" "}
         <a href="https://zach.li" target="_blank" rel="noreferrer">Zach Lieberman</a>
         at the MIT Media Lab.
-        Each week, students study pioneers of computational or media art-working to understand their techniques, tools, and visual language. The assignment: use modern means to recreate their works from scratch.
+        Each week, students study pioneers of computational or media art, working to understand their techniques, tools, and visual language. The assignment: use modern means to recreate their works from scratch.
       </p>
 
       <p>
-        This site is an archive of those recreations. Each entry pairs the original work with the student's version. Gradually, students move beyond simple recreation to reinterpreation. This culminates with an open-ended BYOA (Bring Your Own Artist) final, where students create an artwork based on an artist of their choice.
+        This site is an archive of those recreations. Each entry pairs the original work with the student's version. Gradually, students move beyond simple recreation to reinterpretation. This culminates with an open-ended BYOA (Bring Your Own Artist) final, where students create an artwork based on an artist of their choice.
       </p>
 
       <p>
@@ -169,9 +189,8 @@ const bannerSrcs = readdirSync(join(process.cwd(), "public", "media", "about-ban
   }
 
   /* ── Generative connector line ── */
-  /* Reserved band the bouncing line lives in. Keep --band-height in sync with
-     CONFIG.bandHeight in the script below. overflow:hidden clips any loop that
-     pokes above the band into the banner. */
+  /* Reserved band the line lives in. Keep --band-height in sync with BAND_HEIGHT
+     in the script below. overflow:hidden clips anything that pokes past the band. */
   .banner-line {
     --band-height: 130px;
     height: var(--band-height);
@@ -308,31 +327,84 @@ const bannerSrcs = readdirSync(join(process.cwd(), "public", "media", "about-ban
     "#7A4AF4", "#181818", "#FEFEFE", "#FED629",
   ];
 
-  // ── 2. CURVE / ANIMATION KNOBS ──────────────────────────────────────────────
-  // Tune the generated shape and the draw animation here.
-  const CONFIG = {
-    bandHeight:   130,      // px. MUST match --band-height in the .banner-line CSS.
-    endTangent:   34,       // how far the line runs straight down/up at each panel.
-    hops:         2,        // interior waypoints per segment (higher = wigglier).
-    dip:          72,       // baseline downward arch toward mid-segment (px).
-    wiggleX:      0,       // horizontal jitter of interior waypoints (px).
-    wiggleY:      0,       // vertical jitter of interior waypoints (px).
-    loopiness:    1,     // 0–1 chance of spinning a loop at each waypoint.
-    loopRadius:   50,       // loop size (px).
+  // ── 2. WHICH ALGORITHM ──────────────────────────────────────────────────────
+  // Integer selecting the line-drawing algorithm. Each one has its own totally
+  // separate constants block below.
+  //   0 = "bounce" — a line hopping from panel to panel (curves + loops).
+  //   1 = "spiral" — a recursive spiral (with pockets) spanning each panel gap.
+  const ALGORITHM = 1;
+
+  // ── 3. SHARED KNOBS (apply to whichever algorithm is active) ────────────────
+  const BAND_HEIGHT     = 130;   // px. MUST match --band-height in the .banner-line CSS.
+  const SEED            = null;  // null = fresh random each page visit; a number locks it.
+  const THIN_BREAKPOINT = 1000;  // px. Below this viewport width, "thin-screen" mode
+                                 // kicks in (thinner line + more intricate design).
+
+  // ── 4a. ALGORITHM 0 — "bounce" — its own totally separate constants ─────────
+  const BOUNCE = {
     strokeWidth:  1,      // line thickness (px).
-    drawSpeed:    450,      // px per second — constant draw rate. A long/looping
-                            // hop takes proportionally longer than a short one,
-                            // instead of every hop taking the same time.
-    seed:         null,     // null = a fresh random scribble on every page visit
-                            // (navigating away and back reloads the page). Set a
-                            // number to lock one specific shape instead.
-    randomOrder:  false,    // false = connect panels left-to-right in order;
-                            // true = visit them in a totally random order.
+    strokeWidthByDepth: [1], // bounce has no recursion, so a single depth-0 width.
+    colorByDistance: true,// interpolate color along arc length (see SPIRAL notes).
+    colorSteps:   64,     // solid-color segments per connector when colorByDistance.
+    drawSpeed:    450,    // px per second — constant draw rate.
+    randomOrder:  false,  // false = panels left-to-right; true = random order.
+    endTangent:   34,     // how far the line runs straight down/up at each panel.
+    hops:         2,      // interior waypoints per hop (higher = wigglier).
+    dip:          72,     // baseline downward arch toward mid-hop (px).
+    wiggleX:      0,      // horizontal jitter of interior waypoints (px).
+    wiggleY:      0,      // vertical jitter of interior waypoints (px).
+    loopiness:    1,      // 0–1 chance of spinning a loop at each waypoint.
+    loopRadius:   50,     // loop size (px).
   };
 
-  // ── 3. IMPLEMENTATION ───────────────────────────────────────────────────────
-  // To change the *aesthetic* you normally only touch generateWaypoints() below;
-  // it is the one swappable "generator". Everything else is plumbing.
+  // ── 4b. ALGORITHM 1 — "spiral" — its own totally separate constants ─────────
+  // One recursive spiral spans each gap between two consecutive panels, drawn as
+  // a SINGLE unbroken, non-intersecting line: a 90° sinusoidal curve peels off
+  // panel a down into the spiral's top; the line winds all the way in and threads
+  // back out (a pocket inserts a smaller child spiral INLINE — the child is how
+  // the line crosses the pocket's gap); then it sweeps 90° around the outside of
+  // the spiral and rises vertically to panel b. Color fades between the panels.
+  const SPIRAL = {
+    strokeWidth:  1,      // line thickness (px) — depth-0 (the main spiral).
+    strokeWidthByDepth: [1, 0.75, 0.5], // thickness per pocket-recursion depth:
+                          // [0]=main spiral, [1]=child, [2]=grandchild. On thin
+                          // screens every depth scales by the same factor that
+                          // thins depth 0 (strokeWidthThin / strokeWidthByDepth[0]).
+    drawSpeed:    100,   // px per second. Every connector now draws in parallel
+                          // from BOTH ends at once, so the whole row finishes in
+                          // roughly (longest connector length / 2) / drawSpeed.
+    randomOrder:  false,  // false = panels left-to-right; true = random order.
+    rMax:         200,     // outer radius of each spiral (px). Auto-clamped to fit
+                          // the band height and the panel gap.
+    rDev:         4,      // ring spacing: radius lost per half-turn (px). Smaller
+                          // = more rings AND deeper pocket recursion fits.
+    spiRes:       90,     // sample points per full turn (arc smoothness).
+    pocketProb:   0.2,   // 0–1 chance per ring crossing of opening a pocket
+                          // holding a child spiral.
+    maxDepth:     3,      // max pocket-recursion depth.
+    topStem:      12,     // px gap from the panel row to the spiral's top. The
+                          // spiral's vertical center is derived from this + radius,
+                          // so as the screen narrows (smaller radius) the spiral
+                          // rides UP toward the panels instead of growing long stems.
+    margin:       2,//6,      // min clearance from band edges and the panel verticals.
+    strokeWidthThin: 0.5, // depth-0 line thickness on thin screens (< THIN_BREAKPOINT).
+                          // Other depths scale by strokeWidthThin/strokeWidthByDepth[0].
+    intricacyThin:   2,   // on thin screens, multiply intricacy by this (halves the
+                          // ring spacing → ~twice as many rings and deeper pockets).
+    colorByDistance: false,// true = color interpolates along the line's ARC LENGTH
+                          // (deterministic shape → known total length). false = the
+                          // old behavior, interpolating over the x-coordinate.
+    colorSteps:      256,  // color resolution: solid-color segments per connector
+                          // (higher = smoother gradient, either color mode).
+    widthTransition: 7,   // px of arc length over which the stroke width ramps
+                          // smoothly between two recursion depths (0 = hard step).
+  };
+
+  // ── 5. IMPLEMENTATION ───────────────────────────────────────────────────────
+  // Each algorithm is a "connector": connector({Xa,Xb,H,rng,cfg}) returns an array
+  // of SVG path `d` strings joining panel a (at x=Xa) to panel b (at x=Xb), both on
+  // the band's top edge. build() draws them with one gradient per connector fading
+  // color[a] → color[b]. Everything else is shared plumbing.
   const SVGNS = "http://www.w3.org/2000/svg";
   const band  = document.querySelector(".banner-line");
   const svg   = document.querySelector(".banner-line-svg");
@@ -357,9 +429,9 @@ const bannerSrcs = readdirSync(join(process.cwd(), "public", "media", "about-ban
     // ── The generator: build a list of waypoints from one panel to the next ──
     // Swap this function to change the line's character. It receives the two
     // anchor points (both at y = 0, the panel bottoms) and returns the full point
-    // list; toPath() then smooths it and forces vertical tangents at the anchors.
+    // list; samplePath() then smooths it and forces vertical tangents at the anchors.
     function generateWaypoints(start, end, rng, cfg) {
-      const H = cfg.bandHeight;
+      const H = BAND_HEIGHT;
       const pts = [start];
       for (let h = 1; h < cfg.hops; h++) {
         const t = h / cfg.hops;
@@ -386,114 +458,367 @@ const bannerSrcs = readdirSync(join(process.cwd(), "public", "media", "about-ban
       return pts;
     }
 
-    // Smooth a point list into an SVG cubic-Bézier path (Catmull-Rom), forcing a
-    // vertical tangent at the first point (straight down) and last (straight up).
-    function toPath(pts, cfg) {
-      const n = pts.length - 1;
-      const et = cfg.endTangent;
-      const f = (v) => v.toFixed(2);
-      let d = `M ${f(pts[0].x)} ${f(pts[0].y)}`;
+    const fixed = (v) => v.toFixed(2);
+    const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+
+    // Densely sample a Catmull-Rom spline through the waypoints into a flat point
+    // list (all depth 0), forcing a vertical tangent at the first point (straight
+    // down) and last (straight up). Bounce flows through the same point-based
+    // renderer as the spiral, so both share distance-color + both-ends drawing.
+    function samplePath(wp, cfg) {
+      const n = wp.length - 1, et = cfg.endTangent, K = 12;
+      const out = [{ x: wp[0].x, y: wp[0].y, d: 0 }];
       for (let i = 0; i < n; i++) {
-        const p0 = pts[i - 1], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2];
+        const p0 = wp[i - 1], p1 = wp[i], p2 = wp[i + 1], p3 = wp[i + 2];
         const t1 = (i === 0)     ? { x: 0, y: 6 * et }  : { x: p2.x - p0.x, y: p2.y - p0.y };
         const t2 = (i === n - 1) ? { x: 0, y: -6 * et } : { x: p3.x - p1.x, y: p3.y - p1.y };
         const c1 = { x: p1.x + t1.x / 6, y: p1.y + t1.y / 6 };
         const c2 = { x: p2.x - t2.x / 6, y: p2.y - t2.y / 6 };
-        d += ` C ${f(c1.x)} ${f(c1.y)}, ${f(c2.x)} ${f(c2.y)}, ${f(p2.x)} ${f(p2.y)}`;
+        for (let sN = 1; sN <= K; sN++) {
+          const t = sN / K, mt = 1 - t;
+          out.push({
+            x: mt*mt*mt*p1.x + 3*mt*mt*t*c1.x + 3*mt*t*t*c2.x + t*t*t*p2.x,
+            y: mt*mt*mt*p1.y + 3*mt*mt*t*c1.y + 3*mt*t*t*c2.y + t*t*t*p2.y,
+            d: 0,
+          });
+        }
       }
-      return d;
+      return out;
     }
+
+    // Color helpers: interpolate between two panel colors in RGB.
+    function hexToRgb(h) {
+      h = h.replace("#", "");
+      if (h.length === 3) h = h.split("").map((c) => c + c).join("");
+      const n = parseInt(h, 16);
+      return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+    }
+    const rgbLerp = (a, b, t) =>
+      `rgb(${Math.round(a[0]+(b[0]-a[0])*t)},${Math.round(a[1]+(b[1]-a[1])*t)},${Math.round(a[2]+(b[2]-a[2])*t)})`;
+
+    // Stroke width for a given pocket-recursion depth (0 = the main spiral). On
+    // thin screens every depth scales by the same factor that thins depth 0.
+    function strokeForDepth(depth, thin, cfg) {
+      const arr = cfg.strokeWidthByDepth || [cfg.strokeWidth];
+      const base = arr[Math.min(depth, arr.length - 1)];
+      const factor = (cfg.strokeWidthThin ?? cfg.strokeWidth) / arr[0];
+      return thin ? base * factor : base;
+    }
+
+    // ── Algorithm 0: bounce — the panel-to-panel hop (curves + loops). ──
+    function bounceConnector({ Xa, Xb, rng, cfg }) {
+      const wp = generateWaypoints({ x: Xa, y: 0 }, { x: Xb, y: 0 }, rng, cfg);
+      return { pts: samplePath(wp, cfg) };
+    }
+
+    // ── Algorithm 1: spiral — one continuous recursive spiral per panel gap. ──
+    //
+    // The spiral is built from half-turn arcs that cross its vertical axis
+    // alternately at the top and bottom. Traversal: wind inward (each half-turn
+    // loses `dev` of radius), S-turn through the center, thread back out with
+    // the returning strand hugging `dev` outside the inward one.
+    //
+    // POCKETS: at an axis crossing (radius r), a pocket inserts a complete child
+    // spiral INLINE — tangent at that exact point, centered on the axis. Because
+    // a full in-and-out spiral enters at its highest point and exits at its
+    // lowest (or vice versa), traversing the child carries the line to radius
+    // r − poc on the same axis, where the parent resumes winding. On the way
+    // back out, the returning strand makes one steep climbing arc (poc + dev
+    // over a half-turn — "shrinks much more than usual") that swings AROUND the
+    // child. Result: a single unbroken, non-intersecting line at every depth.
+    //
+    // Appends the full traversal (in traversal order) to `out` as {x,y,d} points,
+    // where d is the recursion depth (0 = this spiral, used for stroke width).
+    // `phase` orients the spiral: the entry crossing sits at angle phase − 90°.
+    function addSpiral(out, cx, cy, R0, dev, phase, depth, rng, cfg) {
+      const A = (j) => phase - Math.PI / 2 + Math.PI * j; // angle of axis crossing j
+      const half = Math.max(4, Math.ceil(cfg.spiRes / 2)); // samples per half-turn
+      // Half-turn about (cx,cy) from crossing j, radius ramping r0 → r1.
+      // dir +1 = angle increasing (inward winding), −1 = decreasing (outward).
+      const turn = (j, r0, r1, dir) => {
+        for (let i = 1; i <= half; i++) {
+          const t = i / half, ang = A(j) + dir * Math.PI * t, r = r0 + (r1 - r0) * t;
+          out.push({ x: cx + r * Math.cos(ang), y: cy + r * Math.sin(ang), d: depth });
+        }
+      };
+
+      // Inward pass. s[j] = radius at which the line ARRIVES at crossing j
+      // (before any pocket there); the pen enters at crossing 0, radius R0.
+      // pk[j] flags crossings that opened a pocket (used by the outward pass).
+      const s = [], pk = [];
+      let r = R0, j = 0;
+      for (;;) {
+        s[j] = r;
+        if (j > 0 && depth < cfg.maxDepth && rng() < cfg.pocketProb) {
+          const hi = r - 3 * dev; // child must leave ≥ 3·dev of core to continue
+          if (hi >= 2 * dev) {
+            const poc = rand(rng, 2 * dev, hi); // child diameter
+            const ang = A(j);
+            // Child tangent at the pen's point, centered on this axis ray.
+            addSpiral(out, cx + (r - poc / 2) * Math.cos(ang), cy + (r - poc / 2) * Math.sin(ang),
+                      poc / 2, dev / 2, ang + Math.PI / 2, depth + 1, rng, cfg);
+            r -= poc; // the child delivered the pen to the pocket's inner edge
+            pk[j] = true;
+          }
+        }
+        if (r - dev < dev) break; // too tight for another half-turn — turn around
+        turn(j, r, r - dev, 1);
+        r -= dev; j++;
+      }
+
+      // S-turnaround: two half-circles of radius r/2 threading through the
+      // center, connecting crossing j (radius r) to crossing j+1 (radius r).
+      const aj = A(j), ux = Math.cos(aj), uy = Math.sin(aj);
+      for (let i = 1; i <= half; i++) { // crossing j → center
+        const ang = aj + Math.PI * (i / half);
+        out.push({ x: cx + (r / 2) * (ux + Math.cos(ang)), y: cy + (r / 2) * (uy + Math.sin(ang)), d: depth });
+      }
+      for (let i = 1; i <= half; i++) { // center → crossing j+1 (reverse sweep)
+        const ang = aj + 2 * Math.PI - Math.PI * (i / half);
+        out.push({ x: cx + (r / 2) * (-ux + Math.cos(ang)), y: cy + (r / 2) * (-uy + Math.sin(ang)), d: depth });
+      }
+
+      // Outward pass: from crossing j+1 back to crossing 1. T[k] is the return
+      // radius when the strand reaches crossing k — normally s[k]+dev (one `dev`
+      // outside the inward arrival). Where a pocket opened at crossing m, the return
+      // must climb ~poc+dev to swing clear of the child. Rather than doing that whole
+      // climb in the single half-turn landing on m (a sharp 180° jump), we raise
+      // T[m+1] so the *previous* arc shares the climb — spreading it across a full
+      // 360° (two half-turns) for a gentler, still non-intersecting sweep.
+      const T = [];
+      for (let k = 1; k <= j; k++) T[k] = s[k] + dev;
+      T[j + 1] = r;
+      for (let m = 1; m <= j; m++) {
+        if (pk[m] && m + 1 <= j) {
+          T[m + 1] = Math.max(T[m + 1], (T[m] + s[m + 1] + dev) / 2);
+        }
+      }
+      let ro = T[j + 1];
+      for (let k = j + 1; k >= 2; k--) {
+        turn(k, ro, T[k - 1], -1);
+        ro = T[k - 1];
+      }
+    }
+
+    function spiralConnector({ Xa, Xb, H, thin, rng, cfg }) {
+      const xc = (Xa + Xb) / 2;
+      // Radius fits the band (leaving room for the top stem + bottom margin) and
+      // the panel half-gap. Then yc = R + topStem, so the top stem stays fixed and
+      // BOTH stems shrink with the radius as the screen narrows.
+      let R = Math.min(cfg.rMax, (H - cfg.margin - cfg.topStem) / 2, Math.abs(Xb - Xa) / 2 - cfg.margin);
+      R = Math.max(R, 5);
+      const yc = R + cfg.topStem;
+      // Thin screens: halve the ring spacing → twice as intricate.
+      const rDev = thin ? cfg.rDev / cfg.intricacyThin : cfg.rDev;
+      const dev = Math.max(1.5, Math.min(rDev, R / 3));
+      const q = Math.max(4, Math.ceil(cfg.spiRes / 4));
+      // 50/50 chance to reverse the whole connector (see reflection at the end).
+      const reflect = rng() < 0.5;
+      const pts = [{ x: Xa, y: 0, d: 0 }];
+
+      // Entry peel: 90° sinusoidal curve, vertical at panel a → horizontal at the
+      // spiral's topmost point (tangent to its outer ring).
+      for (let i = 1; i <= q; i++) {
+        const u = (i / q) * (Math.PI / 2);
+        pts.push({ x: Xa + (xc - Xa) * (1 - Math.cos(u)), y: (yc - R) * Math.sin(u), d: 0 });
+      }
+
+      // The spiral itself (single continuous traversal, entry at top, exit at bottom).
+      addSpiral(pts, xc, yc, R, dev, 0, 0, rng, cfg);
+
+      // Exit sweep: 90° sinusoidal curve from the spiral's lowest point around
+      // the outside of the spiral (it never re-enters the outer ring), ending
+      // vertical at x = Xb…
+      for (let i = 1; i <= q; i++) {
+        const u = (i / q) * (Math.PI / 2);
+        pts.push({ x: xc + (Xb - xc) * Math.sin(u), y: yc + R * Math.cos(u), d: 0 });
+      }
+      // …then a straight vertical rise up to panel b.
+      pts.push({ x: Xb, y: 0, d: 0 });
+
+      // Reverse the ENTIRE connector by reflecting about its vertical axis xc —
+      // the midpoint of the two panels. This flips the spiral's winding direction
+      // AND, because Xa and Xb are symmetric about xc, swaps the two panel
+      // connections with it (the straight-down stem and the curved sweep trade
+      // sides), so the whole shape reverses consistently.
+      const out = reflect ? pts.map((p) => ({ x: 2 * xc - p.x, y: p.y, d: p.d })) : pts;
+      return { pts: out };
+    }
+
+    // Pick the active algorithm's constants + connector.
+    const cfg = (ALGORITHM === 1) ? SPIRAL : BOUNCE;
+    const connector = (ALGORITHM === 1) ? spiralConnector : bounceConnector;
 
     let paths = [];
     let started = false; // has the one-time draw begun?
     let drawn = false;   // has it finished drawing?
 
-    // A fresh random scribble each page visit. Navigating away and back reloads
-    // the page, which reseeds. Pin CONFIG.seed to a number to lock one shape.
-    const activeSeed = (CONFIG.seed == null)
+    // A fresh random shape each page visit. Navigating away and back reloads the
+    // page, which reseeds. Set SEED to a number to lock one shape.
+    const activeSeed = (SEED == null)
       ? (Math.floor(Math.random() * 0x100000000) >>> 0)
-      : (CONFIG.seed >>> 0);
+      : (SEED >>> 0);
 
     function build() {
       const W = band.clientWidth;
-      const H = CONFIG.bandHeight;
+      const H = BAND_HEIGHT;
+      const thin = W < THIN_BREAKPOINT;
       svg.setAttribute("width", W);
       svg.setAttribute("height", H);
       svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
       svg.replaceChildren();
       paths = [];
 
-      const defs = document.createElementNS(SVGNS, "defs");
-      svg.appendChild(defs);
-
       const rng = makeRng(activeSeed);
       const centerX = (i) => (W * (i + 0.5)) / panelCount;
 
       // Order the line visits the panels in. Left-to-right by default; a seeded
-      // Fisher–Yates shuffle when CONFIG.randomOrder is on (stable across resizes,
+      // Fisher–Yates shuffle when cfg.randomOrder is on (stable across resizes,
       // fresh each visit). Each panel keeps its own color regardless of order.
       const order = Array.from({ length: panelCount }, (_, i) => i);
-      if (CONFIG.randomOrder) {
+      if (cfg.randomOrder) {
         for (let i = order.length - 1; i > 0; i--) {
           const j = Math.floor(rng() * (i + 1));
           [order[i], order[j]] = [order[j], order[i]];
         }
       }
 
+      const colorByDist = cfg.colorByDistance !== false;
+      const steps = Math.max(1, cfg.colorSteps || 48);
+
       for (let k = 0; k < panelCount - 1; k++) {
         const a = order[k], b = order[k + 1];
-        const start = { x: centerX(a), y: 0 };
-        const end   = { x: centerX(b), y: 0 };
-        const d = toPath(generateWaypoints(start, end, rng, CONFIG), CONFIG);
+        const Xa = centerX(a), Xb = centerX(b);
+        const ca = hexToRgb(color(a)), cb = hexToRgb(color(b));
 
-        // Per-segment gradient: fades panel a's color → panel b's color.
-        const grad = document.createElementNS(SVGNS, "linearGradient");
-        grad.setAttribute("id", `bl-grad-${k}`);
-        grad.setAttribute("gradientUnits", "userSpaceOnUse");
-        grad.setAttribute("x1", start.x); grad.setAttribute("y1", 0);
-        grad.setAttribute("x2", end.x);   grad.setAttribute("y2", 0);
-        for (const [off, c] of [["0%", color(a)], ["100%", color(b)]]) {
-          const stop = document.createElementNS(SVGNS, "stop");
-          stop.setAttribute("offset", off);
-          stop.setAttribute("stop-color", c);
-          grad.appendChild(stop);
+        // The active algorithm returns the connector's full single-line traversal
+        // as {x,y,d} points (d = pocket-recursion depth), already reflected.
+        const { pts } = connector({ Xa, Xb, H, thin, rng, cfg });
+        if (!pts || pts.length < 2) continue;
+
+        // Cumulative arc length → total length L. The shape is fully determined
+        // here (before any drawing), so we know L exactly — this is what lets the
+        // color track distance and both ends draw in lock-step.
+        const cum = [0];
+        for (let i = 1; i < pts.length; i++)
+          cum[i] = cum[i - 1] + Math.hypot(pts[i].x - pts[i - 1].x, pts[i].y - pts[i - 1].y);
+        const L = cum[pts.length - 1] || 1;
+        const dspan = (Xb - Xa) || 1;
+        const colStep = L / steps; // always break for smooth color (either mode)
+
+        // Per-point stroke width from recursion depth, then box-filtered over
+        // cfg.widthTransition px of arc length so each depth step becomes a short
+        // linear ramp instead of a hard jump. Two forward-only pointers keep the
+        // window [d − half, d + half] as a running sum (cum is monotonic).
+        const rawW = pts.map((p) => strokeForDepth(p.d || 0, thin, cfg));
+        let sw = rawW;
+        const win = Math.max(0, cfg.widthTransition || 0);
+        if (win > 0) {
+          const half = win / 2, sm = new Array(pts.length);
+          let lo = 0, hi = 0, sum = 0;
+          for (let i = 0; i < pts.length; i++) {
+            const d = cum[i];
+            while (hi < pts.length && cum[hi] <= d + half) { sum += rawW[hi]; hi++; }
+            while (lo < i && cum[lo] < d - half) { sum -= rawW[lo]; lo++; }
+            sm[i] = sum / Math.max(1, hi - lo);
+          }
+          sw = sm;
         }
-        defs.appendChild(grad);
 
-        const path = document.createElementNS(SVGNS, "path");
-        path.setAttribute("d", d);
-        path.setAttribute("fill", "none");
-        path.setAttribute("stroke", `url(#bl-grad-${k})`);
-        path.setAttribute("stroke-width", CONFIG.strokeWidth);
-        path.setAttribute("stroke-linecap", "round");
-        svg.appendChild(path);
+        // Emit the sub-path pts[a0..b0] (inclusive; consecutive segments share an
+        // endpoint, so the line stays visually continuous). Solid stroke colored at
+        // the segment's midpoint (by x, or by arc distance when colorByDistance is
+        // on) with the given width. It reveals from whichever panel end is nearer,
+        // so the connector draws inward from BOTH ends at once.
+        const emit = (a0, b0, width) => {
+          const startDist = cum[a0], endDist = cum[b0];
+          const segLen = endDist - startDist;
+          if (segLen <= 0) return;
+          const midDist = (startDist + endDist) / 2;
+          const t = colorByDist
+            ? midDist / L
+            : clamp(((pts[a0].x + pts[b0].x) / 2 - Xa) / dspan, 0, 1);
+          const stroke = rgbLerp(ca, cb, clamp(t, 0, 1));
 
-        const len = path.getTotalLength();
-        path.style.strokeDasharray = String(len);
-        path.style.strokeDashoffset = String(len); // start hidden
-        path._len = len;
-        paths.push(path);
+          const fromA = midDist < L / 2;
+          const slice = pts.slice(a0, b0 + 1);
+          const seq = fromA ? slice : slice.slice().reverse();
+          const d = "M " + seq.map((p) => `${fixed(p.x)} ${fixed(p.y)}`).join(" L ");
+
+          const path = document.createElementNS(SVGNS, "path");
+          path.setAttribute("d", d);
+          path.setAttribute("fill", "none");
+          path.setAttribute("stroke", stroke);
+          path.setAttribute("stroke-width", width);
+          path.setAttribute("stroke-linecap", "round");
+          path.setAttribute("stroke-linejoin", "round");
+          svg.appendChild(path);
+
+          path.style.strokeDasharray = String(segLen);
+          path.style.strokeDashoffset = String(segLen); // start hidden
+          // A fully-offset dashed path with round caps still paints a stray round
+          // DOT at its start point; hide it outright until its reveal begins.
+          path.style.visibility = "hidden";
+          path._len = segLen;
+          path._rs = fromA ? startDist : (L - endDist); // reveal start (dist from near end)
+          paths.push(path);
+        };
+
+        // Walk the point list, cutting a new segment at each color step and wherever
+        // the smoothed width has drifted enough — so width ramps look continuous.
+        let a0 = 0, nextBreak = colStep;
+        for (let i = 1; i < pts.length; i++) {
+          const isLast = i === pts.length - 1;
+          const widthDrift = Math.abs(sw[i] - sw[a0]) >= 0.03;
+          if (isLast || widthDrift || cum[i] >= nextBreak) {
+            emit(a0, i, sw[(a0 + i) >> 1]);
+            a0 = i;
+            nextBreak = cum[i] + colStep;
+            if (isLast) break;
+          }
+        }
       }
     }
 
-    const showInstant = () => { for (const p of paths) p.style.strokeDashoffset = "0"; };
+    const showInstant = () => {
+      for (const p of paths) { p.style.strokeDashoffset = "0"; p.style.visibility = "visible"; }
+    };
 
-    let drawToken = 0;
-    async function animate() {
+    // One requestAnimationFrame timeline. Every connector draws IN PARALLEL, and
+    // each one reveals inward from BOTH panel ends at once, all at a constant
+    // cfg.drawSpeed (px/second per head). A segment's _rs is its distance from the
+    // nearer end; it fills in as the shared draw head passes over it.
+    let rafId = 0;
+    function animate() {
+      cancelAnimationFrame(rafId);
       if (reduceMotion) { showInstant(); drawn = true; return; }
-      const token = ++drawToken;               // cancels an in-flight draw on resize
-      for (const p of paths) p.style.strokeDashoffset = String(p._len);
-      void svg.getBoundingClientRect();         // flush the reset
+      let maxEnd = 0;
       for (const p of paths) {
-        if (token !== drawToken) return;
-        const anim = p.animate(
-          [{ strokeDashoffset: p._len }, { strokeDashoffset: 0 }],
-          { duration: Math.max(1, (p._len / CONFIG.drawSpeed) * 1000), easing: "linear", fill: "forwards" }
-        );
-        await anim.finished.catch(() => {});
-        p.style.strokeDashoffset = "0";
+        p.style.strokeDashoffset = String(p._len);
+        p.style.visibility = "hidden";
+        maxEnd = Math.max(maxEnd, p._rs + p._len);
       }
-      drawn = true;
+      void svg.getBoundingClientRect(); // flush the reset before animating
+      const speed = cfg.drawSpeed;
+      const t0 = performance.now();
+      const tick = (now) => {
+        const head = ((now - t0) / 1000) * speed; // distance each end-head has advanced
+        for (const p of paths) {
+          const rev = head - p._rs;
+          // Only reveal (and only paint) a segment once its head has reached it —
+          // keeps hidden segments from flashing a stray round-cap dot.
+          if (rev <= 0) { p.style.visibility = "hidden"; continue; }
+          p.style.visibility = "visible";
+          p.style.strokeDashoffset = String(rev >= p._len ? 0 : p._len - rev);
+        }
+        if (head < maxEnd) {
+          rafId = requestAnimationFrame(tick);
+        } else {
+          for (const p of paths) { p.style.strokeDashoffset = "0"; p.style.visibility = "visible"; }
+          drawn = true;
+        }
+      };
+      rafId = requestAnimationFrame(tick);
     }
 
     // Rebuild on resize. The seed is fixed for this visit, so the shape only
